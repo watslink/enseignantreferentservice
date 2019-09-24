@@ -9,10 +9,10 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class DocumentRequis {
+public class DocumentInscriptionRequis {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int documentRequisId;
+    private int documentInscriptionRequisId;
 
     private String nom;
 }
