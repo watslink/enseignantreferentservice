@@ -1,11 +1,17 @@
 package com.sd.enseignantreferantservice.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @IdClass(EleveDocumentInscriptionRequis.class)
 public class EleveDocumentInscriptionRequis implements Serializable {
@@ -26,4 +32,18 @@ public class EleveDocumentInscriptionRequis implements Serializable {
     private String lien;
 
     private boolean ok;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EleveDocumentInscriptionRequis that = (EleveDocumentInscriptionRequis) o;
+        return documentInscriptionRequis.equals(that.documentInscriptionRequis) &&
+                eleve.equals(that.eleve);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(documentInscriptionRequis, eleve);
+    }
 }

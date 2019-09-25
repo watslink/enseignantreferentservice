@@ -1,11 +1,17 @@
 package com.sd.enseignantreferantservice.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class AESH implements Serializable {
 
@@ -23,4 +29,17 @@ public class AESH implements Serializable {
     @ManyToOne
     @JoinColumn(name="PIAL_id")
     private PIAL pial;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AESH aesh = (AESH) o;
+        return aeshId == aesh.aeshId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(aeshId);
+    }
 }

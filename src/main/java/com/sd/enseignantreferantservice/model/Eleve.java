@@ -1,13 +1,19 @@
 package com.sd.enseignantreferantservice.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class Eleve implements Serializable {
 
@@ -46,27 +52,40 @@ public class Eleve implements Serializable {
     @JoinColumn(name="enseignant_referent_id")
     private EnseignantReferent enseignantReferent;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "eleve_representant_legal",
             joinColumns = {@JoinColumn(name = "eleve_id")},
             inverseJoinColumns = {@JoinColumn(name = "representant_legal_id")})
     private Set<RepresentantLegal> listRepresentantsLegaux;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "eleve_structure_pro",
             joinColumns = {@JoinColumn(name = "eleve_id")},
             inverseJoinColumns = {@JoinColumn(name = "structure_pro_id")})
     private Set<StructurePro> listStructurePros;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "eleve_materiel_pedago_adapte",
             joinColumns = {@JoinColumn(name = "eleve_id")},
             inverseJoinColumns = {@JoinColumn(name = "materiel_pedago_adapte_id")})
     private Set<MaterielPedagoAdapte> listMaterielsPedagoAdaptes;
 
-    @OneToMany(mappedBy = "eleve", orphanRemoval = true)
+    @OneToMany(mappedBy = "eleve", orphanRemoval = true, fetch = FetchType.EAGER )
     private Set<Document> listDocuments;
 
-    @OneToMany(mappedBy = "eleve", orphanRemoval = true)
+    @OneToMany(mappedBy = "eleve", orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<EleveDocumentInscriptionRequis> listEleveDocumentsInscriptionRequis;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Eleve eleve = (Eleve) o;
+        return eleveId == eleve.eleveId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(eleveId);
+    }
 }

@@ -1,14 +1,20 @@
 package com.sd.enseignantreferantservice.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class Categorie implements Serializable {
 
@@ -16,4 +22,17 @@ public class Categorie implements Serializable {
     private int categorieId;
 
     private String nom;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Categorie categorie = (Categorie) o;
+        return categorieId == categorie.categorieId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(categorieId);
+    }
 }
