@@ -3,12 +3,13 @@ package com.sd.enseignantreferantservice.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 @Data
 @Entity
-public class Eleve {
+public class Eleve implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int eleveId;
@@ -63,9 +64,9 @@ public class Eleve {
             inverseJoinColumns = {@JoinColumn(name = "materiel_pedago_adapte_id")})
     private Set<MaterielPedagoAdapte> listMaterielsPedagoAdaptes;
 
-    @OneToMany(mappedBy = "document", orphanRemoval = true)
+    @OneToMany(mappedBy = "eleve", orphanRemoval = true)
     private Set<Document> listDocuments;
 
-    @OneToMany(mappedBy = "eleve_document_inscription_requis", orphanRemoval = true)
+    @OneToMany(mappedBy = "eleve", orphanRemoval = true)
     private Set<EleveDocumentInscriptionRequis> listEleveDocumentsInscriptionRequis;
 }
