@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -26,6 +27,7 @@ public class EnseignantreferantserviceApplication implements CommandLineRunner {
     EleveRepository eleveRepository;
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
        java.util.Optional<Eleve> optEleve=eleveRepository.findById(2);
        Eleve eleve=  optEleve.get();
@@ -40,7 +42,7 @@ public class EnseignantreferantserviceApplication implements CommandLineRunner {
         System.out.println(eleve.getDateReunion());
         System.out.println(eleve.getDateNotificationAesh());
         System.out.println(eleve.getEnseignantReferent().getIdentifiant());
-        System.out.println(eleve.getListRepresentantsLegaux().iterator().next().getIdentite());
+        System.out.println(eleve.getListRepresentantsLegaux().iterator().next().getAdresse().getVille());
         System.out.println(eleve.getListDocuments().iterator().next().getNom());
         System.out.println(eleve.getListMaterielsPedagoAdaptes().iterator().next().getNom());
         System.out.println(eleve.getListStructurePros().iterator().next().getNom());

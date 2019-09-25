@@ -52,19 +52,19 @@ public class Eleve implements Serializable {
     @JoinColumn(name="enseignant_referent_id")
     private EnseignantReferent enseignantReferent;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "eleve_representant_legal",
             joinColumns = {@JoinColumn(name = "eleve_id")},
             inverseJoinColumns = {@JoinColumn(name = "representant_legal_id")})
     private Set<RepresentantLegal> listRepresentantsLegaux;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "eleve_structure_pro",
             joinColumns = {@JoinColumn(name = "eleve_id")},
             inverseJoinColumns = {@JoinColumn(name = "structure_pro_id")})
     private Set<StructurePro> listStructurePros;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "eleve_materiel_pedago_adapte",
             joinColumns = {@JoinColumn(name = "eleve_id")},
             inverseJoinColumns = {@JoinColumn(name = "materiel_pedago_adapte_id")})
