@@ -2,7 +2,6 @@ package com.sd.enseignantreferantservice.business.Interface;
 
 import com.sd.enseignantreferantservice.model.Document;
 
-import java.util.List;
 
 public interface DocumentService {
 
