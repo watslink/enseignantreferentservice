@@ -69,11 +69,11 @@ public class EleveServiceImpl implements EleveService {
 
     @Override
     public List<Eleve> getAllEleveInsciptionEnCours() {
-        return null;
+        return eleveRepository.findByDossierAccepte(false);
     }
 
     @Override
     public List<Eleve> getAllEleveInscrits() {
-        return null;
+        return eleveRepository.findByDossierAccepte(true);
     }
 }
