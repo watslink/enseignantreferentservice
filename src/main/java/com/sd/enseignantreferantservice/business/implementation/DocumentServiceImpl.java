@@ -4,10 +4,12 @@ import com.sd.enseignantreferantservice.business.Interface.DocumentService;
 import com.sd.enseignantreferantservice.dao.DocumentRepository;
 import com.sd.enseignantreferantservice.model.Document;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
-@Repository
+@Service
+@Transactional
 public class DocumentServiceImpl implements DocumentService {
 
     @Autowired

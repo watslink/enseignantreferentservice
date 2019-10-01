@@ -8,11 +8,13 @@ import com.sd.enseignantreferantservice.model.DocumentInscriptionRequis;
 import com.sd.enseignantreferantservice.model.Eleve;
 import com.sd.enseignantreferantservice.model.EleveDocumentInscriptionRequis;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 @Transactional
 public class DocumentInscriptionRequisServiceImpl implements DocumentInscriptionRequisService {
 

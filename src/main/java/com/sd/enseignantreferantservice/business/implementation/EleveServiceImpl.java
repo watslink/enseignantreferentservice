@@ -6,10 +6,12 @@ import com.sd.enseignantreferantservice.dao.DocumentInscriptionRequisRepository;
 import com.sd.enseignantreferantservice.dao.EleveRepository;
 import com.sd.enseignantreferantservice.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
+@Service
 @Transactional
 public class EleveServiceImpl implements EleveService {
 
