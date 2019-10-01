@@ -1,18 +1,14 @@
 package com.sd.enseignantreferantservice.business.implementation;
 
 import com.sd.enseignantreferantservice.business.Interface.EleveService;
+import com.sd.enseignantreferantservice.dao.CategorieRepository;
 import com.sd.enseignantreferantservice.dao.DocumentInscriptionRequisRepository;
 import com.sd.enseignantreferantservice.dao.EleveRepository;
-import com.sd.enseignantreferantservice.model.DocumentInscriptionRequis;
-import com.sd.enseignantreferantservice.model.Eleve;
-import com.sd.enseignantreferantservice.model.EleveDocumentInscriptionRequis;
+import com.sd.enseignantreferantservice.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Transactional
 public class EleveServiceImpl implements EleveService {
@@ -22,6 +18,9 @@ public class EleveServiceImpl implements EleveService {
 
     @Autowired
     DocumentInscriptionRequisRepository documentInscriptionRequisRepository;
+
+    @Autowired
+    CategorieRepository categorieRepository;
 
 
     @Override
@@ -90,6 +89,17 @@ public class EleveServiceImpl implements EleveService {
     @Override
     public Eleve validateInscription(Eleve eleve) {
         eleve.setDossierAccepte(true);
+        Categorie categorie=categorieRepository.getOne(1);
+        Set<Document> listDocuments=new HashSet<>();
+        Document document=new Document();
+        document.setCategorie(categorie);
+        document.setEleve(eleve);
+        for (EleveDocumentInscriptionRequis edir:eleve.getListEleveDocumentsInscriptionRequis()){
+           document.setNom(edir.getDocumentInscriptionRequis().getNom());
+           document.setLien(edir.getLien());
+           listDocuments.add(document);
+        }
+        eleve.setListDocuments(listDocuments);
         eleve.setListEleveDocumentsInscriptionRequis(null);
         eleveRepository.save(eleve);
         return eleve;
