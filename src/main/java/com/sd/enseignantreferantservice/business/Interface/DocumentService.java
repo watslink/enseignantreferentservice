@@ -10,7 +10,4 @@ public interface DocumentService {
     void deleteDocument (Document document);
     Document updateDocument (Document document);
 
-    Document getDocument(int id);
-
-    List<Document> getAllDocument();
 }

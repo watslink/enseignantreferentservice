@@ -30,14 +30,5 @@ public class DocumentServiceImpl implements DocumentService {
         return documentRepository.save(document);
     }
 
-    @Override
-    public Document getDocument(int id) {
-        Optional<Document> optionalDocument=documentRepository.findById(id);
-        return optionalDocument.orElse(null) ;
-    }
 
-    @Override
-    public List<Document> getAllDocument() {
-        return documentRepository.findAll();
-    }
 }
