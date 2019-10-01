@@ -23,6 +23,8 @@ public interface EleveService {
 
     List<Eleve> getAllEleveNonVu();
 
+    Eleve validateInscription(Eleve eleve);
+
 
 
 
