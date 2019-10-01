@@ -1,6 +1,6 @@
-package com.sd.enseignantreferantservice.business.implementation;
+package com.sd.enseignantreferantservice.business.serviceImpl;
 
-import com.sd.enseignantreferantservice.business.Interface.AESHService;
+import com.sd.enseignantreferantservice.business.serviceInterface.AESHService;
 import com.sd.enseignantreferantservice.dao.AESHRepository;
 import com.sd.enseignantreferantservice.model.AESH;
 import org.springframework.beans.factory.annotation.Autowired;

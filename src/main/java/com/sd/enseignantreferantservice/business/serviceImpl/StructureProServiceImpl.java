@@ -1,6 +1,6 @@
-package com.sd.enseignantreferantservice.business.implementation;
+package com.sd.enseignantreferantservice.business.serviceImpl;
 
-import com.sd.enseignantreferantservice.business.Interface.StructureProService;
+import com.sd.enseignantreferantservice.business.serviceInterface.StructureProService;
 import com.sd.enseignantreferantservice.dao.StructureProRepository;
 import com.sd.enseignantreferantservice.model.StructurePro;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.sd.enseignantreferantservice.business.implementation;
+package com.sd.enseignantreferantservice.business.serviceImpl;
 
-import com.sd.enseignantreferantservice.business.Interface.RepresentantLegalService;
+import com.sd.enseignantreferantservice.business.serviceInterface.RepresentantLegalService;
 import com.sd.enseignantreferantservice.dao.RepresentantLegalRepository;
 import com.sd.enseignantreferantservice.model.RepresentantLegal;
 import org.springframework.beans.factory.annotation.Autowired;

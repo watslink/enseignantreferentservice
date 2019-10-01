@@ -1,6 +1,6 @@
-package com.sd.enseignantreferantservice.business.implementation;
+package com.sd.enseignantreferantservice.business.serviceImpl;
 
-import com.sd.enseignantreferantservice.business.Interface.NiveauService;
+import com.sd.enseignantreferantservice.business.serviceInterface.NiveauService;
 import com.sd.enseignantreferantservice.dao.NiveauRepository;
 import com.sd.enseignantreferantservice.model.Niveau;
 import org.springframework.beans.factory.annotation.Autowired;

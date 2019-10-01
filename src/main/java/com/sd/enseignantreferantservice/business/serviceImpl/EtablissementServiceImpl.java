@@ -1,6 +1,6 @@
-package com.sd.enseignantreferantservice.business.implementation;
+package com.sd.enseignantreferantservice.business.serviceImpl;
 
-import com.sd.enseignantreferantservice.business.Interface.EtablissementService;
+import com.sd.enseignantreferantservice.business.serviceInterface.EtablissementService;
 import com.sd.enseignantreferantservice.dao.EtablissementRepository;
 import com.sd.enseignantreferantservice.model.Etablissement;
 import org.springframework.beans.factory.annotation.Autowired;

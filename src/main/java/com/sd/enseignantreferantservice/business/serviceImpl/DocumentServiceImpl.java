@@ -1,6 +1,6 @@
-package com.sd.enseignantreferantservice.business.implementation;
+package com.sd.enseignantreferantservice.business.serviceImpl;
 
-import com.sd.enseignantreferantservice.business.Interface.DocumentService;
+import com.sd.enseignantreferantservice.business.serviceInterface.DocumentService;
 import com.sd.enseignantreferantservice.dao.DocumentRepository;
 import com.sd.enseignantreferantservice.model.Document;
 import org.springframework.beans.factory.annotation.Autowired;

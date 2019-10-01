@@ -1,6 +1,6 @@
-package com.sd.enseignantreferantservice.business.implementation;
+package com.sd.enseignantreferantservice.business.serviceImpl;
 
-import com.sd.enseignantreferantservice.business.Interface.EleveService;
+import com.sd.enseignantreferantservice.business.serviceInterface.EleveService;
 import com.sd.enseignantreferantservice.dao.CategorieRepository;
 import com.sd.enseignantreferantservice.dao.DocumentInscriptionRequisRepository;
 import com.sd.enseignantreferantservice.dao.EleveRepository;

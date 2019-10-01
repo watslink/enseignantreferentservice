@@ -1,6 +1,6 @@
-package com.sd.enseignantreferantservice.business.implementation;
+package com.sd.enseignantreferantservice.business.serviceImpl;
 
-import com.sd.enseignantreferantservice.business.Interface.PIALService;
+import com.sd.enseignantreferantservice.business.serviceInterface.PIALService;
 import com.sd.enseignantreferantservice.dao.PIALRepository;
 import com.sd.enseignantreferantservice.model.PIAL;
 import org.springframework.beans.factory.annotation.Autowired;

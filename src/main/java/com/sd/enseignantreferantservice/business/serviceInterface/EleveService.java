@@ -1,9 +1,8 @@
-package com.sd.enseignantreferantservice.business.Interface;
+package com.sd.enseignantreferantservice.business.serviceInterface;
 
 import com.sd.enseignantreferantservice.model.Eleve;
 
 import java.util.List;
-import java.util.Set;
 
 public interface EleveService {
 

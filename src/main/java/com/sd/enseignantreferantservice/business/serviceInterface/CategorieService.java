@@ -1,4 +1,4 @@
-package com.sd.enseignantreferantservice.business.Interface;
+package com.sd.enseignantreferantservice.business.serviceInterface;
 
 import com.sd.enseignantreferantservice.model.Categorie;
 
