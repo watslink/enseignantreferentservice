@@ -22,7 +22,7 @@ public class DocumentInscriptionRequis implements Serializable {
     private String nom;
 
     @OneToMany(mappedBy = "documentInscriptionRequis", orphanRemoval = true, fetch = FetchType.EAGER )
-    private Set<DocumentInscriptionRequis> listDocumentInscriptionRequis;
+    private Set<EleveDocumentInscriptionRequis> listEleveDocumentInscriptionRequis;
 
     @Override
     public boolean equals(Object o) {
