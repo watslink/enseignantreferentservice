@@ -10,4 +10,6 @@ import java.util.List;
 public interface EleveRepository extends JpaRepository<Eleve, Integer> {
 
     List<Eleve> findByDossierAccepte(boolean bool);
+
+    List<Eleve> findByVu(boolean bool);
 }
