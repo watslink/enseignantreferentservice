@@ -76,4 +76,14 @@ public class EleveServiceImpl implements EleveService {
     public List<Eleve> getAllEleveInscrits() {
         return eleveRepository.findByDossierAccepte(true);
     }
+
+    @Override
+    public List<Eleve> getAllEleveVu() {
+        return eleveRepository.findByVu(true);
+    }
+
+    @Override
+    public List<Eleve> getAllEleveNonVu() {
+        return eleveRepository.findByVu(false);
+    }
 }

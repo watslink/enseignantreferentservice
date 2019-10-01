@@ -19,6 +19,10 @@ public interface EleveService {
 
     List<Eleve> getAllEleveInscrits();
 
+    List<Eleve> getAllEleveVu();
+
+    List<Eleve> getAllEleveNonVu();
+
 
 
 
