@@ -1,7 +1,8 @@
-package com.sd.enseignantreferantservice.business;
+package com.sd.enseignantreferantservice.business.Interface;
 
 import com.sd.enseignantreferantservice.model.Eleve;
 
+import java.util.List;
 import java.util.Set;
 
 public interface EleveService {
@@ -12,11 +13,11 @@ public interface EleveService {
 
     Eleve getEleve(int id);
 
-    Set<Eleve> getAllEleve();
+    List<Eleve> getAllEleve();
 
-    Set<Eleve> getAllEleveInsciptionEnCours();
+    List<Eleve> getAllEleveInsciptionEnCours();
 
-    Set<Eleve> getAllEleveInscrits();
+    List<Eleve> getAllEleveInscrits();
 
 
 
