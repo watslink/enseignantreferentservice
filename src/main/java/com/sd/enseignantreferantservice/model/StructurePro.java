@@ -23,7 +23,7 @@ public class StructurePro implements Serializable {
     private String telephone;
     private String mail;
 
-    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToOne(orphanRemoval = true)
     @JoinColumn(name = "adresse_id")
     private Adresse adresse;
 

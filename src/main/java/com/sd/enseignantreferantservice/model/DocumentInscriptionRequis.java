@@ -1,5 +1,6 @@
 package com.sd.enseignantreferantservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,8 @@ public class DocumentInscriptionRequis implements Serializable {
 
     private String nom;
 
-    @OneToMany(mappedBy = "documentInscriptionRequis", orphanRemoval = true, fetch = FetchType.EAGER )
+    @JsonIgnore
+    @OneToMany(mappedBy = "documentInscriptionRequis", orphanRemoval = true, fetch = FetchType.LAZY )
     private Set<EleveDocumentInscriptionRequis> listEleveDocumentInscriptionRequis;
 
     @Override

@@ -1,5 +1,6 @@
 package com.sd.enseignantreferantservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,7 @@ public class Document implements Serializable {
     @JoinColumn(name="categorie_id")
     private Categorie categorie;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "eleve_id")
     private Eleve eleve;
