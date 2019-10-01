@@ -4,10 +4,12 @@ import com.sd.enseignantreferantservice.business.Interface.CategorieService;
 import com.sd.enseignantreferantservice.dao.CategorieRepository;
 import com.sd.enseignantreferantservice.model.Categorie;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class CategorieServiceImpl implements CategorieService {
 
     @Autowired
