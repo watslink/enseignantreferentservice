@@ -5,12 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,6 +20,9 @@ public class DocumentInscriptionRequis implements Serializable {
     private int documentInscriptionRequisId;
 
     private String nom;
+
+    @OneToMany(mappedBy = "documentInscriptionRequis", orphanRemoval = true, fetch = FetchType.EAGER )
+    private Set<DocumentInscriptionRequis> listDocumentInscriptionRequis;
 
     @Override
     public boolean equals(Object o) {
