@@ -24,6 +24,30 @@ public class EleveRestAPI {
         return eleveService.getAllEleve();
     }
 
+    @GetMapping("/eleves/inscrits")
+    public List<Eleve> getListEleveInscrits() {
+        return eleveService.getAllEleveInscrits();
+    }
+
+    @GetMapping("/eleves/noninscrits")
+    public List<Eleve> getListEleveNonInscrits() {
+        return eleveService.getAllEleveInsciptionEnCours();
+    }
+
+    @GetMapping("/eleves/vus")
+    public List<Eleve> getListEleveVus() {
+        return eleveService.getAllEleveVu();
+    }
+
+    @GetMapping("/eleves/nonvus")
+    public List<Eleve> getListEleveNonVus() {
+        return eleveService.getAllEleveNonVu();
+    }
+
+    @PostMapping("eleve/validate")
+    public Eleve validateInscription(@RequestBody Eleve eleve){
+        return eleveService.validateInscription(eleve);
+    }
 
     @PostMapping("/eleve")
     public Eleve addEleve(@RequestBody Eleve eleve){
@@ -39,6 +63,8 @@ public class EleveRestAPI {
     public void deleteEleve(@RequestBody Eleve eleve){
         eleveService.deleteEleve(eleve);
     }
+
+
 }
 
 
