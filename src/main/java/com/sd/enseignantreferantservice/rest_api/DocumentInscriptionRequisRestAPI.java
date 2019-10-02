@@ -20,7 +20,7 @@ public class DocumentInscriptionRequisRestAPI {
     }
 
     @GetMapping("/documentInscriptionRequiss")
-    public List<DocumentInscriptionRequis> getListStrucutrePro() {
+    public List<DocumentInscriptionRequis> getListDocumentInscriptionRequis() {
         return documentInscriptionRequisService.getAllDocumentInscriptionRequis();
     }
 
