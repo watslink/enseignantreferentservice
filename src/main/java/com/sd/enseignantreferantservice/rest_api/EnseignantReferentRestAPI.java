@@ -25,7 +25,7 @@ public class EnseignantReferentRestAPI {
     }
 
 
-    @PostMapping("/enseignantReferent")
+    @PostMapping("/inscription")
     public EnseignantReferent addEnseignantReferent(@RequestBody EnseignantReferent enseignantReferent){
         return enseignantReferentService.addEnseignantReferent(enseignantReferent);
     }
