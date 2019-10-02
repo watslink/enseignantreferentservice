@@ -4,6 +4,7 @@ import com.sd.enseignantreferantservice.business.serviceInterface.EnseignantRefe
 import com.sd.enseignantreferantservice.dao.EnseignantReferentRepository;
 import com.sd.enseignantreferantservice.model.EnseignantReferent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,8 +18,13 @@ public class EnseignantReferentServiceImpl implements EnseignantReferentService 
     @Autowired
     EnseignantReferentRepository enseignantReferentRepository;
 
+    @Autowired
+    PasswordEncoder encoder;
+
     @Override
     public EnseignantReferent addEnseignantReferent(EnseignantReferent enseignantReferent) {
+        enseignantReferent.setMotDePasse(encoder.encode(enseignantReferent.getMotDePasse()));
+        enseignantReferent.setEnabled(true);
         return enseignantReferentRepository.save(enseignantReferent);
     }
 
@@ -29,6 +35,7 @@ public class EnseignantReferentServiceImpl implements EnseignantReferentService 
 
     @Override
     public EnseignantReferent updateEnseignantReferent(EnseignantReferent enseignantReferent) {
+        enseignantReferent.setMotDePasse(encoder.encode(enseignantReferent.getMotDePasse()));
         return enseignantReferentRepository.save(enseignantReferent);
     }
 
