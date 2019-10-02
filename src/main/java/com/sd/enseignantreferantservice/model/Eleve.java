@@ -70,10 +70,10 @@ public class Eleve implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "materiel_pedago_adapte_id")})
     private Set<MaterielPedagoAdapte> listMaterielsPedagoAdaptes;
 
-    @OneToMany(mappedBy = "eleve", orphanRemoval = true )
+    @OneToMany(mappedBy = "eleve",cascade = CascadeType.ALL, orphanRemoval = true )
     private Set<Document> listDocuments;
 
-    @OneToMany(mappedBy = "eleve", orphanRemoval = true )
+    @OneToMany(mappedBy = "eleve",cascade = CascadeType.ALL, orphanRemoval = true )
     private Set<EleveDocumentInscriptionRequis> listEleveDocumentsInscriptionRequis;
 
     @Override

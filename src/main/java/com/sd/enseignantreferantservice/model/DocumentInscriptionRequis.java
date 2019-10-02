@@ -23,7 +23,7 @@ public class DocumentInscriptionRequis implements Serializable {
     private String nom;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "documentInscriptionRequis", orphanRemoval = true, fetch = FetchType.LAZY )
+    @OneToMany(mappedBy = "documentInscriptionRequis",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY )
     private Set<EleveDocumentInscriptionRequis> listEleveDocumentInscriptionRequis;
 
     @Override

@@ -25,7 +25,7 @@ public class RepresentantLegal implements Serializable {
 
     private String telephone;
 
-    @OneToOne(orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "adresse_id")
     private Adresse adresse;
 

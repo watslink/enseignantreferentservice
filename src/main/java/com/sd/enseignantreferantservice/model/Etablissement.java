@@ -26,7 +26,7 @@ public class Etablissement implements Serializable {
 
     private String mail;
 
-    @OneToOne(orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "adresse_id")
     private Adresse adresse;
 
