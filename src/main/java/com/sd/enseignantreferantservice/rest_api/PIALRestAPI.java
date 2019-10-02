@@ -12,32 +12,32 @@ public class PIALRestAPI {
 
 
     @Autowired
-    private PIALService pIALService;
+    private PIALService pialService;
 
-    @GetMapping("/pIAL/{id}")
+    @GetMapping("/pial/{id}")
     public PIAL getPIAL(@PathVariable int id){
-        return  pIALService.getPial(id);
+        return  pialService.getPial(id);
     }
 
-    @GetMapping("/pIALs")
-    public List<PIAL> getListStrucutrePro() {
-        return pIALService.getAllPial();
+    @GetMapping("/pials")
+    public List<PIAL> getListPIAL() {
+        return pialService.getAllPial();
     }
 
 
-    @PostMapping("/pIAL")
-    public PIAL addPIAL(@RequestBody PIAL pIAL){
-        return pIALService.addPial(pIAL);
+    @PostMapping("/pial")
+    public PIAL addPIAL(@RequestBody PIAL pial){
+        return pialService.addPial(pial);
     }
 
-    @PutMapping("/pIAL")
-    public PIAL updatePIAL(@RequestBody PIAL pIAL){
-        return pIALService.updatePial(pIAL);
+    @PutMapping("/pial")
+    public PIAL updatePIAL(@RequestBody PIAL pial){
+        return pialService.updatePial(pial);
     }
 
-    @DeleteMapping("/pIAL")
-    public void deletePIAL(@RequestBody PIAL pIAL){
-        pIALService.deletePial(pIAL);
+    @DeleteMapping("/pial")
+    public void deletePIAL(@RequestBody PIAL pial){
+        pialService.deletePial(pial);
     }
 }
 

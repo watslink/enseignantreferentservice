@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AESHService {
 
-    AESH addAESH(AESH aesh);
+    AESH addAesh(AESH aesh);
     void deleteAesh (AESH aesh);
     AESH updateAesh (AESH aesh);
 

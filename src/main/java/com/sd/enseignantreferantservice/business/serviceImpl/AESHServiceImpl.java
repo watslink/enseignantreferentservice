@@ -18,7 +18,7 @@ public class AESHServiceImpl implements AESHService {
     AESHRepository aeshRepository;
 
     @Override
-    public AESH addAESH(AESH aesh) {
+    public AESH addAesh(AESH aesh) {
         return aeshRepository.save(aesh);
     }
 

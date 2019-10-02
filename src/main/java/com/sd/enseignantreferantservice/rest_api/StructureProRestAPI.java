@@ -21,7 +21,7 @@ public class StructureProRestAPI {
     }
 
     @GetMapping("/structurePros")
-    public List<StructurePro> getListStrucutrePro() {
+    public List<StructurePro> getListStructurePro() {
         return structureProService.getAllStructurePro();
     }
 
