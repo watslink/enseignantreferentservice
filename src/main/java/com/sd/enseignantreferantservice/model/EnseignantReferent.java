@@ -26,7 +26,7 @@ public class EnseignantReferent implements Serializable {
 
     private String nom;
     private String prenom;
-    private String identifiant;
+    private String mail;
 
     private String motDePasse;
 
