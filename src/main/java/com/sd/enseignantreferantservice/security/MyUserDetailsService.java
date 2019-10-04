@@ -16,10 +16,10 @@ public class MyUserDetailsService implements UserDetailsService {
     EnseignantReferentService enseignantReferentService;
 
     @Override
-    public UserDetails loadUserByUsername(String identifiant) throws UsernameNotFoundException {
-        EnseignantReferent ensRef = enseignantReferentService.getByIdentifiant(identifiant);
+    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
+        EnseignantReferent ensRef = enseignantReferentService.getByMail(mail);
         if (ensRef == null) {
-            throw new UsernameNotFoundException(identifiant);
+            throw new UsernameNotFoundException(mail);
         }
         return new MyUserDetails(ensRef);
     }

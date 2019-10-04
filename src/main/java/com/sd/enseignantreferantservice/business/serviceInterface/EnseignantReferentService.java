@@ -11,7 +11,7 @@ public interface EnseignantReferentService {
     EnseignantReferent updateEnseignantReferent (EnseignantReferent enseignantReferent);
 
     EnseignantReferent getEnseignantReferentById(int id);
-    EnseignantReferent getByIdentifiant(String identifiant);
+    EnseignantReferent getByMail(String mail);
 
     List<EnseignantReferent> getAllEnseignantReferent();
 }

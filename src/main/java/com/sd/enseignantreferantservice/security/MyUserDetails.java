@@ -32,7 +32,7 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return enseignantReferent.getIdentifiant();
+        return enseignantReferent.getMail();
     }
 
     @Override

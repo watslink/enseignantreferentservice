@@ -24,6 +24,10 @@ public class EnseignantReferentRestAPI {
         return enseignantReferentService.getAllEnseignantReferent();
     }
 
+    @PostMapping("/isExistER")
+    public boolean isExistEnseignantReferent(@RequestBody EnseignantReferent enseignantReferent){
+        return enseignantReferentService.getByMail(enseignantReferent.getMail()) != null;
+    }
 
     @PostMapping("/inscription")
     public EnseignantReferent addEnseignantReferent(@RequestBody EnseignantReferent enseignantReferent){

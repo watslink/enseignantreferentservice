@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EnseignantReferentRepository extends JpaRepository<EnseignantReferent, Integer> {
 
-    EnseignantReferent findByIdentifiant(String identifiant);
+    EnseignantReferent findByMail(String mail);
 }

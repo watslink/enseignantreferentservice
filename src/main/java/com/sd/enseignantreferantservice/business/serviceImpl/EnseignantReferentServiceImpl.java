@@ -40,8 +40,8 @@ public class EnseignantReferentServiceImpl implements EnseignantReferentService 
     }
 
     @Override
-    public EnseignantReferent getByIdentifiant(String identifiant) {
-        return enseignantReferentRepository.findByIdentifiant(identifiant);
+    public EnseignantReferent getByMail(String mail) {
+        return enseignantReferentRepository.findByMail(mail);
     }
 
     @Override
