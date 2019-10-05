@@ -35,7 +35,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         }
 
         return authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(ensRef.getIdentifiant(), ensRef.getMotDePasse()));
+                new UsernamePasswordAuthenticationToken(ensRef.getMail(), ensRef.getMotDePasse()));
     }
 
     @Override

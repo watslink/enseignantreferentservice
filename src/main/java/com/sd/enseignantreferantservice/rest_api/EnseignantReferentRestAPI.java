@@ -3,6 +3,8 @@ package com.sd.enseignantreferantservice.rest_api;
 import com.sd.enseignantreferantservice.business.serviceInterface.EnseignantReferentService;
 import com.sd.enseignantreferantservice.model.EnseignantReferent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,14 +26,14 @@ public class EnseignantReferentRestAPI {
         return enseignantReferentService.getAllEnseignantReferent();
     }
 
-    @PostMapping("/isExistER")
-    public boolean isExistEnseignantReferent(@RequestBody EnseignantReferent enseignantReferent){
-        return enseignantReferentService.getByMail(enseignantReferent.getMail()) != null;
-    }
 
     @PostMapping("/inscription")
-    public EnseignantReferent addEnseignantReferent(@RequestBody EnseignantReferent enseignantReferent){
-        return enseignantReferentService.addEnseignantReferent(enseignantReferent);
+    public ResponseEntity<Void> addEnseignantReferent(@RequestBody EnseignantReferent enseignantReferent){
+        if (enseignantReferentService.getByMail(enseignantReferent.getMail())!=null) {
+            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+        }
+        enseignantReferentService.addEnseignantReferent(enseignantReferent);
+        return new ResponseEntity<Void>( HttpStatus.CREATED);
     }
 
     @PutMapping("/enseignantReferent")
