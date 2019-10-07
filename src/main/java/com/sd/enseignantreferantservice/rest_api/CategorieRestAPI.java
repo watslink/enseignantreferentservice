@@ -35,9 +35,9 @@ public class CategorieRestAPI {
         return categorieService.updateCategorie(categorie);
     }
 
-    @DeleteMapping("/categorie")
-    public void deleteCategorie(@RequestBody Categorie categorie){
-        categorieService.deleteCategorie(categorie);
+    @DeleteMapping("/categorie/{id}")
+    public void deleteCategorie(@PathVariable int id){
+        categorieService.deleteCategorie(id);
     }
 }
 

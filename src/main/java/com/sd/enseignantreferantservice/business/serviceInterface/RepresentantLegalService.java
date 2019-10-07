@@ -7,7 +7,7 @@ import java.util.List;
 public interface RepresentantLegalService {
 
     RepresentantLegal addRepresentantLegal(RepresentantLegal representantLegal);
-    void deleteRepresentantLegal (RepresentantLegal representantLegal);
+    void deleteRepresentantLegal (int id);
     RepresentantLegal updateRepresentantLegal (RepresentantLegal representantLegal);
 
     RepresentantLegal getRepresentantLegal(int id);

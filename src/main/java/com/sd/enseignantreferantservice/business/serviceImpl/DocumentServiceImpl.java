@@ -21,8 +21,8 @@ public class DocumentServiceImpl implements DocumentService {
     }
 
     @Override
-    public void deleteDocument(Document document) {
-        documentRepository.delete(document);
+    public void deleteDocument(int id) {
+        documentRepository.deleteById(id);
     }
 
     @Override

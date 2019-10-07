@@ -23,8 +23,8 @@ public class AESHServiceImpl implements AESHService {
     }
 
     @Override
-    public void deleteAesh(AESH aesh) {
-        aeshRepository.delete(aesh);
+    public void deleteAesh(int id) {
+        aeshRepository.deleteById(id);
     }
 
     @Override

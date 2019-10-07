@@ -23,8 +23,8 @@ public class PIALServiceImpl implements PIALService {
     }
 
     @Override
-    public void deletePial(PIAL pial) {
-        pialRepository.delete(pial);
+    public void deletePial(int id) {
+        pialRepository.deleteById(id);
     }
 
     @Override

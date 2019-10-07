@@ -23,8 +23,8 @@ public class MaterielPedagoAdapteServiceImp implements MaterielPedagoAdapteServi
     }
 
     @Override
-    public void deleteMaterielPedagoAdapte(MaterielPedagoAdapte materielPedagoAdapte) {
-        materielPedagoAdapteRepository.delete(materielPedagoAdapte);
+    public void deleteMaterielPedagoAdapte(int id) {
+        materielPedagoAdapteRepository.deleteById(id);
     }
 
     @Override

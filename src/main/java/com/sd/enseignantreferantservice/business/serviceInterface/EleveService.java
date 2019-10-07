@@ -7,7 +7,7 @@ import java.util.List;
 public interface EleveService {
 
     Eleve addEleve(Eleve eleve);
-    void deleteEleve (Eleve eleve);
+    void deleteEleve (int id);
     Eleve updateEleve (Eleve eleve);
 
     Eleve getEleve(int id);

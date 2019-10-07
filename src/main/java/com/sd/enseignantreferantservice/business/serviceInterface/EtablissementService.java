@@ -7,7 +7,7 @@ import java.util.List;
 public interface EtablissementService {
 
     Etablissement addEtablissement(Etablissement etablissement);
-    void deleteEtablissement (Etablissement etablissement);
+    void deleteEtablissement (int id);
     Etablissement updateEtablissement (Etablissement etablissement);
 
     Etablissement getEtablissement(int id);

@@ -23,8 +23,8 @@ public class NiveauServiceImpl implements NiveauService {
     }
 
     @Override
-    public void deleteNiveau(Niveau niveau) {
-        niveauRepository.delete(niveau);
+    public void deleteNiveau(int id) {
+        niveauRepository.deleteById(id);
     }
 
     @Override

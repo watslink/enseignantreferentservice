@@ -7,7 +7,7 @@ import java.util.List;
 public interface EnseignantReferentService {
 
     EnseignantReferent addEnseignantReferent(EnseignantReferent enseignantReferent);
-    void deleteEnseignantReferent (EnseignantReferent enseignantReferent);
+    void deleteEnseignantReferent (int id);
     EnseignantReferent updateEnseignantReferent (EnseignantReferent enseignantReferent);
 
     EnseignantReferent getEnseignantReferentById(int id);

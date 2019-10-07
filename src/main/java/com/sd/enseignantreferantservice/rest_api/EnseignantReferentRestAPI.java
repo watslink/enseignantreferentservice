@@ -41,9 +41,9 @@ public class EnseignantReferentRestAPI {
         return enseignantReferentService.updateEnseignantReferent(enseignantReferent);
     }
 
-    @DeleteMapping("/enseignantReferent")
-    public void deleteEnseignantReferent(@RequestBody EnseignantReferent enseignantReferent){
-        enseignantReferentService.deleteEnseignantReferent(enseignantReferent);
+    @DeleteMapping("/enseignantReferent/{id}")
+    public void deleteEnseignantReferent(@PathVariable int id){
+        enseignantReferentService.deleteEnseignantReferent(id);
     }
 }
 

@@ -35,9 +35,9 @@ public class DocumentInscriptionRequisRestAPI {
         return documentInscriptionRequisService.updateDocumentInscriptionRequis(documentInscriptionRequis);
     }
 
-    @DeleteMapping("/documentInscriptionRequis")
-    public void deleteDocumentInscriptionRequis(@RequestBody DocumentInscriptionRequis documentInscriptionRequis){
-        documentInscriptionRequisService.deleteDocumentInscriptionRequis(documentInscriptionRequis);
+    @DeleteMapping("/documentInscriptionRequis/{id}")
+    public void deleteDocumentInscriptionRequis(@PathVariable int id){
+        documentInscriptionRequisService.deleteDocumentInscriptionRequis(id);
     }
 }
 

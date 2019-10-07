@@ -59,9 +59,9 @@ public class EleveRestAPI {
         return eleveService.updateEleve(eleve);
     }
 
-    @DeleteMapping("/eleve")
-    public void deleteEleve(@RequestBody Eleve eleve){
-        eleveService.deleteEleve(eleve);
+    @DeleteMapping("/eleve/{id}")
+    public void deleteEleve(@PathVariable int id){
+        eleveService.deleteEleve(id);
     }
 
 

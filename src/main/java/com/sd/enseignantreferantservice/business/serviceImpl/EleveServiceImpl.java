@@ -47,8 +47,8 @@ public class EleveServiceImpl implements EleveService {
     }
 
     @Override
-    public void deleteEleve(Eleve eleve) {
-        eleveRepository.delete(eleve);
+    public void deleteEleve(int id) {
+        eleveRepository.deleteById(id);
     }
 
     @Override

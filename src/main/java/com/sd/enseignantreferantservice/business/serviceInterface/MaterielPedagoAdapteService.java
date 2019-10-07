@@ -7,7 +7,7 @@ import java.util.List;
 public interface MaterielPedagoAdapteService {
 
     MaterielPedagoAdapte addMaterielPedagoAdapte(MaterielPedagoAdapte materielPedagoAdapte);
-    void deleteMaterielPedagoAdapte (MaterielPedagoAdapte materielPedagoAdapte);
+    void deleteMaterielPedagoAdapte (int id);
     MaterielPedagoAdapte updateMaterielPedagoAdapte (MaterielPedagoAdapte materielPedagoAdapte);
 
     MaterielPedagoAdapte getMaterielPedagoAdapte(int id);

@@ -35,9 +35,9 @@ public class MaterielPedagoAdapteRestAPI {
         return materielPedagoAdapteService.updateMaterielPedagoAdapte(materielPedagoAdapte);
     }
 
-    @DeleteMapping("/materielPedagoAdapte")
-    public void deleteMaterielPedagoAdapte(@RequestBody MaterielPedagoAdapte materielPedagoAdapte){
-        materielPedagoAdapteService.deleteMaterielPedagoAdapte(materielPedagoAdapte);
+    @DeleteMapping("/materielPedagoAdapte/{id}")
+    public void deleteMaterielPedagoAdapte(@PathVariable int id){
+        materielPedagoAdapteService.deleteMaterielPedagoAdapte(id);
     }
 }
 

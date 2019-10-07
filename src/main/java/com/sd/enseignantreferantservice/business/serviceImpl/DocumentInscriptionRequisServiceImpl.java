@@ -46,8 +46,8 @@ public class DocumentInscriptionRequisServiceImpl implements DocumentInscription
     }
 
     @Override
-    public void deleteDocumentInscriptionRequis(DocumentInscriptionRequis documentInscriptionRequis) {
-        documentInscriptionRequisRepository.delete(documentInscriptionRequis);
+    public void deleteDocumentInscriptionRequis(int id) {
+        documentInscriptionRequisRepository.deleteById(id);
     }
 
     @Override

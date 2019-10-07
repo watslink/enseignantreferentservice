@@ -29,8 +29,8 @@ public class EnseignantReferentServiceImpl implements EnseignantReferentService 
     }
 
     @Override
-    public void deleteEnseignantReferent(EnseignantReferent enseignantReferent) {
-        enseignantReferentRepository.delete(enseignantReferent);
+    public void deleteEnseignantReferent(int id) {
+        enseignantReferentRepository.deleteById(id);
     }
 
     @Override

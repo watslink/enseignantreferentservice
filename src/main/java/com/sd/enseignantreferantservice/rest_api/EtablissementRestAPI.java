@@ -35,9 +35,9 @@ public class EtablissementRestAPI {
         return etablissementService.updateEtablissement(etablissement);
     }
 
-    @DeleteMapping("/etablissement")
-    public void deleteEtablissement(@RequestBody Etablissement etablissement){
-        etablissementService.deleteEtablissement(etablissement);
+    @DeleteMapping("/etablissement/{id}")
+    public void deleteEtablissement(@PathVariable int id){
+        etablissementService.deleteEtablissement(id);
     }
 }
 

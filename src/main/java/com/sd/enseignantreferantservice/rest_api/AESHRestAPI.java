@@ -35,9 +35,9 @@ public class AESHRestAPI {
         return aeshService.updateAesh(aesh);
     }
 
-    @DeleteMapping("/aesh")
-    public void deleteAESH(@RequestBody AESH aesh){
-        aeshService.deleteAesh(aesh);
+    @DeleteMapping("/aesh/{id}")
+    public void deleteAESH(@PathVariable int id){
+        aeshService.deleteAesh(id);
     }
 }
 

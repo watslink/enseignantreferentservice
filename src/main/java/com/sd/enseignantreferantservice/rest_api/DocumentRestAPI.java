@@ -23,9 +23,9 @@ public class DocumentRestAPI {
         return documentService.updateDocument(document);
     }
 
-    @DeleteMapping("/document")
-    public void deleteDocument(@RequestBody Document document){
-        documentService.deleteDocument(document);
+    @DeleteMapping("/document/{id}")
+    public void deleteDocument(@PathVariable int id){
+        documentService.deleteDocument(id);
     }
 }
 

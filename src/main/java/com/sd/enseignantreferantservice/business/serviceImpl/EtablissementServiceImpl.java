@@ -23,8 +23,8 @@ public class EtablissementServiceImpl implements EtablissementService {
     }
 
     @Override
-    public void deleteEtablissement(Etablissement etablissement) {
-        etablissementRepository.delete(etablissement);
+    public void deleteEtablissement(int id) {
+        etablissementRepository.deleteById(id);
     }
 
     @Override

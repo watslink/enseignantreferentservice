@@ -23,8 +23,8 @@ public class StructureProServiceImpl implements StructureProService {
     }
 
     @Override
-    public void deleteStructurePro(StructurePro structurePro) {
-        structureProRepository.delete(structurePro);
+    public void deleteStructurePro(int id) {
+        structureProRepository.deleteById(id);
     }
 
     @Override

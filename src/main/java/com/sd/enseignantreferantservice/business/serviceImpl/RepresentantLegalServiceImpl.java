@@ -23,8 +23,8 @@ public class RepresentantLegalServiceImpl implements RepresentantLegalService {
     }
 
     @Override
-    public void deleteRepresentantLegal(RepresentantLegal representantLegal) {
-        representantLegalRepository.delete(representantLegal);
+    public void deleteRepresentantLegal(int id) {
+        representantLegalRepository.deleteById(id);
     }
 
     @Override

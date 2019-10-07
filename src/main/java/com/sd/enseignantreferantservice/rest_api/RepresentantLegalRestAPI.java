@@ -35,9 +35,9 @@ public class RepresentantLegalRestAPI {
         return representantLegalService.updateRepresentantLegal(representantLegal);
     }
 
-    @DeleteMapping("/representantLegal")
-    public void deleteRepresentantLegal(@RequestBody RepresentantLegal representantLegal){
-        representantLegalService.deleteRepresentantLegal(representantLegal);
+    @DeleteMapping("/representantLegal/{id}")
+    public void deleteRepresentantLegal(@PathVariable int id){
+        representantLegalService.deleteRepresentantLegal(id);
     }
 }
 

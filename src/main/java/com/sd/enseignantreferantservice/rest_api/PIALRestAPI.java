@@ -35,9 +35,9 @@ public class PIALRestAPI {
         return pialService.updatePial(pial);
     }
 
-    @DeleteMapping("/pial")
-    public void deletePIAL(@RequestBody PIAL pial){
-        pialService.deletePial(pial);
+    @DeleteMapping("/pial/{id}")
+    public void deletePIAL(@PathVariable int id){
+        pialService.deletePial(id);
     }
 }
 

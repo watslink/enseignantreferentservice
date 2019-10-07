@@ -7,7 +7,7 @@ import java.util.List;
 public interface StructureProService {
 
     StructurePro addStructurePro(StructurePro structurePro);
-    void deleteStructurePro (StructurePro structurePro);
+    void deleteStructurePro (int id);
     StructurePro updateStructurePro (StructurePro structurePro);
 
     StructurePro getStructurePro(int id);

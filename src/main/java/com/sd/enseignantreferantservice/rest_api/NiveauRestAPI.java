@@ -36,9 +36,9 @@ public class NiveauRestAPI {
         return niveauService.updateNiveau(niveau);
     }
 
-    @DeleteMapping("/niveau")
-    public void deleteNiveau(@RequestBody Niveau niveau){
-        niveauService.deleteNiveau(niveau);
+    @DeleteMapping("/niveau/{id}")
+    public void deleteNiveau(@PathVariable int id){
+        niveauService.deleteNiveau(id);
     }
 }
 

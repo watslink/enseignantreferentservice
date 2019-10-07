@@ -36,9 +36,9 @@ public class StructureProRestAPI {
         return structureProService.updateStructurePro(structurePro);
     }
 
-    @DeleteMapping("/structurePro")
-    public void deleteStructurePro(@RequestBody StructurePro structurePro){
-        structureProService.deleteStructurePro(structurePro);
+    @DeleteMapping("/structurePro/{id}")
+    public void deleteStructurePro(@PathVariable int id){
+        structureProService.deleteStructurePro(id);
     }
 }
 

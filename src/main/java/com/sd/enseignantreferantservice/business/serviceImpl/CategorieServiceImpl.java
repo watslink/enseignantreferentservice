@@ -23,8 +23,8 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
     @Override
-    public void deleteCategorie(Categorie categorie) {
-        categorieRepository.delete(categorie);
+    public void deleteCategorie(int id) {
+        categorieRepository.deleteById(id);
     }
 
     @Override
