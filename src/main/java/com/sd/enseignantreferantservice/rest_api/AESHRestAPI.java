@@ -24,7 +24,6 @@ public class AESHRestAPI {
         return aeshService.getAllAesh();
     }
 
-
     @PostMapping("/aesh")
     public AESH addAESH(@RequestBody AESH aesh){
         return aeshService.addAesh(aesh);

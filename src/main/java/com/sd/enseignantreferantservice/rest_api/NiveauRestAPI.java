@@ -20,7 +20,7 @@ public class NiveauRestAPI {
         return  niveauService.getNiveau(id);
     }
 
-    @GetMapping("/niveaus")
+    @GetMapping("/niveaux")
     public List<Niveau> getListNiveau() {
         return niveauService.getAllNiveau();
     }

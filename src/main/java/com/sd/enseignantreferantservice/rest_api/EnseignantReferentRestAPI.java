@@ -21,6 +21,11 @@ public class EnseignantReferentRestAPI {
         return  enseignantReferentService.getEnseignantReferentById(id);
     }
 
+    @GetMapping("/enseignantReferentByMail/{mail}")
+    public EnseignantReferent getEnseignantReferentByMail(@PathVariable String mail){
+        return  enseignantReferentService.getByMail(mail);
+    }
+
     @GetMapping("/enseignantReferents")
     public List<EnseignantReferent> getListEnseignantReferent() {
         return enseignantReferentService.getAllEnseignantReferent();
