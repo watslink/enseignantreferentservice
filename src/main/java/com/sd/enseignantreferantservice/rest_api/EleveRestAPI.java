@@ -44,7 +44,7 @@ public class EleveRestAPI {
         return eleveService.getAllEleveNonVu();
     }
 
-    @PostMapping("eleve/validate")
+    @PostMapping("/elevevalidate")
     public Eleve validateInscription(@RequestBody Eleve eleve){
         return eleveService.validateInscription(eleve);
     }
@@ -63,7 +63,6 @@ public class EleveRestAPI {
     public void deleteEleve(@PathVariable int id){
         eleveService.deleteEleve(id);
     }
-
 
 }
 

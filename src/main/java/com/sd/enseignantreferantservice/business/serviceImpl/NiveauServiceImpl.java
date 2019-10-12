@@ -4,6 +4,7 @@ import com.sd.enseignantreferantservice.business.serviceInterface.NiveauService;
 import com.sd.enseignantreferantservice.dao.NiveauRepository;
 import com.sd.enseignantreferantservice.model.Niveau;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,6 +41,6 @@ public class NiveauServiceImpl implements NiveauService {
 
     @Override
     public List<Niveau> getAllNiveau() {
-        return niveauRepository.findAll();
+        return niveauRepository.findAll(Sort.by("nom"));
     }
 }

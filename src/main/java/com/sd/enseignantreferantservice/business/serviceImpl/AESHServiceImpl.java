@@ -4,6 +4,7 @@ import com.sd.enseignantreferantservice.business.serviceInterface.AESHService;
 import com.sd.enseignantreferantservice.dao.AESHRepository;
 import com.sd.enseignantreferantservice.model.AESH;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,6 +41,6 @@ public class AESHServiceImpl implements AESHService {
 
     @Override
     public List<AESH> getAllAesh() {
-        return aeshRepository.findAll();
+        return aeshRepository.findAll(Sort.by("nom"));
     }
 }

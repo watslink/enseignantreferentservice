@@ -4,6 +4,7 @@ import com.sd.enseignantreferantservice.business.serviceInterface.PIALService;
 import com.sd.enseignantreferantservice.dao.PIALRepository;
 import com.sd.enseignantreferantservice.model.PIAL;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,6 +41,6 @@ public class PIALServiceImpl implements PIALService {
 
     @Override
     public List<PIAL> getAllPial() {
-        return pialRepository.findAll();
+        return pialRepository.findAll(Sort.by("nom"));
     }
 }

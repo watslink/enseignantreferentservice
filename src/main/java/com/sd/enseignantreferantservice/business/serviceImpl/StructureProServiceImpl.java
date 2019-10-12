@@ -4,6 +4,7 @@ import com.sd.enseignantreferantservice.business.serviceInterface.StructureProSe
 import com.sd.enseignantreferantservice.dao.StructureProRepository;
 import com.sd.enseignantreferantservice.model.StructurePro;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,6 +41,6 @@ public class StructureProServiceImpl implements StructureProService {
 
     @Override
     public List<StructurePro> getAllStructurePro() {
-        return structureProRepository.findAll();
+        return structureProRepository.findAll(Sort.by("nom"));
     }
 }

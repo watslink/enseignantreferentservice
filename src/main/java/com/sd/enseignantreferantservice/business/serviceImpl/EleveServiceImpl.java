@@ -6,6 +6,7 @@ import com.sd.enseignantreferantservice.dao.DocumentInscriptionRequisRepository;
 import com.sd.enseignantreferantservice.dao.EleveRepository;
 import com.sd.enseignantreferantservice.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -65,27 +66,27 @@ public class EleveServiceImpl implements EleveService {
 
     @Override
     public List<Eleve> getAllEleve() {
-        return eleveRepository.findAll();
+        return eleveRepository.findAll(Sort.by("nom"));
     }
 
     @Override
     public List<Eleve> getAllEleveInsciptionEnCours() {
-        return eleveRepository.findByDossierAccepte(false);
+        return eleveRepository.findByDossierAccepteOrderByNom(false);
     }
 
     @Override
     public List<Eleve> getAllEleveInscrits() {
-        return eleveRepository.findByDossierAccepte(true);
+        return eleveRepository.findByDossierAccepteOrderByNom(true);
     }
 
     @Override
     public List<Eleve> getAllEleveVu() {
-        return eleveRepository.findByVu(true);
+        return eleveRepository.findByVuOrderByNom(true);
     }
 
     @Override
     public List<Eleve> getAllEleveNonVu() {
-        return eleveRepository.findByVu(false);
+        return eleveRepository.findByVuOrderByNom(false);
     }
 
     @Override

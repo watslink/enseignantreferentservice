@@ -8,6 +8,7 @@ import com.sd.enseignantreferantservice.model.DocumentInscriptionRequis;
 import com.sd.enseignantreferantservice.model.Eleve;
 import com.sd.enseignantreferantservice.model.EleveDocumentInscriptionRequis;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,7 +32,7 @@ public class DocumentInscriptionRequisServiceImpl implements DocumentInscription
     public DocumentInscriptionRequis addDocumentInscriptionRequis(DocumentInscriptionRequis documentInscriptionRequis) {
         documentInscriptionRequisRepository.save(documentInscriptionRequis);
 
-        List<Eleve> elevesNonInscrits=eleveRepository.findByDossierAccepte(false);
+        List<Eleve> elevesNonInscrits=eleveRepository.findByDossierAccepteOrderByNom(false);
 
         EleveDocumentInscriptionRequis edir =new EleveDocumentInscriptionRequis();
         edir.setDocumentInscriptionRequis(documentInscriptionRequis);
@@ -63,6 +64,6 @@ public class DocumentInscriptionRequisServiceImpl implements DocumentInscription
 
     @Override
     public List<DocumentInscriptionRequis> getAllDocumentInscriptionRequis() {
-        return documentInscriptionRequisRepository.findAll();
+        return documentInscriptionRequisRepository.findAll(Sort.by("nom"));
     }
 }

@@ -4,6 +4,7 @@ import com.sd.enseignantreferantservice.business.serviceInterface.EtablissementS
 import com.sd.enseignantreferantservice.dao.EtablissementRepository;
 import com.sd.enseignantreferantservice.model.Etablissement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,6 +41,6 @@ public class EtablissementServiceImpl implements EtablissementService {
 
     @Override
     public List<Etablissement> getAllEtablissement() {
-        return etablissementRepository.findAll();
+        return etablissementRepository.findAll(Sort.by("nom"));
     }
 }

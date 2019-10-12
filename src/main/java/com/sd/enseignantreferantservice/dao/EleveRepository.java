@@ -9,7 +9,8 @@ import java.util.List;
 @Repository
 public interface EleveRepository extends JpaRepository<Eleve, Integer> {
 
-    List<Eleve> findByDossierAccepte(boolean bool);
 
-    List<Eleve> findByVu(boolean bool);
+    List<Eleve> findByDossierAccepteOrderByNom(boolean bool);
+
+    List<Eleve> findByVuOrderByNom(boolean bool);
 }

@@ -4,6 +4,7 @@ import com.sd.enseignantreferantservice.business.serviceInterface.EnseignantRefe
 import com.sd.enseignantreferantservice.dao.EnseignantReferentRepository;
 import com.sd.enseignantreferantservice.model.EnseignantReferent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,6 +53,6 @@ public class EnseignantReferentServiceImpl implements EnseignantReferentService 
 
     @Override
     public List<EnseignantReferent> getAllEnseignantReferent() {
-        return enseignantReferentRepository.findAll();
+        return enseignantReferentRepository.findAll(Sort.by("nom"));
     }
 }
