@@ -1,5 +1,6 @@
 package com.sd.enseignantreferantservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -26,6 +28,13 @@ public class StructurePro implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "adresse_id")
     private Adresse adresse;
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(name = "eleve_structure_pro",
+            joinColumns = {@JoinColumn(name = "structure_pro_id")},
+            inverseJoinColumns = {@JoinColumn(name = "eleve_id")})
+    private List<Eleve> listEleve;
 
     @Override
     public boolean equals(Object o) {

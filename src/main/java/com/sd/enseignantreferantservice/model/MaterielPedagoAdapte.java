@@ -1,15 +1,14 @@
 package com.sd.enseignantreferantservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -22,6 +21,13 @@ public class MaterielPedagoAdapte implements Serializable {
     private int materielPedagoAdapteId;
 
     private String nom;
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(name = "eleve_materiel_pedago_adapte",
+            joinColumns = {@JoinColumn(name = "materiel_pedago_adapte_id")},
+            inverseJoinColumns = {@JoinColumn(name = "eleve_id")})
+    private List<Eleve> listEleve;
 
     @Override
     public boolean equals(Object o) {
