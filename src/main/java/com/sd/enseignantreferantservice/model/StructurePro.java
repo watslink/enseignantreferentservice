@@ -10,6 +10,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -30,11 +31,8 @@ public class StructurePro implements Serializable {
     private Adresse adresse;
 
     @JsonIgnore
-    @ManyToMany
-    @JoinTable(name = "eleve_structure_pro",
-            joinColumns = {@JoinColumn(name = "structure_pro_id")},
-            inverseJoinColumns = {@JoinColumn(name = "eleve_id")})
-    private List<Eleve> listEleve;
+    @OneToMany(mappedBy = "structurePro",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY )
+    private Set<EleveStructurePro> listEleveStructurePro;
 
     @Override
     public boolean equals(Object o) {

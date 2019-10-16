@@ -1,5 +1,6 @@
 package com.sd.enseignantreferantservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -58,11 +59,8 @@ public class Eleve implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "representant_legal_id")})
     private Set<RepresentantLegal> listRepresentantsLegaux;
 
-    @ManyToMany
-    @JoinTable(name = "eleve_structure_pro",
-            joinColumns = {@JoinColumn(name = "eleve_id")},
-            inverseJoinColumns = {@JoinColumn(name = "structure_pro_id")})
-    private Set<StructurePro> listStructurePros;
+    @OneToMany(mappedBy = "eleve",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY )
+    private Set<EleveStructurePro> listEleveStructurePro;
 
     @ManyToMany
     @JoinTable(name = "eleve_materiel_pedago_adapte",
