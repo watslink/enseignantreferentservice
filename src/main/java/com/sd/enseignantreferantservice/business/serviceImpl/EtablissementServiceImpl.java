@@ -2,6 +2,7 @@ package com.sd.enseignantreferantservice.business.serviceImpl;
 
 import com.sd.enseignantreferantservice.business.serviceInterface.EtablissementService;
 import com.sd.enseignantreferantservice.dao.EtablissementRepository;
+import com.sd.enseignantreferantservice.model.Eleve;
 import com.sd.enseignantreferantservice.model.Etablissement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -25,6 +26,10 @@ public class EtablissementServiceImpl implements EtablissementService {
 
     @Override
     public void deleteEtablissement(int id) {
+        Etablissement et = etablissementRepository.getOne(id);
+        for (Eleve eleve: et.getListEleve()){
+            eleve.setEtablissement(null);
+        }
         etablissementRepository.deleteById(id);
     }
 

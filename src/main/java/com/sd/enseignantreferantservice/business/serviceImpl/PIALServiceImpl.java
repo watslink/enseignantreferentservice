@@ -2,6 +2,8 @@ package com.sd.enseignantreferantservice.business.serviceImpl;
 
 import com.sd.enseignantreferantservice.business.serviceInterface.PIALService;
 import com.sd.enseignantreferantservice.dao.PIALRepository;
+import com.sd.enseignantreferantservice.model.AESH;
+import com.sd.enseignantreferantservice.model.Etablissement;
 import com.sd.enseignantreferantservice.model.PIAL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -25,6 +27,13 @@ public class PIALServiceImpl implements PIALService {
 
     @Override
     public void deletePial(int id) {
+        PIAL pial=pialRepository.getOne(id);
+        for ( AESH aesh: pial.getListAESH()){
+            aesh.setPial(null);
+        }
+        for ( Etablissement et: pial.getListEtablissement()){
+            et.setPial(null);
+        }
         pialRepository.deleteById(id);
     }
 

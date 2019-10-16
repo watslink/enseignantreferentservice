@@ -3,6 +3,7 @@ package com.sd.enseignantreferantservice.business.serviceImpl;
 import com.sd.enseignantreferantservice.business.serviceInterface.AESHService;
 import com.sd.enseignantreferantservice.dao.AESHRepository;
 import com.sd.enseignantreferantservice.model.AESH;
+import com.sd.enseignantreferantservice.model.Eleve;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,10 @@ public class AESHServiceImpl implements AESHService {
 
     @Override
     public void deleteAesh(int id) {
+        AESH aesh = aeshRepository.getOne(id);
+        for (Eleve eleve: aesh.getListEleve()){
+            eleve.setAesh(null);
+        }
         aeshRepository.deleteById(id);
     }
 

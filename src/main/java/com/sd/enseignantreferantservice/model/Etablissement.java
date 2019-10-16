@@ -1,5 +1,6 @@
 package com.sd.enseignantreferantservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -33,6 +35,10 @@ public class Etablissement implements Serializable {
     @ManyToOne
     @JoinColumn(name="PIAL_id")
     private PIAL pial;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "etablissement")
+    private Set<Eleve> listEleve;
 
     @Override
     public boolean equals(Object o) {
