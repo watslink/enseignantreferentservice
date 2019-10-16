@@ -3,6 +3,7 @@ package com.sd.enseignantreferantservice.business.serviceImpl;
 import com.sd.enseignantreferantservice.business.serviceInterface.CategorieService;
 import com.sd.enseignantreferantservice.dao.CategorieRepository;
 import com.sd.enseignantreferantservice.model.Categorie;
+import com.sd.enseignantreferantservice.model.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,10 @@ public class CategorieServiceImpl implements CategorieService {
 
     @Override
     public void deleteCategorie(int id) {
+        Categorie cat = categorieRepository.getOne(id);
+        for(Document doc : cat.getListDocument()){
+            doc.setCategorie(null);
+        }
         categorieRepository.deleteById(id);
     }
 

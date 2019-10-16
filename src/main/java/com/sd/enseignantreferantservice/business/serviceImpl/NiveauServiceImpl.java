@@ -2,6 +2,7 @@ package com.sd.enseignantreferantservice.business.serviceImpl;
 
 import com.sd.enseignantreferantservice.business.serviceInterface.NiveauService;
 import com.sd.enseignantreferantservice.dao.NiveauRepository;
+import com.sd.enseignantreferantservice.model.Eleve;
 import com.sd.enseignantreferantservice.model.Niveau;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -25,6 +26,10 @@ public class NiveauServiceImpl implements NiveauService {
 
     @Override
     public void deleteNiveau(int id) {
+        Niveau niv = niveauRepository.getOne(id);
+        for(Eleve eleve: niv.getListEleve()){
+            eleve.setNiveau(null);
+        }
         niveauRepository.deleteById(id);
     }
 

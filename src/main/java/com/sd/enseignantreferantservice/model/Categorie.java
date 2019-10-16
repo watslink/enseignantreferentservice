@@ -1,16 +1,15 @@
 package com.sd.enseignantreferantservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,6 +21,10 @@ public class Categorie implements Serializable {
     private int categorieId;
 
     private String nom;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "categorie")
+    private Set<Document> listDocument;
 
     @Override
     public boolean equals(Object o) {
