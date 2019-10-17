@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Getter
@@ -13,7 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @IdClass(EleveStructurePro.class)
-public class EleveStructurePro {
+public class EleveStructurePro implements Serializable {
 
     @Id
     @ManyToOne
