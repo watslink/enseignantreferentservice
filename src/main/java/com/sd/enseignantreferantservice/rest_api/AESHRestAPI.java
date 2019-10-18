@@ -19,9 +19,9 @@ public class AESHRestAPI {
         return  aeshService.getAesh(id);
     }
 
-    @GetMapping("/aeshs")
-    public List<AESH> getListAESH() {
-        return aeshService.getAllAesh();
+    @GetMapping("/aeshs/{ensRefId}")
+    public List<AESH> getListAESH(@PathVariable int ensRefId) {
+        return aeshService.getAllAesh(ensRefId);
     }
 
     @PostMapping("/aesh")

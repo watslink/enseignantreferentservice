@@ -32,6 +32,10 @@ public class AESH implements Serializable {
     @JoinColumn(name="PIAL_id")
     private PIAL pial;
 
+    @ManyToOne
+    @JoinColumn(name="enseignant_referent_id")
+    private EnseignantReferent enseignantReferent;
+
     @JsonIgnore
     @OneToMany(mappedBy = "aesh")
     private Set<Eleve> listEleve;

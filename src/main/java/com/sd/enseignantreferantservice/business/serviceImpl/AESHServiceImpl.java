@@ -45,7 +45,7 @@ public class AESHServiceImpl implements AESHService {
     }
 
     @Override
-    public List<AESH> getAllAesh() {
-        return aeshRepository.findAll(Sort.by("nom"));
+    public List<AESH> getAllAesh(int ensRefId) {
+        return aeshRepository.findAllByEnseignantReferent_EnseignantReferentIdOrderByNom(ensRefId);
     }
 }

@@ -12,5 +12,5 @@ public interface AESHService {
 
     AESH getAesh(int id);
 
-    List<AESH> getAllAesh();
+    List<AESH> getAllAesh(int ensRefId);
 }
