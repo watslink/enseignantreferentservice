@@ -25,7 +25,6 @@ public class StructureProRestAPI {
         return structureProService.getAllStructurePro(ensRefId);
     }
 
-
     @PostMapping("/structurePro")
     public StructurePro addStructurePro(@RequestBody StructurePro structurePro){
         return structureProService.addStructurePro(structurePro);

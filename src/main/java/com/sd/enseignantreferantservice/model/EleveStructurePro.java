@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -29,4 +30,18 @@ public class EleveStructurePro implements Serializable {
 
     @Temporal(TemporalType.DATE)
     private Date dateNotification;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EleveStructurePro that = (EleveStructurePro) o;
+        return structurePro.equals(that.structurePro) &&
+                eleve.equals(that.eleve);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(structurePro, eleve);
+    }
 }
