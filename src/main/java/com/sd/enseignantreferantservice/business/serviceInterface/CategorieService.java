@@ -12,5 +12,5 @@ public interface CategorieService {
 
     Categorie getCategorie(int id);
 
-    List<Categorie> getAllCategorie();
+    List<Categorie> getAllCategorie(int ensRefId);
 }

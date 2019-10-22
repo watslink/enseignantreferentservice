@@ -12,5 +12,5 @@ public interface StructureProService {
 
     StructurePro getStructurePro(int id);
 
-    List<StructurePro> getAllStructurePro();
+    List<StructurePro> getAllStructurePro(int ensRefId);
 }

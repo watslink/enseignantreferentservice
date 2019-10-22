@@ -45,7 +45,7 @@ public class EtablissementServiceImpl implements EtablissementService {
     }
 
     @Override
-    public List<Etablissement> getAllEtablissement() {
-        return etablissementRepository.findAll(Sort.by("nom"));
+    public List<Etablissement> getAllEtablissement(int ensRefId) {
+        return etablissementRepository.findAllByEnseignantReferent_EnseignantReferentIdOrderByNom(ensRefId);
     }
 }

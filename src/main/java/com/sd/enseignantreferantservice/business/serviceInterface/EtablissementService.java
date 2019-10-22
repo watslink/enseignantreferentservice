@@ -12,5 +12,5 @@ public interface EtablissementService {
 
     Etablissement getEtablissement(int id);
 
-    List<Etablissement> getAllEtablissement();
+    List<Etablissement> getAllEtablissement(int ensRefId);
 }

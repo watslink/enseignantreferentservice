@@ -12,5 +12,5 @@ public interface DocumentInscriptionRequisService {
 
     DocumentInscriptionRequis getDocumentInscriptionRequis(int id);
 
-    List<DocumentInscriptionRequis> getAllDocumentInscriptionRequis();
+    List<DocumentInscriptionRequis> getAllDocumentInscriptionRequis(int ensRefId);
 }

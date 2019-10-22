@@ -45,7 +45,7 @@ public class CategorieServiceImpl implements CategorieService {
     }
 
     @Override
-    public List<Categorie> getAllCategorie() {
-        return categorieRepository.findAll(Sort.by("nom"));
+    public List<Categorie> getAllCategorie(int ensRefId) {
+        return categorieRepository.findAllByEnseignantReferent_EnseignantReferentIdOrderByNom(ensRefId);
     }
 }

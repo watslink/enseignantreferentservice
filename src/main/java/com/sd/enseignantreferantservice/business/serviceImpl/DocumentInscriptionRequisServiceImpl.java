@@ -63,7 +63,7 @@ public class DocumentInscriptionRequisServiceImpl implements DocumentInscription
     }
 
     @Override
-    public List<DocumentInscriptionRequis> getAllDocumentInscriptionRequis() {
-        return documentInscriptionRequisRepository.findAll(Sort.by("nom"));
+    public List<DocumentInscriptionRequis> getAllDocumentInscriptionRequis(int ensRefId) {
+        return documentInscriptionRequisRepository.findAllByEnseignantReferent_EnseignantReferentIdOrderByNom(ensRefId);
     }
 }

@@ -12,5 +12,5 @@ public interface PIALService {
 
     PIAL getPial(int id);
 
-    List<PIAL> getAllPial();
+    List<PIAL> getAllPial(int ensRefId);
 }

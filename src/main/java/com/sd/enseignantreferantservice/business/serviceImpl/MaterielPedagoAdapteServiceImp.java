@@ -40,7 +40,7 @@ public class MaterielPedagoAdapteServiceImp implements MaterielPedagoAdapteServi
     }
 
     @Override
-    public List<MaterielPedagoAdapte> getAllMaterielPedagoAdapte() {
-        return materielPedagoAdapteRepository.findAll(Sort.by("nom"));
+    public List<MaterielPedagoAdapte> getAllMaterielPedagoAdapte(int ensRefId) {
+        return materielPedagoAdapteRepository.findAllByEnseignantReferent_EnseignantReferentIdOrderByNom(ensRefId);
     }
 }

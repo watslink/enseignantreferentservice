@@ -49,7 +49,7 @@ public class PIALServiceImpl implements PIALService {
     }
 
     @Override
-    public List<PIAL> getAllPial() {
-        return pialRepository.findAll(Sort.by("nom"));
+    public List<PIAL> getAllPial(int ensRefId) {
+        return pialRepository.findAllByEnseignantReferent_EnseignantReferentIdOrderByNom(ensRefId);
     }
 }

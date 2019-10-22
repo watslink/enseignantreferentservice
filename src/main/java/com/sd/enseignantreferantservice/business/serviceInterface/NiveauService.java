@@ -13,5 +13,5 @@ public interface NiveauService {
 
     Niveau getNiveau(int id);
 
-    List<Niveau> getAllNiveau();
+    List<Niveau> getAllNiveau(int ensRefId);
 }

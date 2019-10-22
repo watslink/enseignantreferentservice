@@ -45,7 +45,7 @@ public class NiveauServiceImpl implements NiveauService {
     }
 
     @Override
-    public List<Niveau> getAllNiveau() {
-        return niveauRepository.findAll(Sort.by("niveauId"));
+    public List<Niveau> getAllNiveau(int ensRefId) {
+        return niveauRepository.findAllByEnseignantReferent_EnseignantReferentIdOrderByNiveauId(ensRefId);
     }
 }

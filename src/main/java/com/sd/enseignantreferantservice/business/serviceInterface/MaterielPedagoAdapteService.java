@@ -12,5 +12,5 @@ public interface MaterielPedagoAdapteService {
 
     MaterielPedagoAdapte getMaterielPedagoAdapte(int id);
 
-    List<MaterielPedagoAdapte> getAllMaterielPedagoAdapte();
+    List<MaterielPedagoAdapte> getAllMaterielPedagoAdapte(int ensRefId);
 }

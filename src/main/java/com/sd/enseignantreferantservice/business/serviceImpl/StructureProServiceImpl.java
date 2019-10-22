@@ -40,7 +40,7 @@ public class StructureProServiceImpl implements StructureProService {
     }
 
     @Override
-    public List<StructurePro> getAllStructurePro() {
-        return structureProRepository.findAll(Sort.by("nom"));
+    public List<StructurePro> getAllStructurePro(int ensRefId) {
+        return structureProRepository.findAllByEnseignantReferent_EnseignantReferentIdOrderByNom(ensRefId);
     }
 }
