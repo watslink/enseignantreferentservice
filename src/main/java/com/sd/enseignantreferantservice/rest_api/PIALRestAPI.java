@@ -19,9 +19,9 @@ public class PIALRestAPI {
         return  pialService.getPial(id);
     }
 
-    @GetMapping("/pials")
-    public List<PIAL> getListPIAL() {
-        return pialService.getAllPial();
+    @GetMapping("/pials/{ensRefId}")
+    public List<PIAL> getListPIAL(@PathVariable int ensRefId) {
+        return pialService.getAllPial(ensRefId);
     }
 
 

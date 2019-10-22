@@ -19,9 +19,9 @@ public class CategorieRestAPI {
         return  categorieService.getCategorie(id);
     }
 
-    @GetMapping("/categories")
-    public List<Categorie> getListCategorie() {
-        return categorieService.getAllCategorie();
+    @GetMapping("/categories/{ensRefId}")
+    public List<Categorie> getListCategorie(@PathVariable int ensRefId) {
+        return categorieService.getAllCategorie(ensRefId);
     }
 
 

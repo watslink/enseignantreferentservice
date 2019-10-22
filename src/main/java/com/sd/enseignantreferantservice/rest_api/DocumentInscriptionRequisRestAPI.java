@@ -19,9 +19,9 @@ public class DocumentInscriptionRequisRestAPI {
         return  documentInscriptionRequisService.getDocumentInscriptionRequis(id);
     }
 
-    @GetMapping("/documentInscriptionRequiss")
-    public List<DocumentInscriptionRequis> getListDocumentInscriptionRequis() {
-        return documentInscriptionRequisService.getAllDocumentInscriptionRequis();
+    @GetMapping("/documentInscriptionRequiss/{ensRefId}")
+    public List<DocumentInscriptionRequis> getListDocumentInscriptionRequis(@PathVariable int ensRefId) {
+        return documentInscriptionRequisService.getAllDocumentInscriptionRequis(ensRefId);
     }
 
 

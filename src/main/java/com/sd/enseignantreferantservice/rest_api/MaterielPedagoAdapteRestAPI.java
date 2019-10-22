@@ -19,9 +19,9 @@ public class MaterielPedagoAdapteRestAPI {
         return  materielPedagoAdapteService.getMaterielPedagoAdapte(id);
     }
 
-    @GetMapping("/materielPedagoAdaptes")
-    public List<MaterielPedagoAdapte> getListMaterielPedagoAdapte() {
-        return materielPedagoAdapteService.getAllMaterielPedagoAdapte();
+    @GetMapping("/materielPedagoAdaptes/{ensRefId}")
+    public List<MaterielPedagoAdapte> getListMaterielPedagoAdapte(@PathVariable int ensRefId) {
+        return materielPedagoAdapteService.getAllMaterielPedagoAdapte(ensRefId);
     }
 
 

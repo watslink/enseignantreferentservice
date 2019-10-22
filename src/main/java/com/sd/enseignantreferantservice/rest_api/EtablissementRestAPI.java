@@ -19,9 +19,9 @@ public class EtablissementRestAPI {
         return  etablissementService.getEtablissement(id);
     }
 
-    @GetMapping("/etablissements")
-    public List<Etablissement> getListEtablissement() {
-        return etablissementService.getAllEtablissement();
+    @GetMapping("/etablissements/{ensRefId}")
+    public List<Etablissement> getListEtablissement(@PathVariable int ensRefId) {
+        return etablissementService.getAllEtablissement(ensRefId);
     }
 
 

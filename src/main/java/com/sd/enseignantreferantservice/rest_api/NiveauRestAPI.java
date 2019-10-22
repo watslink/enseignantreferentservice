@@ -20,9 +20,9 @@ public class NiveauRestAPI {
         return  niveauService.getNiveau(id);
     }
 
-    @GetMapping("/niveaux")
-    public List<Niveau> getListNiveau() {
-        return niveauService.getAllNiveau();
+    @GetMapping("/niveaux/{ensRefId}")
+    public List<Niveau> getListNiveau(@PathVariable int ensRefId) {
+        return niveauService.getAllNiveau(ensRefId);
     }
 
 

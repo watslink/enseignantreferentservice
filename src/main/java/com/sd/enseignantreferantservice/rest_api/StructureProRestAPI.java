@@ -20,9 +20,9 @@ public class StructureProRestAPI {
        return  structureProService.getStructurePro(id);
     }
 
-    @GetMapping("/structurePros")
-    public List<StructurePro> getListStructurePro() {
-        return structureProService.getAllStructurePro();
+    @GetMapping("/structurePros/{ensRefId}")
+    public List<StructurePro> getListStructurePro(@PathVariable int ensRefId) {
+        return structureProService.getAllStructurePro(ensRefId);
     }
 
 
