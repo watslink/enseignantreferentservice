@@ -8,12 +8,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -42,6 +40,38 @@ public class EnseignantReferent implements Serializable {
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
     }
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "enseignantReferent",cascade = CascadeType.ALL, orphanRemoval = true )
+    private Set<AESH> listAeshs;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "enseignantReferent",cascade = CascadeType.ALL, orphanRemoval = true )
+    private Set<Categorie> listCategories;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "enseignantReferent",cascade = CascadeType.ALL, orphanRemoval = true )
+    private Set<DocumentInscriptionRequis> listDocInscRequis;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "enseignantReferent",cascade = CascadeType.ALL, orphanRemoval = true )
+    private Set<Etablissement> listEtablissements;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "enseignantReferent",cascade = CascadeType.ALL, orphanRemoval = true )
+    private Set<MaterielPedagoAdapte> listMatPedagoAdaptes;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "enseignantReferent",cascade = CascadeType.ALL, orphanRemoval = true )
+    private Set<Niveau> listNiveaux;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "enseignantReferent",cascade = CascadeType.ALL, orphanRemoval = true )
+    private Set<PIAL> listPials;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "enseignantReferent",cascade = CascadeType.ALL, orphanRemoval = true )
+    private Set<StructurePro> listStructPros;
 
     @Override
     public boolean equals(Object o) {
