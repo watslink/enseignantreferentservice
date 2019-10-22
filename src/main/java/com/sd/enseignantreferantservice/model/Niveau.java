@@ -31,6 +31,10 @@ public class Niveau implements Serializable {
     @OneToMany(mappedBy = "niveau")
     private Set<Eleve> listEleve;
 
+    @ManyToOne
+    @JoinColumn(name="enseignant_referent_id")
+    private EnseignantReferent enseignantReferent;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

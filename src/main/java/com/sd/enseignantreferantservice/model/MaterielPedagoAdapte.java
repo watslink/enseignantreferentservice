@@ -29,6 +29,10 @@ public class MaterielPedagoAdapte implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "eleve_id")})
     private List<Eleve> listEleve;
 
+    @ManyToOne
+    @JoinColumn(name="enseignant_referent_id")
+    private EnseignantReferent enseignantReferent;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

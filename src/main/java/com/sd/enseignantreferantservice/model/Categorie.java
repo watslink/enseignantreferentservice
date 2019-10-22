@@ -26,6 +26,10 @@ public class Categorie implements Serializable {
     @OneToMany(mappedBy = "categorie")
     private Set<Document> listDocument;
 
+    @ManyToOne
+    @JoinColumn(name="enseignant_referent_id")
+    private EnseignantReferent enseignantReferent;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

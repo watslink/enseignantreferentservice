@@ -26,6 +26,10 @@ public class DocumentInscriptionRequis implements Serializable {
     @OneToMany(mappedBy = "documentInscriptionRequis",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY )
     private Set<EleveDocumentInscriptionRequis> listEleveDocumentInscriptionRequis;
 
+    @ManyToOne
+    @JoinColumn(name="enseignant_referent_id")
+    private EnseignantReferent enseignantReferent;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

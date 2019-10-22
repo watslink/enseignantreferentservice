@@ -30,6 +30,10 @@ public class PIAL implements Serializable {
     @OneToMany(mappedBy = "pial")
     private Set<AESH> listAESH;
 
+    @ManyToOne
+    @JoinColumn(name="enseignant_referent_id")
+    private EnseignantReferent enseignantReferent;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

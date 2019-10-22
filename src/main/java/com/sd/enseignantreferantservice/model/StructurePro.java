@@ -34,6 +34,10 @@ public class StructurePro implements Serializable {
     @OneToMany(mappedBy = "structurePro",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY )
     private Set<EleveStructurePro> listEleveStructurePro;
 
+    @ManyToOne
+    @JoinColumn(name="enseignant_referent_id")
+    private EnseignantReferent enseignantReferent;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
