@@ -81,12 +81,12 @@ public class EleveServiceImpl implements EleveService {
 
     @Override
     public List<Eleve> getAllEleveVu(int ensRefId) {
-        return eleveRepository.findByVuAndEnseignantReferent_EnseignantReferentIdOrderByNom(true, ensRefId);
+        return eleveRepository.findByDossierAccepteAndByVuAndEnseignantReferent_EnseignantReferentIdOrderByNom(true,true, ensRefId);
     }
 
     @Override
     public List<Eleve> getAllEleveNonVu(int ensRefId) {
-        return eleveRepository.findByVuAndEnseignantReferent_EnseignantReferentIdOrderByNom(false, ensRefId);
+        return eleveRepository.findByDossierAccepteAndByVuAndEnseignantReferent_EnseignantReferentIdOrderByNom(true, false, ensRefId);
     }
 
     @Override
