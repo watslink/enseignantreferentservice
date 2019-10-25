@@ -23,8 +23,9 @@ public class DocumentInscriptionRequis implements Serializable {
     private String nom;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "documentInscriptionRequis",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY )
+    @OneToMany(mappedBy = "documentInscriptionRequis")
     private Set<EleveDocumentInscriptionRequis> listEleveDocumentInscriptionRequis;
+
 
     @ManyToOne
     @JoinColumn(name="enseignant_referent_id")

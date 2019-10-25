@@ -38,12 +38,7 @@ public class EnseignantreferantserviceApplication implements CommandLineRunner {
         System.out.println(eleve.getDateNaissance());
         System.out.println(eleve.getNiveau());
         System.out.println(eleve.getEtablissement().getNom());
-        System.out.println(eleve.getAesh().getNom());
-        System.out.println(eleve.getDateReunion());
-        System.out.println(eleve.getDateNotificationAesh());
-        System.out.println(eleve.getListRepresentantsLegaux().iterator().next().getAdresse().getVille());
-        System.out.println(eleve.getListDocuments().iterator().next().getNom());
-        System.out.println(eleve.getListMaterielsPedagoAdaptes().iterator().next().getNom());
+
 
     }
 }

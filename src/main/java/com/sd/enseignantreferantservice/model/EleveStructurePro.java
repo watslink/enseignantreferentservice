@@ -1,6 +1,7 @@
 package com.sd.enseignantreferantservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,18 +15,34 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @Entity
-@IdClass(EleveStructurePro.class)
 public class EleveStructurePro implements Serializable {
 
-    @Id
+
+    @Embeddable
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class PK implements Serializable {
+        private Integer structurePro;
+
+        private Integer eleve;
+
+    }
+
+    @EmbeddedId
+    private PK pk;
+
+
     @ManyToOne
-    @JoinColumn(name="structure_pro_id")
+    @MapsId("structurePro")
+    @JoinColumn(name = "structure_pro_id", updatable = false, insertable = false)
     private StructurePro structurePro;
 
     @JsonIgnore
-    @Id
     @ManyToOne
-    @JoinColumn(name = "eleve_id")
+    @MapsId("eleve")
+    @JoinColumn(name = "eleve_id", updatable = false, insertable = false )
     private Eleve eleve;
 
     @Temporal(TemporalType.DATE)

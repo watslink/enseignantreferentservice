@@ -1,10 +1,7 @@
 package com.sd.enseignantreferantservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,26 +11,38 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @Entity
-@IdClass(EleveDocumentInscriptionRequis.class)
 public class EleveDocumentInscriptionRequis implements Serializable {
 
+    @EmbeddedId
+    private PK pk;
+
+    @Embeddable
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class PK implements Serializable {
+        private Integer documentInscriptionRequis;
+
+        private Integer eleve;
+    }
 
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name="document_inscription_requis_id")
-    private DocumentInscriptionRequis documentInscriptionRequis;
+        @MapsId("documentInscriptionRequis")
+        @ManyToOne
+        @JoinColumn(name = "document_inscription_requis_id")
+        private DocumentInscriptionRequis documentInscriptionRequis;
 
-    @JsonIgnore
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "eleve_id")
-    private Eleve eleve;
+        @JsonIgnore
+        @MapsId("eleve")
+        @ManyToOne
+        @JoinColumn(name = "eleve_id")
+        private Eleve eleve;
 
 
-    private String lien;
+        private String lien;
 
-    private boolean ok;
+        private boolean ok;
 
     @Override
     public boolean equals(Object o) {
@@ -49,3 +58,4 @@ public class EleveDocumentInscriptionRequis implements Serializable {
         return Objects.hash(documentInscriptionRequis, eleve);
     }
 }
+

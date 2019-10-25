@@ -31,7 +31,7 @@ public class StructurePro implements Serializable {
     private Adresse adresse;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "structurePro",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY )
+    @OneToMany(mappedBy = "structurePro")
     private Set<EleveStructurePro> listEleveStructurePro;
 
     @ManyToOne

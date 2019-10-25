@@ -1,8 +1,12 @@
 package com.sd.enseignantreferantservice.business.serviceImpl;
 
 import com.sd.enseignantreferantservice.business.serviceInterface.StructureProService;
+import com.sd.enseignantreferantservice.dao.EleveStructureProRepository;
 import com.sd.enseignantreferantservice.dao.StructureProRepository;
+import com.sd.enseignantreferantservice.model.EleveStructurePro;
 import com.sd.enseignantreferantservice.model.StructurePro;
+import org.apache.commons.logging.Log;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -18,6 +22,9 @@ public class StructureProServiceImpl implements StructureProService {
     @Autowired
     StructureProRepository structureProRepository;
 
+    @Autowired
+    EleveStructureProRepository eleveStructureProRepository;
+
     @Override
     public StructurePro addStructurePro(StructurePro structurePro) {
         return structureProRepository.save(structurePro);
@@ -25,7 +32,14 @@ public class StructureProServiceImpl implements StructureProService {
 
     @Override
     public void deleteStructurePro(int id) {
-        structureProRepository.deleteById(id);
+        List<EleveStructurePro> eleveStructurePros = eleveStructureProRepository.findAll();
+        for (EleveStructurePro eleveSP: eleveStructurePros) {
+            if(eleveSP.getStructurePro().getStructureProId() == id){
+                eleveStructureProRepository.delete(eleveSP);
+        }
+
+        }
+            structureProRepository.deleteById(id);
     }
 
     @Override
