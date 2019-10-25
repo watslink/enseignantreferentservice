@@ -9,8 +9,9 @@ import java.util.List;
 @Repository
 public interface EleveRepository extends JpaRepository<Eleve, Integer> {
 
+    List<Eleve> findAllByEnseignantReferent_EnseignantReferentIdOrderByNom(int ensRefId);
 
-    List<Eleve> findByDossierAccepteOrderByNom(boolean bool);
+    List<Eleve> findByDossierAccepteAndEnseignantReferent_EnseignantReferentIdOrderByNom(boolean bool, int ensRefId);
 
-    List<Eleve> findByVuOrderByNom(boolean bool);
+    List<Eleve> findByVuAndEnseignantReferent_EnseignantReferentIdOrderByNom(boolean bool, int ensRefId);
 }

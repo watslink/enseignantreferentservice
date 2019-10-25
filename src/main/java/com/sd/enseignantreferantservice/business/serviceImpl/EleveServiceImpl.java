@@ -65,28 +65,28 @@ public class EleveServiceImpl implements EleveService {
     }
 
     @Override
-    public List<Eleve> getAllEleve() {
-        return eleveRepository.findAll(Sort.by("nom"));
+    public List<Eleve> getAllEleve(int ensRefId) {
+        return eleveRepository.findAllByEnseignantReferent_EnseignantReferentIdOrderByNom(ensRefId);
     }
 
     @Override
-    public List<Eleve> getAllEleveInsciptionEnCours() {
-        return eleveRepository.findByDossierAccepteOrderByNom(false);
+    public List<Eleve> getAllEleveInsciptionEnCours(int ensRefId) {
+        return eleveRepository.findByDossierAccepteAndEnseignantReferent_EnseignantReferentIdOrderByNom(false, ensRefId);
     }
 
     @Override
-    public List<Eleve> getAllEleveInscrits() {
-        return eleveRepository.findByDossierAccepteOrderByNom(true);
+    public List<Eleve> getAllEleveInscrits(int ensRefId) {
+        return eleveRepository.findByDossierAccepteAndEnseignantReferent_EnseignantReferentIdOrderByNom(true, ensRefId);
     }
 
     @Override
-    public List<Eleve> getAllEleveVu() {
-        return eleveRepository.findByVuOrderByNom(true);
+    public List<Eleve> getAllEleveVu(int ensRefId) {
+        return eleveRepository.findByVuAndEnseignantReferent_EnseignantReferentIdOrderByNom(true, ensRefId);
     }
 
     @Override
-    public List<Eleve> getAllEleveNonVu() {
-        return eleveRepository.findByVuOrderByNom(false);
+    public List<Eleve> getAllEleveNonVu(int ensRefId) {
+        return eleveRepository.findByVuAndEnseignantReferent_EnseignantReferentIdOrderByNom(false, ensRefId);
     }
 
     @Override

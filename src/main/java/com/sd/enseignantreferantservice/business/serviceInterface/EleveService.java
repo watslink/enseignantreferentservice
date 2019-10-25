@@ -12,15 +12,15 @@ public interface EleveService {
 
     Eleve getEleve(int id);
 
-    List<Eleve> getAllEleve();
+    List<Eleve> getAllEleve(int ensRefId);
 
-    List<Eleve> getAllEleveInsciptionEnCours();
+    List<Eleve> getAllEleveInsciptionEnCours(int ensRefId);
 
-    List<Eleve> getAllEleveInscrits();
+    List<Eleve> getAllEleveInscrits(int ensRefId);
 
-    List<Eleve> getAllEleveVu();
+    List<Eleve> getAllEleveVu(int ensRefId);
 
-    List<Eleve> getAllEleveNonVu();
+    List<Eleve> getAllEleveNonVu(int ensRefId);
 
     Eleve validateInscription(Eleve eleve);
 

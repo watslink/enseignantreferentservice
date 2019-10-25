@@ -19,29 +19,30 @@ public class EleveRestAPI {
         return  eleveService.getEleve(id);
     }
 
-    @GetMapping("/eleves")
-    public List<Eleve> getListEleve() {
-        return eleveService.getAllEleve();
+    @GetMapping("/eleves/{ensRefId}")
+    public List<Eleve> getListEleve(@PathVariable int ensRefId) {
+
+        return eleveService.getAllEleve(ensRefId);
     }
 
-    @GetMapping("/eleves/inscrits")
-    public List<Eleve> getListEleveInscrits() {
-        return eleveService.getAllEleveInscrits();
+    @GetMapping("/eleves/inscrits/{ensRefId}")
+    public List<Eleve> getListEleveInscrits(@PathVariable int ensRefId) {
+        return eleveService.getAllEleveInscrits(ensRefId);
     }
 
-    @GetMapping("/eleves/noninscrits")
-    public List<Eleve> getListEleveNonInscrits() {
-        return eleveService.getAllEleveInsciptionEnCours();
+    @GetMapping("/eleves/noninscrits/{ensRefId}")
+    public List<Eleve> getListEleveNonInscrits(@PathVariable int ensRefId) {
+        return eleveService.getAllEleveInsciptionEnCours(ensRefId);
     }
 
-    @GetMapping("/eleves/vus")
-    public List<Eleve> getListEleveVus() {
-        return eleveService.getAllEleveVu();
+    @GetMapping("/eleves/vus/{ensRefId}")
+    public List<Eleve> getListEleveVus(@PathVariable int ensRefId) {
+        return eleveService.getAllEleveVu(ensRefId);
     }
 
-    @GetMapping("/eleves/nonvus")
-    public List<Eleve> getListEleveNonVus() {
-        return eleveService.getAllEleveNonVu();
+    @GetMapping("/eleves/nonvus/{ensRefId}")
+    public List<Eleve> getListEleveNonVus(@PathVariable int ensRefId) {
+        return eleveService.getAllEleveNonVu(ensRefId);
     }
 
     @PostMapping("/elevevalidate")
