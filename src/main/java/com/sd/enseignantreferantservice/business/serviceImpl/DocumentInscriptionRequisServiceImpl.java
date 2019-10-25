@@ -33,7 +33,9 @@ public class DocumentInscriptionRequisServiceImpl implements DocumentInscription
     public DocumentInscriptionRequis addDocumentInscriptionRequis(DocumentInscriptionRequis documentInscriptionRequis) {
         DocumentInscriptionRequis documentInscriptionRequisEnr=documentInscriptionRequisRepository.save(documentInscriptionRequis);
 
-        List<Eleve> elevesNonInscrits=eleveRepository.findByDossierAccepteOrderByNom(false);
+        List<Eleve> elevesNonInscrits=eleveRepository
+                .findByDossierAccepteAndEnseignantReferent_EnseignantReferentIdOrderByNom(false,
+                        documentInscriptionRequis.getEnseignantReferent().getEnseignantReferentId());
 
         EleveDocumentInscriptionRequis edir =new EleveDocumentInscriptionRequis();
         edir.setDocumentInscriptionRequis(documentInscriptionRequis);
