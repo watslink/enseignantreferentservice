@@ -1,6 +1,7 @@
 package com.sd.enseignantreferantservice.rest_api;
 
 import com.sd.enseignantreferantservice.business.serviceInterface.EleveService;
+import com.sd.enseignantreferantservice.business.serviceInterface.FileService;
 import com.sd.enseignantreferantservice.model.Eleve;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
