@@ -3,8 +3,9 @@ package com.sd.enseignantreferantservice.business.serviceInterface;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Path;
 
 public interface FileService {
 
-    String storeFile(MultipartFile file, String eleveDirectory, String nomFichier) throws IOException;
+    Path storeFile(MultipartFile file, String eleveDirectory, String nomFichier) throws IOException;
 }
