@@ -33,7 +33,7 @@ public class FileRestAPI {
         return fileService.storeFile(file, eleveDirectory, nomFichier);
     }
 
-    @GetMapping(value = "/filesInscription", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @PostMapping(value = "/filesInscription", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public @ResponseBody byte[] getFileFromEleveDocumentInscriptionRequis(@RequestBody EleveDocumentInscriptionRequis edir) throws IOException {
         InputStream in = getClass()
                 .getResourceAsStream(fileService.getPathFile(edir.getEleve().getNom()+'-'+edir.getEleve().getPrenom(),
@@ -41,7 +41,7 @@ public class FileRestAPI {
         return IOUtils.toByteArray(in);
     }
 
-    @GetMapping(value = "/filesEleve", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @PostMapping(value = "/filesEleve", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public @ResponseBody byte[] getFileFromDocument(@RequestBody Document doc) throws IOException {
         InputStream in = getClass()
                 .getResourceAsStream(fileService.getPathFile(doc.getEleve().getNom()+'-'+doc.getEleve().getPrenom(),
