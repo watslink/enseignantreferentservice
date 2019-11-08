@@ -30,4 +30,8 @@ public class FileServiceImpl implements FileService {
         Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
         return filePath.toRealPath();
     }
+
+    public String getPathFile(String eleveDirectory, String nomFichier, String extension) throws IOException{
+        return  FILE_DIRECTORY+ "/" + eleveDirectory + "/" + nomFichier +"."+extension;
+    }
 }
