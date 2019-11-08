@@ -40,7 +40,7 @@ public class EleveDocumentInscriptionRequis implements Serializable {
         private Eleve eleve;
 
 
-        private String lien;
+        private String extension;
 
         private boolean ok;
 

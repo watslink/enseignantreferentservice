@@ -21,7 +21,7 @@ public class Document implements Serializable {
 
     private String nom;
 
-    private String lien;
+    private String extension;
 
     @ManyToOne
     @JoinColumn(name="categorie_id")
