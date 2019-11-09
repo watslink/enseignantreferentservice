@@ -1,8 +1,7 @@
 package com.sd.enseignantreferantservice.rest_api;
 
 import com.sd.enseignantreferantservice.business.serviceInterface.FileService;
-import com.sd.enseignantreferantservice.model.Document;
-import com.sd.enseignantreferantservice.model.EleveDocumentInscriptionRequis;
+
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
@@ -33,19 +33,13 @@ public class FileRestAPI {
         return fileService.storeFile(file, eleveDirectory, nomFichier);
     }
 
-    @PostMapping(value = "/filesInscription", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public @ResponseBody byte[] getFileFromEleveDocumentInscriptionRequis(@RequestBody EleveDocumentInscriptionRequis edir) throws IOException {
-        InputStream in = getClass()
-                .getResourceAsStream(fileService.getPathFile(edir.getEleve().getNom()+'-'+edir.getEleve().getPrenom(),
-                        edir.getDocumentInscriptionRequis().getNom(), edir.getExtension()));
-        return IOUtils.toByteArray(in);
+    @PostMapping(value = "/filesDownload", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public @ResponseBody byte[] getFile(@RequestParam("nomFichier") String nomFichier,
+                                        @RequestParam("eleveDirectory") String eleveDirectory) throws IOException {
+        InputStream in = new FileInputStream(fileService.getFile(eleveDirectory, nomFichier));
+        byte[] data=IOUtils.toByteArray(in);
+        in.close();
+        return data;
     }
 
-    @PostMapping(value = "/filesEleve", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public @ResponseBody byte[] getFileFromDocument(@RequestBody Document doc) throws IOException {
-        InputStream in = getClass()
-                .getResourceAsStream(fileService.getPathFile(doc.getEleve().getNom()+'-'+doc.getEleve().getPrenom(),
-                        doc.getNom(), doc.getExtension()));
-        return IOUtils.toByteArray(in);
-    }
 }

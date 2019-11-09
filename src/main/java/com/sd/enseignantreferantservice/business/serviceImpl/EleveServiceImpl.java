@@ -99,7 +99,7 @@ public class EleveServiceImpl implements EleveService {
         document.setEleve(eleve);
         for (EleveDocumentInscriptionRequis edir:eleve.getListEleveDocumentsInscriptionRequis()){
            document.setNom(edir.getDocumentInscriptionRequis().getNom());
-           document.setLien(edir.getLien());
+           document.setExtension(edir.getExtension());
            listDocuments.add(document);
         }
         eleve.setListDocuments(listDocuments);

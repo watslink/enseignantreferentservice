@@ -31,7 +31,8 @@ public class FileServiceImpl implements FileService {
         return filePath.toRealPath();
     }
 
-    public String getPathFile(String eleveDirectory, String nomFichier, String extension) throws IOException{
-        return  FILE_DIRECTORY+ "/" + eleveDirectory + "/" + nomFichier +"."+extension;
+    public File getFile(String eleveDirectory, String nomFichier) throws IOException{
+        File file= new File(FILE_DIRECTORY + "/" + eleveDirectory + "/" + nomFichier);
+        return  file;
     }
 }
