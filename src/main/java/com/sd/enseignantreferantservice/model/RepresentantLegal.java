@@ -31,6 +31,10 @@ public class RepresentantLegal implements Serializable {
     @JoinColumn(name = "adresse_id")
     private Adresse adresse;
 
+    @ManyToOne
+    @JoinColumn(name="enseignant_referent_id")
+    private EnseignantReferent enseignantReferent;
+
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "eleve_representant_legal",

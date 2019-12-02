@@ -19,9 +19,9 @@ public class RepresentantLegalRestAPI {
         return  representantLegalService.getRepresentantLegal(id);
     }
 
-    @GetMapping("/representantLegaux")
-    public List<RepresentantLegal> getListRepresentantLegal() {
-        return representantLegalService.getAllRepresentantLegal();
+    @GetMapping("/representantsLegaux")
+    public List<RepresentantLegal> getListRepresentantLegal(@PathVariable int ensRefId) {
+        return representantLegalService.getAllRepresentantLegal(ensRefId);
     }
 
 

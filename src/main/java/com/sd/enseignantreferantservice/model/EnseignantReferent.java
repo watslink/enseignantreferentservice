@@ -73,6 +73,9 @@ public class EnseignantReferent implements Serializable {
     @OneToMany(mappedBy = "enseignantReferent",cascade = CascadeType.ALL, orphanRemoval = true )
     private Set<StructurePro> listStructPros;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "enseignantReferent",cascade = CascadeType.ALL, orphanRemoval = true )
+    private Set<RepresentantLegal> listRepresentantsLegaux;
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

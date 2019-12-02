@@ -12,5 +12,5 @@ public interface RepresentantLegalService {
 
     RepresentantLegal getRepresentantLegal(int id);
 
-    List<RepresentantLegal> getAllRepresentantLegal();
+    List<RepresentantLegal> getAllRepresentantLegal(int ensRefId);
 }

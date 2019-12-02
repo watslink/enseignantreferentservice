@@ -40,7 +40,7 @@ public class RepresentantLegalServiceImpl implements RepresentantLegalService {
     }
 
     @Override
-    public List<RepresentantLegal> getAllRepresentantLegal() {
-        return representantLegalRepository.findAll(Sort.by("identite"));
+    public List<RepresentantLegal> getAllRepresentantLegal(int ensRefId) {
+        return representantLegalRepository.findAllByEnseignantReferent_EnseignantReferentIdOrderByIdentite(ensRefId);
     }
 }
