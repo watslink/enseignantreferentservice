@@ -19,11 +19,10 @@ public class RepresentantLegalRestAPI {
         return  representantLegalService.getRepresentantLegal(id);
     }
 
-    @GetMapping("/representantsLegaux")
+    @GetMapping("/representantsLegaux/{ensRefId}")
     public List<RepresentantLegal> getListRepresentantLegal(@PathVariable int ensRefId) {
         return representantLegalService.getAllRepresentantLegal(ensRefId);
     }
-
 
     @PostMapping("/representantLegal")
     public RepresentantLegal addRepresentantLegal(@RequestBody RepresentantLegal representantLegal){

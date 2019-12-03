@@ -1,6 +1,7 @@
 package com.sd.enseignantreferantservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,12 +36,10 @@ public class RepresentantLegal implements Serializable {
     @JoinColumn(name="enseignant_referent_id")
     private EnseignantReferent enseignantReferent;
 
+    @ManyToOne
+    @JoinColumn(name="eleve_id")
     @JsonIgnore
-    @ManyToMany
-    @JoinTable(name = "eleve_representant_legal",
-            joinColumns = {@JoinColumn(name = "representant_legal_id")},
-            inverseJoinColumns = {@JoinColumn(name = "eleve_id")})
-    private List<Eleve> listEleve;
+    private Eleve eleve;
 
     @Override
     public boolean equals(Object o) {

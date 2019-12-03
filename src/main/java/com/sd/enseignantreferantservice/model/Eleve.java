@@ -53,10 +53,7 @@ public class Eleve implements Serializable {
     @JoinColumn(name="enseignant_referent_id")
     private EnseignantReferent enseignantReferent;
 
-    @ManyToMany
-    @JoinTable(name = "eleve_representant_legal",
-            joinColumns = {@JoinColumn(name = "eleve_id")},
-            inverseJoinColumns = {@JoinColumn(name = "representant_legal_id")})
+    @OneToMany(mappedBy = "eleve",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY )
     private Set<RepresentantLegal> listRepresentantsLegaux;
 
     @OneToMany(mappedBy = "eleve",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY )

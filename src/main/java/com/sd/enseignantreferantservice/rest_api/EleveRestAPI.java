@@ -3,6 +3,7 @@ package com.sd.enseignantreferantservice.rest_api;
 import com.sd.enseignantreferantservice.business.serviceInterface.EleveService;
 import com.sd.enseignantreferantservice.business.serviceInterface.FileService;
 import com.sd.enseignantreferantservice.model.Eleve;
+import com.sd.enseignantreferantservice.model.RepresentantLegal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,6 +59,9 @@ public class EleveRestAPI {
 
     @PutMapping("/eleve")
     public Eleve updateEleve(@RequestBody Eleve eleve){
+        for(RepresentantLegal representantLegal: eleve.getListRepresentantsLegaux()){
+            representantLegal.setEleve(eleve);
+        }
         return eleveService.updateEleve(eleve);
     }
 
