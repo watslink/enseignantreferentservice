@@ -71,7 +71,7 @@ public class Eleve implements Serializable {
     @OneToMany(mappedBy = "eleve",cascade = CascadeType.ALL, orphanRemoval = true )
     private Set<Document> listDocuments;
 
-    @OneToMany(mappedBy = "eleve",cascade = CascadeType.ALL, orphanRemoval = true )
+    @OneToMany(mappedBy = "eleve",cascade = CascadeType.ALL,  orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<EleveDocumentInscriptionRequis> listEleveDocumentsInscriptionRequis;
 
     @Override

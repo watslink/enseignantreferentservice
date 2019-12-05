@@ -3,10 +3,10 @@ package com.sd.enseignantreferantservice.business.serviceImpl;
 import com.sd.enseignantreferantservice.business.serviceInterface.EleveService;
 import com.sd.enseignantreferantservice.dao.CategorieRepository;
 import com.sd.enseignantreferantservice.dao.DocumentInscriptionRequisRepository;
+import com.sd.enseignantreferantservice.dao.EleveDocumentInscriptionRequisRepository;
 import com.sd.enseignantreferantservice.dao.EleveRepository;
 import com.sd.enseignantreferantservice.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +24,9 @@ public class EleveServiceImpl implements EleveService {
 
     @Autowired
     CategorieRepository categorieRepository;
+
+    @Autowired
+    EleveDocumentInscriptionRequisRepository eleveDocumentInscriptionRequisRepository;
 
 
     @Override
@@ -93,17 +96,12 @@ public class EleveServiceImpl implements EleveService {
     public Eleve validateInscription(Eleve eleve) {
         eleve.setDossierAccepte(true);
         Categorie categorie=categorieRepository.getOne(1);
-        Set<Document> listDocuments=new HashSet<>();
-        Document document=new Document();
-        document.setCategorie(categorie);
-        document.setEleve(eleve);
         for (EleveDocumentInscriptionRequis edir:eleve.getListEleveDocumentsInscriptionRequis()){
-           document.setNom(edir.getDocumentInscriptionRequis().getNom());
-           document.setExtension(edir.getExtension());
-           listDocuments.add(document);
+          eleve.getListDocuments().add(new Document(edir.getDocumentInscriptionRequis().getNom(), edir.getExtension(), categorie, eleve));
+          eleveRepository.save(eleve);
+          eleve=eleveRepository.getOne(eleve.getEleveId());
         }
-        eleve.setListDocuments(listDocuments);
-        eleve.setListEleveDocumentsInscriptionRequis(null);
+        eleve.getListEleveDocumentsInscriptionRequis().clear();
         eleveRepository.save(eleve);
         return eleve;
     }

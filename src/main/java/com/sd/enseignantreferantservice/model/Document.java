@@ -44,4 +44,11 @@ public class Document implements Serializable {
     public int hashCode() {
         return Objects.hash(documentId);
     }
+
+    public Document(String nom, String extension, Categorie categorie, Eleve eleve) {
+        this.nom = nom;
+        this.extension = extension;
+        this.categorie = categorie;
+        this.eleve = eleve;
+    }
 }
