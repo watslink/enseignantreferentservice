@@ -36,13 +36,12 @@ public class EleveStructurePro implements Serializable {
 
     @ManyToOne
     @MapsId("structurePro")
-    @JoinColumn(name = "structure_pro_id", updatable = false, insertable = false)
+    @JoinColumn(name = "structure_pro_id")
     private StructurePro structurePro;
 
-    @JsonIgnore
     @ManyToOne
     @MapsId("eleve")
-    @JoinColumn(name = "eleve_id", updatable = false, insertable = false )
+    @JoinColumn(name = "eleve_id")
     private Eleve eleve;
 
     @Temporal(TemporalType.DATE)

@@ -1,6 +1,7 @@
 package com.sd.enseignantreferantservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +23,9 @@ public class MaterielPedagoAdapte implements Serializable {
 
     private String nom;
 
-    @JsonIgnore
+
     @ManyToMany
+    @JsonIgnoreProperties("listMaterielsPedagoAdaptes")
     @JoinTable(name = "eleve_materiel_pedago_adapte",
             joinColumns = {@JoinColumn(name = "materiel_pedago_adapte_id")},
             inverseJoinColumns = {@JoinColumn(name = "eleve_id")})

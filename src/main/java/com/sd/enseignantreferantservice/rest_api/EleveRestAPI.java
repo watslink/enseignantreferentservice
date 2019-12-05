@@ -3,11 +3,14 @@ package com.sd.enseignantreferantservice.rest_api;
 import com.sd.enseignantreferantservice.business.serviceInterface.EleveService;
 import com.sd.enseignantreferantservice.business.serviceInterface.FileService;
 import com.sd.enseignantreferantservice.model.Eleve;
+import com.sd.enseignantreferantservice.model.EleveStructurePro;
+import com.sd.enseignantreferantservice.model.MaterielPedagoAdapte;
 import com.sd.enseignantreferantservice.model.RepresentantLegal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class EleveRestAPI {
@@ -18,12 +21,12 @@ public class EleveRestAPI {
 
     @GetMapping("/eleve/{id}")
     public Eleve getEleve(@PathVariable int id){
+
         return  eleveService.getEleve(id);
     }
 
     @GetMapping("/eleves/{ensRefId}")
     public List<Eleve> getListEleve(@PathVariable int ensRefId) {
-
         return eleveService.getAllEleve(ensRefId);
     }
 
@@ -61,6 +64,10 @@ public class EleveRestAPI {
     public Eleve updateEleve(@RequestBody Eleve eleve){
         for(RepresentantLegal representantLegal: eleve.getListRepresentantsLegaux()){
             representantLegal.setEleve(eleve);
+        }
+        for(EleveStructurePro eleveStructurePro: eleve.getListEleveStructurePros()){
+            eleveStructurePro.setEleve(eleve);
+            eleveStructurePro.setPk(new EleveStructurePro.PK(eleveStructurePro.getStructurePro().getStructureProId(), eleve.getEleveId()));
         }
         return eleveService.updateEleve(eleve);
     }

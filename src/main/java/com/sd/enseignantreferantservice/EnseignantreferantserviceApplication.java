@@ -2,14 +2,18 @@ package com.sd.enseignantreferantservice;
 
 import com.sd.enseignantreferantservice.dao.EleveRepository;
 import com.sd.enseignantreferantservice.dao.EnseignantReferentRepository;
+import com.sd.enseignantreferantservice.dao.MaterielPedagoAdapteRepository;
 import com.sd.enseignantreferantservice.model.Eleve;
+import com.sd.enseignantreferantservice.model.MaterielPedagoAdapte;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static com.sun.xml.internal.ws.policy.sourcemodel.wspolicy.XmlToken.Optional;
 
@@ -26,10 +30,13 @@ public class EnseignantreferantserviceApplication implements CommandLineRunner {
     @Autowired
     EleveRepository eleveRepository;
 
+    @Autowired
+    MaterielPedagoAdapteRepository materielPedagoAdapteRepository;
+
     @Override
     @Transactional
     public void run(String... args) throws Exception {
-       java.util.Optional<Eleve> optEleve=eleveRepository.findById(2);
+       java.util.Optional<Eleve> optEleve=eleveRepository.findById(19);
        Eleve eleve=  optEleve.get();
        System.out.println(eleve.toString());
         System.out.println(eleve.toString());
@@ -38,7 +45,7 @@ public class EnseignantreferantserviceApplication implements CommandLineRunner {
         System.out.println(eleve.getDateNaissance());
         System.out.println(eleve.getNiveau());
         System.out.println(eleve.getEtablissement().getNom());
-
+        System.out.print(eleve.getListMaterielsPedagoAdaptes().size());
 
     }
 }
