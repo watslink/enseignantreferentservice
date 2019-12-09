@@ -32,6 +32,7 @@ public class EleveServiceImpl implements EleveService {
     @Override
     public Eleve addEleve(Eleve eleve) {
         eleve.setDossierAccepte(false);
+        eleve = eleveRepository.save(eleve);
         Set<EleveDocumentInscriptionRequis> eleveDocumentInscriptionRequisList = new HashSet<>();
 
         List<DocumentInscriptionRequis> documentInscriptionRequisList=documentInscriptionRequisRepository.findAll();
@@ -40,6 +41,7 @@ public class EleveServiceImpl implements EleveService {
             EleveDocumentInscriptionRequis eleveDocumentInscriptionRequis=new EleveDocumentInscriptionRequis();
             eleveDocumentInscriptionRequis.setDocumentInscriptionRequis(dir);
             eleveDocumentInscriptionRequis.setEleve(eleve);
+            eleveDocumentInscriptionRequis.setPk(new EleveDocumentInscriptionRequis.PK(dir.getDocumentInscriptionRequisId(), eleve.getEleveId()));
             eleveDocumentInscriptionRequis.setOk(false);
             eleveDocumentInscriptionRequisList.add(eleveDocumentInscriptionRequis);
         }

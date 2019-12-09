@@ -61,7 +61,7 @@ public class Eleve implements Serializable {
     @JsonIgnoreProperties("eleve")
     private Set<EleveStructurePro> listEleveStructurePros;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany
     @JsonIgnoreProperties("listEleve")
     @JoinTable(name = "eleve_materiel_pedago_adapte",
             joinColumns = {@JoinColumn(name = "eleve_id")},
