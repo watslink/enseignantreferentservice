@@ -2,10 +2,7 @@ package com.sd.enseignantreferantservice.rest_api;
 
 import com.sd.enseignantreferantservice.business.serviceInterface.EleveService;
 import com.sd.enseignantreferantservice.business.serviceInterface.FileService;
-import com.sd.enseignantreferantservice.model.Eleve;
-import com.sd.enseignantreferantservice.model.EleveStructurePro;
-import com.sd.enseignantreferantservice.model.MaterielPedagoAdapte;
-import com.sd.enseignantreferantservice.model.RepresentantLegal;
+import com.sd.enseignantreferantservice.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -68,6 +65,9 @@ public class EleveRestAPI {
         for(EleveStructurePro eleveStructurePro: eleve.getListEleveStructurePros()){
             eleveStructurePro.setEleve(eleve);
             eleveStructurePro.setPk(new EleveStructurePro.PK(eleveStructurePro.getStructurePro().getStructureProId(), eleve.getEleveId()));
+        }
+        for(Document document: eleve.getListDocuments()){
+            document.setEleve(eleve);
         }
         return eleveService.updateEleve(eleve);
     }
