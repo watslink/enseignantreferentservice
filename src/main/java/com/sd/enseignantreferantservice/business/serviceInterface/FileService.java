@@ -11,4 +11,6 @@ public interface FileService {
     Path storeFile(MultipartFile file, String eleveDirectory, String nomFichier) throws IOException;
 
     File getFile(String eleveDirectory, String nomFichier) throws IOException;
+
+    boolean deleteFile(String eleveDirectory, String nomFichier) throws IOException;
 }

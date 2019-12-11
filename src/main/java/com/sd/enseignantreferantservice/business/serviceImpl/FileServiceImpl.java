@@ -35,4 +35,13 @@ public class FileServiceImpl implements FileService {
         File file= new File(FILE_DIRECTORY + "/" + eleveDirectory + "/" + nomFichier);
         return  file;
     }
+
+    @Override
+    public boolean deleteFile(String eleveDirectory, String nomFichier) throws IOException {
+        File file= new File(FILE_DIRECTORY + "/" + eleveDirectory + "/" + nomFichier);
+        if(file.exists()){
+           return file.delete();
+        }
+        return false;
+    }
 }

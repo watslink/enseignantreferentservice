@@ -41,4 +41,12 @@ public class FileRestAPI {
         in.close();
         return data;
     }
+    @PostMapping(value = "/filesDelete")
+    public boolean removeFile(@RequestParam("nomFichier") String nomFichier,
+                                        @RequestParam("eleveDirectory") String eleveDirectory) throws IOException {
+
+        return fileService.deleteFile(eleveDirectory, nomFichier);
+    }
+
+
 }
