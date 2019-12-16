@@ -46,6 +46,11 @@ public class EnseignantReferentRestAPI {
         return enseignantReferentService.updateMailOfEnseignantReferent(id, newMail);
     }
 
+    @PutMapping("/enseignantReferentPassword")
+    public Boolean updatePasswordEnseignantReferent(@RequestParam ("id") int id, @RequestParam ("oldPass") String oldPass, @RequestParam ("newPass") String newPass){
+        return enseignantReferentService.updatePasswordOfEnseignantReferent(id, oldPass, newPass);
+    }
+
     @DeleteMapping("/enseignantReferent/{id}")
     public void deleteEnseignantReferent(@PathVariable int id){
         enseignantReferentService.deleteEnseignantReferent(id);

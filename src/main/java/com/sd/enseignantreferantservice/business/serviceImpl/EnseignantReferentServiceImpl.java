@@ -42,6 +42,18 @@ public class EnseignantReferentServiceImpl implements EnseignantReferentService 
     }
 
     @Override
+    public Boolean updatePasswordOfEnseignantReferent(int id, String oldPass, String newPass) {
+        EnseignantReferent enseignantReferent = enseignantReferentRepository.getOne(id);
+        if (encoder.matches(oldPass, enseignantReferent.getMotDePasse())) {
+            enseignantReferent.setMotDePasse(encoder.encode(newPass));
+            enseignantReferentRepository.save(enseignantReferent);
+            return true;
+        } else  {
+            return false;
+        }
+    }
+
+    @Override
     public EnseignantReferent getByMail(String mail) {
         return enseignantReferentRepository.findByMail(mail);
     }
