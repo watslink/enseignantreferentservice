@@ -35,8 +35,9 @@ public class EnseignantReferentServiceImpl implements EnseignantReferentService 
     }
 
     @Override
-    public EnseignantReferent updateEnseignantReferent(EnseignantReferent enseignantReferent) {
-        enseignantReferent.setMotDePasse(encoder.encode(enseignantReferent.getMotDePasse()));
+    public EnseignantReferent updateMailOfEnseignantReferent(int id, String newMail) {
+        EnseignantReferent enseignantReferent = enseignantReferentRepository.getOne(id);
+        enseignantReferent.setMail(newMail);
         return enseignantReferentRepository.save(enseignantReferent);
     }
 

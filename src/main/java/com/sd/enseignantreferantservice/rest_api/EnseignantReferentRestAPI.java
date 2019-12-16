@@ -41,9 +41,9 @@ public class EnseignantReferentRestAPI {
         return new ResponseEntity<Void>( HttpStatus.CREATED);
     }
 
-    @PutMapping("/enseignantReferent")
-    public EnseignantReferent updateEnseignantReferent(@RequestBody EnseignantReferent enseignantReferent){
-        return enseignantReferentService.updateEnseignantReferent(enseignantReferent);
+    @PutMapping("/enseignantReferentMail")
+    public EnseignantReferent updateMailEnseignantReferent(@RequestParam ("id") int id, @RequestParam ("newMail") String newMail){
+        return enseignantReferentService.updateMailOfEnseignantReferent(id, newMail);
     }
 
     @DeleteMapping("/enseignantReferent/{id}")

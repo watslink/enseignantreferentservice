@@ -8,7 +8,7 @@ public interface EnseignantReferentService {
 
     EnseignantReferent addEnseignantReferent(EnseignantReferent enseignantReferent);
     void deleteEnseignantReferent (int id);
-    EnseignantReferent updateEnseignantReferent (EnseignantReferent enseignantReferent);
+    EnseignantReferent updateMailOfEnseignantReferent(int id, String newMail);
 
     EnseignantReferent getEnseignantReferentById(int id);
     EnseignantReferent getByMail(String mail);
