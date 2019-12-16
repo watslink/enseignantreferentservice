@@ -2,6 +2,7 @@ package com.sd.enseignantreferantservice.business.serviceImpl;
 
 import com.sd.enseignantreferantservice.business.serviceInterface.EnseignantReferentService;
 import com.sd.enseignantreferantservice.dao.EnseignantReferentRepository;
+import com.sd.enseignantreferantservice.model.Eleve;
 import com.sd.enseignantreferantservice.model.EnseignantReferent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -67,5 +68,15 @@ public class EnseignantReferentServiceImpl implements EnseignantReferentService 
     @Override
     public List<EnseignantReferent> getAllEnseignantReferent() {
         return enseignantReferentRepository.findAll(Sort.by("nom"));
+    }
+
+    @Override
+    public void reinitializeAllRDV(int id) {
+        EnseignantReferent enseignantReferent = enseignantReferentRepository.getOne(id);
+        for (Eleve eleve: enseignantReferent.getListEleves()) {
+            eleve.setDateReunion(null);
+            eleve.setVu(false);
+        }
+        enseignantReferentRepository.save(enseignantReferent);
     }
 }

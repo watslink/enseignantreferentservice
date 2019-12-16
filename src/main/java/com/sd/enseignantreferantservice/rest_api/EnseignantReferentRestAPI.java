@@ -55,6 +55,11 @@ public class EnseignantReferentRestAPI {
     public void deleteEnseignantReferent(@PathVariable int id){
         enseignantReferentService.deleteEnseignantReferent(id);
     }
+
+    @GetMapping("/enseignantReferentReinitRDV/{id}")
+    public void reinitializeAllRDV(@PathVariable int id) {
+        enseignantReferentService.reinitializeAllRDV(id);
+    }
 }
 
 

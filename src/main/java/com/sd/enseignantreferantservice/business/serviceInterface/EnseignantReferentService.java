@@ -16,5 +16,5 @@ public interface EnseignantReferentService {
 
     List<EnseignantReferent> getAllEnseignantReferent();
 
-
+    void reinitializeAllRDV(int id);
 }
