@@ -36,7 +36,7 @@ public class EnseignantreferantserviceApplication implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) throws Exception {
-       java.util.Optional<Eleve> optEleve=eleveRepository.findById(19);
+       java.util.Optional<Eleve> optEleve=eleveRepository.findById(1);
        Eleve eleve=  optEleve.get();
        System.out.println(eleve.toString());
         System.out.println(eleve.toString());
@@ -44,8 +44,7 @@ public class EnseignantreferantserviceApplication implements CommandLineRunner {
         System.out.println(eleve.getPrenom());
         System.out.println(eleve.getDateNaissance());
         System.out.println(eleve.getNiveau());
-        System.out.println(eleve.getEtablissement().getNom());
-        System.out.print(eleve.getListMaterielsPedagoAdaptes().size());
+        System.out.println(eleve.getDateReunion());
 
     }
 }

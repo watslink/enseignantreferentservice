@@ -22,6 +22,8 @@ public interface EleveService {
 
     List<Eleve> getAllEleveNonVu(int ensRefId);
 
+    List<Eleve> getTop10EleveOrderByReunion(int ensRefId);
+
     Eleve validateInscription(Eleve eleve);
 
 

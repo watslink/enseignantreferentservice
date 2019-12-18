@@ -30,7 +30,7 @@ public class Eleve implements Serializable {
     private boolean dossierAccepte;
     private boolean vu;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateReunion;
 
     private String commentaire;

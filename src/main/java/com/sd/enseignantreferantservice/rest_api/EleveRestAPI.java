@@ -47,6 +47,11 @@ public class EleveRestAPI {
         return eleveService.getAllEleveNonVu(ensRefId);
     }
 
+    @GetMapping("/eleves/nextRDV/{ensRefId}")
+    public List<Eleve> getListEleve10NextRDV(@PathVariable int ensRefId) {
+        return eleveService.getTop10EleveOrderByReunion(ensRefId);
+    }
+
     @PostMapping("/elevevalidate")
     public Eleve validateInscription(@RequestBody Eleve eleve){
         return eleveService.validateInscription(eleve);

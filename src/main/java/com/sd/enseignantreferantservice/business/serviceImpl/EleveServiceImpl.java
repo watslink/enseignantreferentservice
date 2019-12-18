@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -92,6 +93,11 @@ public class EleveServiceImpl implements EleveService {
     @Override
     public List<Eleve> getAllEleveNonVu(int ensRefId) {
         return eleveRepository.findByDossierAccepteAndVuAndEnseignantReferent_EnseignantReferentIdOrderByNom(true, false, ensRefId);
+    }
+
+    @Override
+    public List<Eleve> getTop10EleveOrderByReunion(int ensRefId) {
+        return eleveRepository.findTop10ByEnseignantReferent_EnseignantReferentIdAndDateReunionAfterOrderByDateReunion(ensRefId, new Date());
     }
 
     @Override
