@@ -33,7 +33,20 @@ public class EleveServiceImpl implements EleveService {
     @Override
     public Eleve addEleve(Eleve eleve) {
         eleve.setDossierAccepte(false);
+        Set<RepresentantLegal> representantLegalSet = eleve.getListRepresentantsLegaux();
+        Set<EleveStructurePro> eleveStructureProSet = eleve.getListEleveStructurePros();
+        eleve.setListEleveStructurePros(null);
+        eleve.setListRepresentantsLegaux(null);
         eleve = eleveRepository.save(eleve);
+
+        for(RepresentantLegal representantLegal: representantLegalSet){
+            representantLegal.setEleve(eleve);
+        }
+        for(EleveStructurePro eleveStructurePro: eleveStructureProSet){
+            eleveStructurePro.setEleve(eleve);
+            eleveStructurePro.setPk(new EleveStructurePro.PK(eleveStructurePro.getStructurePro().getStructureProId(), eleve.getEleveId()));
+        }
+
         Set<EleveDocumentInscriptionRequis> eleveDocumentInscriptionRequisList = new HashSet<>();
 
         List<DocumentInscriptionRequis> documentInscriptionRequisList=documentInscriptionRequisRepository.findAll();
@@ -47,6 +60,8 @@ public class EleveServiceImpl implements EleveService {
             eleveDocumentInscriptionRequisList.add(eleveDocumentInscriptionRequis);
         }
 
+        eleve.setListRepresentantsLegaux(representantLegalSet);
+        eleve.setListEleveStructurePros(eleveStructureProSet);
         eleve.setListEleveDocumentsInscriptionRequis(eleveDocumentInscriptionRequisList);
 
         eleveRepository.save(eleve);
@@ -60,6 +75,16 @@ public class EleveServiceImpl implements EleveService {
 
     @Override
     public Eleve updateEleve(Eleve eleve) {
+        for(RepresentantLegal representantLegal: eleve.getListRepresentantsLegaux()){
+            representantLegal.setEleve(eleve);
+        }
+        for(EleveStructurePro eleveStructurePro: eleve.getListEleveStructurePros()){
+            eleveStructurePro.setEleve(eleve);
+            eleveStructurePro.setPk(new EleveStructurePro.PK(eleveStructurePro.getStructurePro().getStructureProId(), eleve.getEleveId()));
+        }
+        for(Document document: eleve.getListDocuments()){
+            document.setEleve(eleve);
+        }
         eleveRepository.save(eleve);
         return eleve;
     }

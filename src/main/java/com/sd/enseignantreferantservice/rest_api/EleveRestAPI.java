@@ -18,7 +18,6 @@ public class EleveRestAPI {
 
     @GetMapping("/eleve/{id}")
     public Eleve getEleve(@PathVariable int id){
-
         return  eleveService.getEleve(id);
     }
 
@@ -64,16 +63,6 @@ public class EleveRestAPI {
 
     @PutMapping("/eleve")
     public Eleve updateEleve(@RequestBody Eleve eleve){
-        for(RepresentantLegal representantLegal: eleve.getListRepresentantsLegaux()){
-            representantLegal.setEleve(eleve);
-        }
-        for(EleveStructurePro eleveStructurePro: eleve.getListEleveStructurePros()){
-            eleveStructurePro.setEleve(eleve);
-            eleveStructurePro.setPk(new EleveStructurePro.PK(eleveStructurePro.getStructurePro().getStructureProId(), eleve.getEleveId()));
-        }
-        for(Document document: eleve.getListDocuments()){
-            document.setEleve(eleve);
-        }
         return eleveService.updateEleve(eleve);
     }
 
