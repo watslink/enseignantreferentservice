@@ -33,32 +33,41 @@ public class EleveServiceImpl implements EleveService {
     @Override
     public Eleve addEleve(Eleve eleve) {
         eleve.setDossierAccepte(false);
+        eleve.setVu(false);
         Set<RepresentantLegal> representantLegalSet = eleve.getListRepresentantsLegaux();
         Set<EleveStructurePro> eleveStructureProSet = eleve.getListEleveStructurePros();
         eleve.setListEleveStructurePros(null);
         eleve.setListRepresentantsLegaux(null);
         eleve = eleveRepository.save(eleve);
 
-        for(RepresentantLegal representantLegal: representantLegalSet){
-            representantLegal.setEleve(eleve);
+        if(representantLegalSet!=null) {
+            for (RepresentantLegal representantLegal : representantLegalSet) {
+                representantLegal.setEleve(eleve);
+            }
         }
-        for(EleveStructurePro eleveStructurePro: eleveStructureProSet){
-            eleveStructurePro.setEleve(eleve);
-            eleveStructurePro.setPk(new EleveStructurePro.PK(eleveStructurePro.getStructurePro().getStructureProId(), eleve.getEleveId()));
+        if(eleveStructureProSet!=null){
+            for(EleveStructurePro eleveStructurePro: eleveStructureProSet){
+                eleveStructurePro.setEleve(eleve);
+                eleveStructurePro.setPk(new EleveStructurePro.PK(eleveStructurePro.getStructurePro().getStructureProId(), eleve.getEleveId()));
+            }
         }
+
 
         Set<EleveDocumentInscriptionRequis> eleveDocumentInscriptionRequisList = new HashSet<>();
 
         List<DocumentInscriptionRequis> documentInscriptionRequisList=documentInscriptionRequisRepository.findAll();
 
-        for (DocumentInscriptionRequis dir: documentInscriptionRequisList) {
-            EleveDocumentInscriptionRequis eleveDocumentInscriptionRequis=new EleveDocumentInscriptionRequis();
-            eleveDocumentInscriptionRequis.setDocumentInscriptionRequis(dir);
-            eleveDocumentInscriptionRequis.setEleve(eleve);
-            eleveDocumentInscriptionRequis.setPk(new EleveDocumentInscriptionRequis.PK(dir.getDocumentInscriptionRequisId(), eleve.getEleveId()));
-            eleveDocumentInscriptionRequis.setOk(false);
-            eleveDocumentInscriptionRequisList.add(eleveDocumentInscriptionRequis);
+        if(documentInscriptionRequisList!=null){
+            for (DocumentInscriptionRequis dir: documentInscriptionRequisList) {
+                EleveDocumentInscriptionRequis eleveDocumentInscriptionRequis=new EleveDocumentInscriptionRequis();
+                eleveDocumentInscriptionRequis.setDocumentInscriptionRequis(dir);
+                eleveDocumentInscriptionRequis.setEleve(eleve);
+                eleveDocumentInscriptionRequis.setPk(new EleveDocumentInscriptionRequis.PK(dir.getDocumentInscriptionRequisId(), eleve.getEleveId()));
+                eleveDocumentInscriptionRequis.setOk(false);
+                eleveDocumentInscriptionRequisList.add(eleveDocumentInscriptionRequis);
+            }
         }
+
 
         eleve.setListRepresentantsLegaux(representantLegalSet);
         eleve.setListEleveStructurePros(eleveStructureProSet);
@@ -127,6 +136,13 @@ public class EleveServiceImpl implements EleveService {
 
     @Override
     public Eleve validateInscription(Eleve eleve) {
+        for(RepresentantLegal representantLegal: eleve.getListRepresentantsLegaux()){
+            representantLegal.setEleve(eleve);
+        }
+        for(EleveStructurePro eleveStructurePro: eleve.getListEleveStructurePros()){
+            eleveStructurePro.setEleve(eleve);
+            eleveStructurePro.setPk(new EleveStructurePro.PK(eleveStructurePro.getStructurePro().getStructureProId(), eleve.getEleveId()));
+        }
         eleve.setDossierAccepte(true);
         Categorie categorie=categorieRepository.getOne(1);
         for (EleveDocumentInscriptionRequis edir:eleve.getListEleveDocumentsInscriptionRequis()){
