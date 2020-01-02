@@ -23,7 +23,7 @@ public class Niveau implements Serializable {
 
     private String libelle;
 
-    private int degre;
+    private Integer degre;
 
     private boolean specialise;
 
