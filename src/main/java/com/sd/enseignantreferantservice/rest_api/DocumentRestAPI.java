@@ -17,16 +17,6 @@ public class DocumentRestAPI {
     public Document addDocument(@RequestBody Document document){
         return documentService.addDocument(document);
     }
-
-    @PutMapping("/document")
-    public Document updateDocument(@RequestBody Document document){
-        return documentService.updateDocument(document);
-    }
-
-    @DeleteMapping("/document/{id}")
-    public void deleteDocument(@PathVariable int id){
-        documentService.deleteDocument(id);
-    }
 }
 
 
