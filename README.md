@@ -20,14 +20,14 @@ BDD
 -----
 
 Pour le developpement et les test, utilisez la base de données PostGreSQL sur Docker:
--dans le dossier docker/dev/ :
-        -Démarrer la BDD:
-            docker-compose up
-        -Réinitialisez la BDD:
-            docker-compose stop
-            docker-compose rm
-            docker-compose up
--Les informations de connection sont dans le fichier docker-compose.yml
+ - dans le dossier docker/dev/ :
+        - Démarrer la BDD:
+            - docker-compose up
+        - Réinitialisez la BDD:
+            - docker-compose stop
+            - docker-compose rm
+            - docker-compose up
+ - Les informations de connection sont dans le fichier docker-compose.yml
 
 --------------
 Configuration
