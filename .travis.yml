@@ -12,7 +12,7 @@ before_script:
   - docker-compose -f docker/dev/docker-compose.yml rm -v
   - docker-compose -f docker/dev/docker-compose.yml up -d
 
-script: "mvn clean cobertura:cobertura"
+script: "mvn cobertura:cobertura"
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
