@@ -11,7 +11,7 @@ Il permet entre autre:
  - la gestion des établissements, PIALs, AESHs, Structures Professionnelles, Représentants legaux, Materiels
    pédagogiques adaptés, niveaux.
  - la gestion de documents selon différentes catégories paramétrables.
- - la gestion des nouvelles inscriptions avec liste de documents requis obligatoire paramétrable.
+ - la gestion des nouvelles inscriptions avec liste de documents requis obligatoires paramétrable.
  - la gestion des rendez-vous.
 
 
@@ -21,12 +21,12 @@ BDD
 
 Pour le developpement et les test, utilisez la base de données PostGreSQL sur Docker:
  - dans le dossier docker/dev/ :
-        - Démarrer la BDD:
-            - docker-compose up
-        - Réinitialisez la BDD:
-            - docker-compose stop
-            - docker-compose rm
-            - docker-compose up
+   - Démarrer la BDD:
+        - docker-compose up
+   - Réinitialisez la BDD:
+        - docker-compose stop
+        - docker-compose rm
+        - docker-compose up
  - Les informations de connection sont dans le fichier docker-compose.yml
 
 --------------
