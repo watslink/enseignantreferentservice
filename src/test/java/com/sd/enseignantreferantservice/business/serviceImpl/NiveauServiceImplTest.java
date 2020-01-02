@@ -32,6 +32,9 @@ public class NiveauServiceImplTest {
         niveau.setEnseignantReferent(ensRef);
         Niveau niveauSaved = niveauService.addNiveau(niveau);
         assertEquals("nouveau", niveauSaved.getLibelle());
+        assertFalse(niveauSaved.isSpecialise());
+        assertEquals(1, niveauSaved.getDegre());
+        assertEquals(ensRef, niveauSaved.getEnseignantReferent());
     }
 
     @Test
