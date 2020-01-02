@@ -2,6 +2,8 @@ language: java
 jdk: oraclejdk8
 dist: trusty
 
+install: true
+
 services:
   - docker
 
@@ -10,7 +12,7 @@ before_script:
   - docker-compose -f docker/dev/docker-compose.yml rm -v
   - docker-compose -f docker/dev/docker-compose.yml up -d
 
-script: "mvn cobertura:cobertura"
+script: "mvn clean cobertura:cobertura"
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
