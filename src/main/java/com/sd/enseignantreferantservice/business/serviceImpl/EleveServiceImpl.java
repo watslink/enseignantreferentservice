@@ -1,10 +1,7 @@
 package com.sd.enseignantreferantservice.business.serviceImpl;
 
 import com.sd.enseignantreferantservice.business.serviceInterface.EleveService;
-import com.sd.enseignantreferantservice.dao.CategorieRepository;
-import com.sd.enseignantreferantservice.dao.DocumentInscriptionRequisRepository;
-import com.sd.enseignantreferantservice.dao.EleveDocumentInscriptionRequisRepository;
-import com.sd.enseignantreferantservice.dao.EleveRepository;
+import com.sd.enseignantreferantservice.dao.*;
 import com.sd.enseignantreferantservice.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +16,9 @@ public class EleveServiceImpl implements EleveService {
 
     @Autowired
     EleveRepository eleveRepository;
+
+    @Autowired
+    DocumentRepository documentRepository;
 
     @Autowired
     DocumentInscriptionRequisRepository documentInscriptionRequisRepository;
@@ -145,9 +145,10 @@ public class EleveServiceImpl implements EleveService {
         }
         eleve.setDossierAccepte(true);
         Categorie categorie=categorieRepository.getOne(1);
-        for (EleveDocumentInscriptionRequis edir:eleve.getListEleveDocumentsInscriptionRequis()){
-          eleve.getListDocuments().add(new Document(edir.getDocumentInscriptionRequis().getNom(), edir.getExtension(), categorie, eleve));
-          eleveRepository.save(eleve);
+        Set<EleveDocumentInscriptionRequis> eleveDocumentInscriptionRequisList = eleve.getListEleveDocumentsInscriptionRequis();
+        for (EleveDocumentInscriptionRequis edir:eleveDocumentInscriptionRequisList){
+          Document document = new Document(edir.getDocumentInscriptionRequis().getNom(), edir.getExtension(), categorie, eleve);
+          documentRepository.save(document);
           eleve=eleveRepository.getOne(eleve.getEleveId());
         }
         eleve.getListEleveDocumentsInscriptionRequis().clear();

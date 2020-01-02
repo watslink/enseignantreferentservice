@@ -228,10 +228,10 @@ public class EleveServiceImplTest {
     @Transactional
     @Rollback
     public void validateInscription() {
-//        Eleve eleve = eleveService.getEleve(19);
-//        Eleve eleveValidated = eleveService.validateInscription(eleve);
-//        assertTrue(eleveValidated.isDossierAccepte());
-//        assertEquals(0, eleveValidated.getListEleveDocumentsInscriptionRequis().size());
-//        assertEquals(2, eleve.getListDocuments().size());
+        Eleve eleve = eleveService.getEleve(19);
+        Eleve eleveValidated = eleveService.validateInscription(eleve);
+        assertTrue(eleveValidated.isDossierAccepte());
+        assertEquals(0, eleveValidated.getListEleveDocumentsInscriptionRequis().size());
+        assertEquals(2, eleve.getListDocuments().size());
     }
 }
