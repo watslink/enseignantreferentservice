@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.com/watslink/enseignantreferentservice.svg?branch=master)](https://travis-ci.com/watslink/enseignantreferentservice)
-
 [![codecov](https://codecov.io/gh/watslink/enseignantreferentservice/branch/master/graph/badge.svg)](https://codecov.io/gh/watslink/enseignantreferentservice)
 
 **********************************************************************************************
