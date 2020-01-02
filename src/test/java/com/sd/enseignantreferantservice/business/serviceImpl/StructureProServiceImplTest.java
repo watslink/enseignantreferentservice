@@ -44,7 +44,10 @@ public class StructureProServiceImplTest {
         assertEquals("mail@mail.com" , structureProAdded.getMail());
         assertEquals("06.06.06.06.06" , structureProAdded.getTelephone());
         assertEquals("spe" , structureProAdded.getSpecialite());
-        assertEquals(adresse , structureProAdded.getAdresse());
+        assertEquals(59000 , structureProAdded.getAdresse().getCodePostal());
+        assertEquals(9 , structureProAdded.getAdresse().getNumero());
+        assertEquals("Lille" , structureProAdded.getAdresse().getVille());
+        assertEquals("rue rue" , structureProAdded.getAdresse().getVoie());
         assertEquals(ensRef , structureProAdded.getEnseignantReferent());
     }
 
