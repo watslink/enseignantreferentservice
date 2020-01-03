@@ -1,10 +1,7 @@
 package com.sd.enseignantreferantservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -48,6 +45,7 @@ public class EleveStructurePro implements Serializable {
     private Date dateNotification;
 
     @Override
+    @Generated
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -57,6 +55,7 @@ public class EleveStructurePro implements Serializable {
     }
 
     @Override
+    @Generated
     public int hashCode() {
         return Objects.hash(structurePro, eleve);
     }

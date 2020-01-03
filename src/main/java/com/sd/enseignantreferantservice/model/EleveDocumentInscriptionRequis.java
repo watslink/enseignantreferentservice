@@ -45,6 +45,7 @@ public class EleveDocumentInscriptionRequis implements Serializable {
         private boolean ok;
 
     @Override
+    @Generated
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -54,6 +55,7 @@ public class EleveDocumentInscriptionRequis implements Serializable {
     }
 
     @Override
+    @Generated
     public int hashCode() {
         return Objects.hash(documentInscriptionRequis, eleve);
     }

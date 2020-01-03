@@ -3,10 +3,7 @@ package com.sd.enseignantreferantservice.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -82,6 +79,7 @@ public class EnseignantReferent implements Serializable {
     private Set<Eleve> listEleves;
 
     @Override
+    @Generated
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -90,6 +88,7 @@ public class EnseignantReferent implements Serializable {
     }
 
     @Override
+    @Generated
     public int hashCode() {
         return Objects.hash(enseignantReferentId);
     }

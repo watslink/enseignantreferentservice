@@ -1,10 +1,7 @@
 package com.sd.enseignantreferantservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -32,6 +29,7 @@ public class DocumentInscriptionRequis implements Serializable {
     private EnseignantReferent enseignantReferent;
 
     @Override
+    @Generated
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -40,6 +38,7 @@ public class DocumentInscriptionRequis implements Serializable {
     }
 
     @Override
+    @Generated
     public int hashCode() {
         return Objects.hash(documentInscriptionRequisId);
     }

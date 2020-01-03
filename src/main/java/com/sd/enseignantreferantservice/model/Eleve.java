@@ -2,10 +2,7 @@ package com.sd.enseignantreferantservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -75,6 +72,7 @@ public class Eleve implements Serializable {
     private Set<EleveDocumentInscriptionRequis> listEleveDocumentsInscriptionRequis;
 
     @Override
+    @Generated
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -83,6 +81,7 @@ public class Eleve implements Serializable {
     }
 
     @Override
+    @Generated
     public int hashCode() {
         return Objects.hash(eleveId);
     }

@@ -37,6 +37,7 @@ public class Adresse implements Serializable {
     }
 
     @Override
+    @Generated
     public int hashCode() {
         return Objects.hash(adresseId);
     }
