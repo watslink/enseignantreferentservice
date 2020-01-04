@@ -94,7 +94,7 @@ public class EleveServiceImpl implements EleveService {
         for(Document document: eleve.getListDocuments()){
             document.setEleve(eleve);
         }
-        eleveRepository.save(eleve);
+        eleve = eleveRepository.save(eleve);
         return eleve;
     }
 
@@ -136,6 +136,16 @@ public class EleveServiceImpl implements EleveService {
 
     @Override
     public Eleve validateInscription(Eleve eleve) {
+
+        Categorie categorie=categorieRepository.getOne(1);
+        Set<EleveDocumentInscriptionRequis> eleveDocumentInscriptionRequisList = eleve.getListEleveDocumentsInscriptionRequis();
+        for (EleveDocumentInscriptionRequis edir:eleveDocumentInscriptionRequisList){
+          Document document = new Document(edir.getDocumentInscriptionRequis().getNom(), edir.getExtension(), categorie, eleve);
+          documentRepository.save(document);
+          eleve=eleveRepository.getOne(eleve.getEleveId());
+
+        }
+        eleve.getListEleveDocumentsInscriptionRequis().clear();
         for(RepresentantLegal representantLegal: eleve.getListRepresentantsLegaux()){
             representantLegal.setEleve(eleve);
         }
@@ -144,14 +154,6 @@ public class EleveServiceImpl implements EleveService {
             eleveStructurePro.setPk(new EleveStructurePro.PK(eleveStructurePro.getStructurePro().getStructureProId(), eleve.getEleveId()));
         }
         eleve.setDossierAccepte(true);
-        Categorie categorie=categorieRepository.getOne(1);
-        Set<EleveDocumentInscriptionRequis> eleveDocumentInscriptionRequisList = eleve.getListEleveDocumentsInscriptionRequis();
-        for (EleveDocumentInscriptionRequis edir:eleveDocumentInscriptionRequisList){
-          Document document = new Document(edir.getDocumentInscriptionRequis().getNom(), edir.getExtension(), categorie, eleve);
-          documentRepository.save(document);
-          eleve=eleveRepository.getOne(eleve.getEleveId());
-        }
-        eleve.getListEleveDocumentsInscriptionRequis().clear();
         eleveRepository.save(eleve);
         return eleve;
     }

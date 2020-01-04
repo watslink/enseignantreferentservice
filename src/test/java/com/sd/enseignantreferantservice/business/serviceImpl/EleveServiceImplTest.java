@@ -241,6 +241,7 @@ public class EleveServiceImplTest {
     @Rollback
     public void validateInscription() {
         Eleve eleve = eleveService.getEleve(19);
+        System.out.println(eleve.isDossierAccepte());
         Eleve eleveValidated = eleveService.validateInscription(eleve);
         assertTrue(eleveValidated.isDossierAccepte());
         assertEquals(0, eleveValidated.getListEleveDocumentsInscriptionRequis().size());
