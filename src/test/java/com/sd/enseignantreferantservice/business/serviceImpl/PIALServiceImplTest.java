@@ -7,12 +7,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 
 @RunWith(SpringRunner.class)
@@ -29,11 +28,11 @@ public class PIALServiceImplTest {
     public void addPial() {
         PIAL pial = new PIAL();
         pial.setNom("Lille");
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         pial.setEnseignantReferent(ensRef);
         pialService.addPial(pial);
-        assertEquals("Lille" , pialService.getAllPial(1).get(0).getNom());
+        assertEquals("Lille", pialService.getAllPial(1).get(0).getNom());
     }
 
     @Test

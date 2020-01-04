@@ -1,13 +1,11 @@
 package com.sd.enseignantreferantservice.rest_api;
 
 import com.sd.enseignantreferantservice.business.serviceInterface.EleveService;
-import com.sd.enseignantreferantservice.business.serviceInterface.FileService;
-import com.sd.enseignantreferantservice.model.*;
+import com.sd.enseignantreferantservice.model.Eleve;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 public class EleveRestAPI {
@@ -17,8 +15,8 @@ public class EleveRestAPI {
     private EleveService eleveService;
 
     @GetMapping("/eleve/{id}")
-    public Eleve getEleve(@PathVariable int id){
-        return  eleveService.getEleve(id);
+    public Eleve getEleve(@PathVariable int id) {
+        return eleveService.getEleve(id);
     }
 
     @GetMapping("/eleves/{ensRefId}")
@@ -52,22 +50,22 @@ public class EleveRestAPI {
     }
 
     @PostMapping("/elevevalidate")
-    public Eleve validateInscription(@RequestBody Eleve eleve){
+    public Eleve validateInscription(@RequestBody Eleve eleve) {
         return eleveService.validateInscription(eleve);
     }
 
     @PostMapping("/eleve")
-    public Eleve addEleve(@RequestBody Eleve eleve){
+    public Eleve addEleve(@RequestBody Eleve eleve) {
         return eleveService.addEleve(eleve);
     }
 
     @PutMapping("/eleve")
-    public Eleve updateEleve(@RequestBody Eleve eleve){
+    public Eleve updateEleve(@RequestBody Eleve eleve) {
         return eleveService.updateEleve(eleve);
     }
 
     @DeleteMapping("/eleve/{id}")
-    public void deleteEleve(@PathVariable int id){
+    public void deleteEleve(@PathVariable int id) {
         eleveService.deleteEleve(id);
     }
 

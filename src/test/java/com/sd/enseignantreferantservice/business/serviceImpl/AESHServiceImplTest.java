@@ -1,7 +1,6 @@
 package com.sd.enseignantreferantservice.business.serviceImpl;
 
 import com.sd.enseignantreferantservice.model.AESH;
-import com.sd.enseignantreferantservice.model.Adresse;
 import com.sd.enseignantreferantservice.model.EnseignantReferent;
 import com.sd.enseignantreferantservice.model.PIAL;
 import org.junit.Test;
@@ -12,7 +11,8 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -26,10 +26,10 @@ public class AESHServiceImplTest {
     @Rollback
     public void addAesh() {
         AESH aesh = new AESH();
-        PIAL pial=new PIAL();
+        PIAL pial = new PIAL();
         pial.setPialId(1);
         aesh.setPial(pial);
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         aesh.setEnseignantReferent(ensRef);
         aesh.setMail("mail@mail.com");
@@ -37,11 +37,11 @@ public class AESHServiceImplTest {
         aesh.setNom("nom");
         aesh.setPrenom("prenom");
         AESH aeshAdded = aeshService.addAesh(aesh);
-        assertEquals("nom" , aeshAdded.getNom());
-        assertEquals("prenom" , aeshAdded.getPrenom());
-        assertEquals("mail@mail.com" , aeshAdded.getMail());
-        assertEquals("06.06.06.06.06" , aeshAdded.getTelephone());
-        assertEquals(ensRef , aeshAdded.getEnseignantReferent());
+        assertEquals("nom", aeshAdded.getNom());
+        assertEquals("prenom", aeshAdded.getPrenom());
+        assertEquals("mail@mail.com", aeshAdded.getMail());
+        assertEquals("06.06.06.06.06", aeshAdded.getTelephone());
+        assertEquals(ensRef, aeshAdded.getEnseignantReferent());
         assertEquals(pial, aeshAdded.getPial());
     }
 

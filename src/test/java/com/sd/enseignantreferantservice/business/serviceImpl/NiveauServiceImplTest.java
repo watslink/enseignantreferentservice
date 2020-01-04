@@ -27,7 +27,7 @@ public class NiveauServiceImplTest {
         niveau.setDegre(1);
         niveau.setLibelle("nouveau");
         niveau.setSpecialise(false);
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         niveau.setEnseignantReferent(ensRef);
         Niveau niveauSaved = niveauService.addNiveau(niveau);

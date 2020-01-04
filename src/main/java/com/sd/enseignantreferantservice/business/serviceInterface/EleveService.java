@@ -7,8 +7,10 @@ import java.util.List;
 public interface EleveService {
 
     Eleve addEleve(Eleve eleve);
-    void deleteEleve (int id);
-    Eleve updateEleve (Eleve eleve);
+
+    void deleteEleve(int id);
+
+    Eleve updateEleve(Eleve eleve);
 
     Eleve getEleve(int id);
 
@@ -25,8 +27,6 @@ public interface EleveService {
     List<Eleve> getTop10EleveOrderByReunion(int ensRefId);
 
     Eleve validateInscription(Eleve eleve);
-
-
 
 
 }

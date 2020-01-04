@@ -15,34 +15,17 @@ public class EleveDocumentInscriptionRequis implements Serializable {
 
     @EmbeddedId
     private PK pk;
-
-    @Embeddable
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class PK implements Serializable {
-        private Integer documentInscriptionRequis;
-
-        private Integer eleve;
-    }
-
-
-        @MapsId("documentInscriptionRequis")
-        @ManyToOne
-        @JoinColumn(name = "document_inscription_requis_id")
-        private DocumentInscriptionRequis documentInscriptionRequis;
-
-        @JsonIgnore
-        @MapsId("eleve")
-        @ManyToOne
-        @JoinColumn(name = "eleve_id")
-        private Eleve eleve;
-
-
-        private String extension;
-
-        private boolean ok;
+    @MapsId("documentInscriptionRequis")
+    @ManyToOne
+    @JoinColumn(name = "document_inscription_requis_id")
+    private DocumentInscriptionRequis documentInscriptionRequis;
+    @JsonIgnore
+    @MapsId("eleve")
+    @ManyToOne
+    @JoinColumn(name = "eleve_id")
+    private Eleve eleve;
+    private String extension;
+    private boolean ok;
 
     @Override
     @Generated
@@ -58,6 +41,17 @@ public class EleveDocumentInscriptionRequis implements Serializable {
     @Generated
     public int hashCode() {
         return Objects.hash(documentInscriptionRequis, eleve);
+    }
+
+    @Embeddable
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class PK implements Serializable {
+        private Integer documentInscriptionRequis;
+
+        private Integer eleve;
     }
 }
 

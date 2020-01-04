@@ -38,7 +38,7 @@ public class EnseignantReferentServiceImplTest {
         assertEquals("prenom", enseignantReferentAdded.getPrenom());
         assertEquals("mail@mail.com", enseignantReferentAdded.getMail());
         assertTrue(enseignantReferentAdded.isEnabled());
-        assertTrue(encoder.matches( "pass", enseignantReferentAdded.getMotDePasse()));
+        assertTrue(encoder.matches("pass", enseignantReferentAdded.getMotDePasse()));
     }
 
     @Test
@@ -95,7 +95,7 @@ public class EnseignantReferentServiceImplTest {
     @Rollback
     public void reinitializeAllRDV() {
         enseignantReferentService.reinitializeAllRDV(1);
-        for(Eleve eleve : enseignantReferentService.getEnseignantReferentById(1).getListEleves()) {
+        for (Eleve eleve : enseignantReferentService.getEnseignantReferentById(1).getListEleves()) {
             assertNull(eleve.getDateReunion());
         }
     }

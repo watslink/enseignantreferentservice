@@ -1,7 +1,6 @@
 package com.sd.enseignantreferantservice.business.serviceImpl;
 
 import com.sd.enseignantreferantservice.model.Adresse;
-import com.sd.enseignantreferantservice.model.Eleve;
 import com.sd.enseignantreferantservice.model.EnseignantReferent;
 import com.sd.enseignantreferantservice.model.StructurePro;
 import org.junit.Test;
@@ -12,7 +11,8 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -26,7 +26,7 @@ public class StructureProServiceImplTest {
     @Rollback
     public void addStructurePro() {
         StructurePro structurePro = new StructurePro();
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         structurePro.setEnseignantReferent(ensRef);
         structurePro.setMail("mail@mail.com");
@@ -40,15 +40,15 @@ public class StructureProServiceImplTest {
         structurePro.setNom("nom");
         structurePro.setSpecialite("spe");
         StructurePro structureProAdded = structureProService.addStructurePro(structurePro);
-        assertEquals("nom" , structureProAdded.getNom());
-        assertEquals("mail@mail.com" , structureProAdded.getMail());
-        assertEquals("06.06.06.06.06" , structureProAdded.getTelephone());
-        assertEquals("spe" , structureProAdded.getSpecialite());
-        assertEquals(59000 , structureProAdded.getAdresse().getCodePostal());
-        assertEquals(9 , structureProAdded.getAdresse().getNumero());
-        assertEquals("Lille" , structureProAdded.getAdresse().getVille());
-        assertEquals("rue rue" , structureProAdded.getAdresse().getVoie());
-        assertEquals(ensRef , structureProAdded.getEnseignantReferent());
+        assertEquals("nom", structureProAdded.getNom());
+        assertEquals("mail@mail.com", structureProAdded.getMail());
+        assertEquals("06.06.06.06.06", structureProAdded.getTelephone());
+        assertEquals("spe", structureProAdded.getSpecialite());
+        assertEquals(59000, structureProAdded.getAdresse().getCodePostal());
+        assertEquals(9, structureProAdded.getAdresse().getNumero());
+        assertEquals("Lille", structureProAdded.getAdresse().getVille());
+        assertEquals("rue rue", structureProAdded.getAdresse().getVoie());
+        assertEquals(ensRef, structureProAdded.getEnseignantReferent());
     }
 
     @Test

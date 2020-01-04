@@ -18,7 +18,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -32,8 +31,18 @@ public class EtablissementRestAPITest {
     @Autowired
     private MockMvc mvc;
 
+    public static String asJsonString(final Object obj) {
+        try {
+            final ObjectMapper mapper = new ObjectMapper();
+            final String jsonContent = mapper.writeValueAsString(obj);
+            return jsonContent;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Test
-    public void getEtablissement() throws Exception  {
+    public void getEtablissement() throws Exception {
         mvc.perform(get("/etablissement/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -41,7 +50,7 @@ public class EtablissementRestAPITest {
     }
 
     @Test
-    public void getListEtablissement() throws Exception  {
+    public void getListEtablissement() throws Exception {
         mvc.perform(get("/etablissements/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -51,12 +60,12 @@ public class EtablissementRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void addEtablissement() throws Exception  {
+    public void addEtablissement() throws Exception {
         Etablissement etablissement = new Etablissement();
-        PIAL pial=new PIAL();
+        PIAL pial = new PIAL();
         pial.setPialId(1);
         etablissement.setPial(pial);
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         etablissement.setEnseignantReferent(ensRef);
         etablissement.setMail("mail@mail.com");
@@ -69,7 +78,7 @@ public class EtablissementRestAPITest {
         etablissement.setAdresse(adresse);
         etablissement.setNom("nom");
         etablissement.setRne("1234567R");
-        mvc.perform(post("/etablissement" )
+        mvc.perform(post("/etablissement")
                 .content(asJsonString(etablissement))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -80,12 +89,12 @@ public class EtablissementRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void updateEtablissement() throws Exception  {
+    public void updateEtablissement() throws Exception {
         Etablissement etablissement = new Etablissement();
-        PIAL pial=new PIAL();
+        PIAL pial = new PIAL();
         pial.setPialId(1);
         etablissement.setPial(pial);
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         etablissement.setEnseignantReferent(ensRef);
         etablissement.setMail("mail@mail.com");
@@ -99,7 +108,7 @@ public class EtablissementRestAPITest {
         etablissement.setNom("nom");
         etablissement.setRne("1234567R");
         etablissement.setEtablissementId(1);
-        mvc.perform(put("/etablissement" )
+        mvc.perform(put("/etablissement")
                 .content(asJsonString(etablissement))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -114,7 +123,7 @@ public class EtablissementRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void deleteEtablissement() throws Exception  {
+    public void deleteEtablissement() throws Exception {
         mvc.perform(delete("/etablissement/2")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -122,15 +131,5 @@ public class EtablissementRestAPITest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").doesNotExist());
-    }
-
-    public static String asJsonString(final Object obj) {
-        try {
-            final ObjectMapper mapper = new ObjectMapper();
-            final String jsonContent = mapper.writeValueAsString(obj);
-            return jsonContent;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }

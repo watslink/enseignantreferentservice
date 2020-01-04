@@ -5,7 +5,6 @@ import com.sd.enseignantreferantservice.dao.NiveauRepository;
 import com.sd.enseignantreferantservice.model.Eleve;
 import com.sd.enseignantreferantservice.model.Niveau;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +26,7 @@ public class NiveauServiceImpl implements NiveauService {
     @Override
     public void deleteNiveau(int id) {
         Niveau niv = niveauRepository.getOne(id);
-        for(Eleve eleve: niv.getListEleve()){
+        for (Eleve eleve : niv.getListEleve()) {
             eleve.setNiveau(null);
         }
         niveauRepository.deleteById(id);
@@ -40,8 +39,8 @@ public class NiveauServiceImpl implements NiveauService {
 
     @Override
     public Niveau getNiveau(int id) {
-        Optional<Niveau> optionalNiveau=niveauRepository.findById(id);
-        return optionalNiveau.orElse(null) ;
+        Optional<Niveau> optionalNiveau = niveauRepository.findById(id);
+        return optionalNiveau.orElse(null);
     }
 
     @Override

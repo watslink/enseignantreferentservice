@@ -16,10 +16,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @WithMockUser
@@ -29,8 +29,18 @@ public class CategorieRestAPITest {
     @Autowired
     private MockMvc mvc;
 
+    public static String asJsonString(final Object obj) {
+        try {
+            final ObjectMapper mapper = new ObjectMapper();
+            final String jsonContent = mapper.writeValueAsString(obj);
+            return jsonContent;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Test
-    public void getCategorie()  throws Exception{
+    public void getCategorie() throws Exception {
         mvc.perform(get("/categorie/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -38,7 +48,7 @@ public class CategorieRestAPITest {
     }
 
     @Test
-    public void getListCategorie()  throws Exception{
+    public void getListCategorie() throws Exception {
         mvc.perform(get("/categories/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -48,13 +58,13 @@ public class CategorieRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void addCategorie()  throws Exception{
+    public void addCategorie() throws Exception {
         Categorie categorie = new Categorie();
         categorie.setNom("nom");
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         categorie.setEnseignantReferent(ensRef);
-        mvc.perform(post("/categorie" )
+        mvc.perform(post("/categorie")
                 .content(asJsonString(categorie))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -65,14 +75,14 @@ public class CategorieRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void updateCategorie()  throws Exception{
+    public void updateCategorie() throws Exception {
         Categorie categorie = new Categorie();
         categorie.setNom("nom");
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         categorie.setEnseignantReferent(ensRef);
         categorie.setCategorieId(2);
-        mvc.perform(put("/categorie" )
+        mvc.perform(put("/categorie")
                 .content(asJsonString(categorie))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -95,15 +105,5 @@ public class CategorieRestAPITest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").doesNotExist());
-    }
-
-    public static String asJsonString(final Object obj) {
-        try {
-            final ObjectMapper mapper = new ObjectMapper();
-            final String jsonContent = mapper.writeValueAsString(obj);
-            return jsonContent;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }

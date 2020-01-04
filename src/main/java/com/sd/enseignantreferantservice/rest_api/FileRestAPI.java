@@ -1,8 +1,6 @@
 package com.sd.enseignantreferantservice.rest_api;
 
 import com.sd.enseignantreferantservice.business.serviceInterface.FileService;
-
-
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +14,6 @@ import java.io.InputStream;
 import java.nio.file.Path;
 
 
-
 @RestController
 public class FileRestAPI {
 
@@ -27,23 +24,25 @@ public class FileRestAPI {
     @PostMapping(value = "/files")
     @ResponseStatus(HttpStatus.OK)
     public Path handleFileUpload(@RequestParam("file") MultipartFile file,
-                                 @RequestParam ("eleveDirectory") String eleveDirectory,
+                                 @RequestParam("eleveDirectory") String eleveDirectory,
                                  @RequestParam("nomFichier") String nomFichier) throws IOException {
 
         return fileService.storeFile(file, eleveDirectory, nomFichier);
     }
 
     @PostMapping(value = "/filesDownload", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public @ResponseBody byte[] getFile(@RequestParam("nomFichier") String nomFichier,
-                                        @RequestParam("eleveDirectory") String eleveDirectory) throws IOException {
+    public @ResponseBody
+    byte[] getFile(@RequestParam("nomFichier") String nomFichier,
+                   @RequestParam("eleveDirectory") String eleveDirectory) throws IOException {
         InputStream in = new FileInputStream(fileService.getFile(eleveDirectory, nomFichier));
-        byte[] data=IOUtils.toByteArray(in);
+        byte[] data = IOUtils.toByteArray(in);
         in.close();
         return data;
     }
+
     @PostMapping(value = "/filesDelete")
     public boolean removeFile(@RequestParam("nomFichier") String nomFichier,
-                                        @RequestParam("eleveDirectory") String eleveDirectory) throws IOException {
+                              @RequestParam("eleveDirectory") String eleveDirectory) throws IOException {
 
         return fileService.deleteFile(eleveDirectory, nomFichier);
     }

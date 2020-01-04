@@ -1,8 +1,10 @@
 package com.sd.enseignantreferantservice.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+import lombok.Generated;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,7 +18,8 @@ import java.util.Set;
 @Entity
 public class Eleve implements Serializable {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int eleveId;
 
     private String nom;
@@ -33,28 +36,28 @@ public class Eleve implements Serializable {
     private String commentaire;
 
     @ManyToOne
-    @JoinColumn(name="niveau_id")
+    @JoinColumn(name = "niveau_id")
     private Niveau niveau;
 
     @ManyToOne
-    @JoinColumn(name="etablissement_id")
+    @JoinColumn(name = "etablissement_id")
     private Etablissement etablissement;
 
     @ManyToOne
-    @JoinColumn(name="AESH_id")
+    @JoinColumn(name = "AESH_id")
     private AESH aesh;
 
     @Temporal(TemporalType.DATE)
     private Date dateNotificationAesh;
 
     @ManyToOne
-    @JoinColumn(name="enseignant_referent_id")
+    @JoinColumn(name = "enseignant_referent_id")
     private EnseignantReferent enseignantReferent;
 
-    @OneToMany(mappedBy = "eleve",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY )
+    @OneToMany(mappedBy = "eleve", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<RepresentantLegal> listRepresentantsLegaux;
 
-    @OneToMany(mappedBy = "eleve",cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY )
+    @OneToMany(mappedBy = "eleve", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonIgnoreProperties("eleve")
     private Set<EleveStructurePro> listEleveStructurePros;
 
@@ -65,10 +68,10 @@ public class Eleve implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "materiel_pedago_adapte_id")})
     private Set<MaterielPedagoAdapte> listMaterielsPedagoAdaptes;
 
-    @OneToMany(mappedBy = "eleve",cascade = CascadeType.ALL, orphanRemoval = true )
+    @OneToMany(mappedBy = "eleve", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Document> listDocuments;
 
-    @OneToMany(mappedBy = "eleve",cascade = CascadeType.ALL,  orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "eleve", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<EleveDocumentInscriptionRequis> listEleveDocumentsInscriptionRequis;
 
     @Override

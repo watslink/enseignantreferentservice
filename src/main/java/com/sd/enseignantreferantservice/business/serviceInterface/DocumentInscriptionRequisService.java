@@ -7,8 +7,10 @@ import java.util.List;
 public interface DocumentInscriptionRequisService {
 
     DocumentInscriptionRequis addDocumentInscriptionRequis(DocumentInscriptionRequis documentInscriptionRequis);
-    void deleteDocumentInscriptionRequis (int id);
-    DocumentInscriptionRequis updateDocumentInscriptionRequis (DocumentInscriptionRequis documentInscriptionRequis);
+
+    void deleteDocumentInscriptionRequis(int id);
+
+    DocumentInscriptionRequis updateDocumentInscriptionRequis(DocumentInscriptionRequis documentInscriptionRequis);
 
     DocumentInscriptionRequis getDocumentInscriptionRequis(int id);
 

@@ -1,8 +1,10 @@
 package com.sd.enseignantreferantservice.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+import lombok.Generated;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +17,8 @@ import java.util.Objects;
 @Entity
 public class MaterielPedagoAdapte implements Serializable {
 
-    @Id @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int materielPedagoAdapteId;
 
     private String nom;
@@ -29,7 +32,7 @@ public class MaterielPedagoAdapte implements Serializable {
     private List<Eleve> listEleve;
 
     @ManyToOne
-    @JoinColumn(name="enseignant_referent_id")
+    @JoinColumn(name = "enseignant_referent_id")
     private EnseignantReferent enseignantReferent;
 
     @Override

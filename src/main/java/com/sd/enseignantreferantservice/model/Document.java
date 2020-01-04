@@ -1,7 +1,10 @@
 package com.sd.enseignantreferantservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.Generated;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,7 +16,8 @@ import java.util.Objects;
 @Entity
 public class Document implements Serializable {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int documentId;
 
     private String nom;
@@ -21,13 +25,20 @@ public class Document implements Serializable {
     private String extension;
 
     @ManyToOne
-    @JoinColumn(name="categorie_id")
+    @JoinColumn(name = "categorie_id")
     private Categorie categorie;
 
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "eleve_id")
     private Eleve eleve;
+
+    public Document(String nom, String extension, Categorie categorie, Eleve eleve) {
+        this.nom = nom;
+        this.extension = extension;
+        this.categorie = categorie;
+        this.eleve = eleve;
+    }
 
     @Override
     @Generated
@@ -42,12 +53,5 @@ public class Document implements Serializable {
     @Generated
     public int hashCode() {
         return Objects.hash(documentId);
-    }
-
-    public Document(String nom, String extension, Categorie categorie, Eleve eleve) {
-        this.nom = nom;
-        this.extension = extension;
-        this.categorie = categorie;
-        this.eleve = eleve;
     }
 }

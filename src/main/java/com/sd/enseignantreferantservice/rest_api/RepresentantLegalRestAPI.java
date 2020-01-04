@@ -15,8 +15,8 @@ public class RepresentantLegalRestAPI {
     private RepresentantLegalService representantLegalService;
 
     @GetMapping("/representantLegal/{id}")
-    public RepresentantLegal getRepresentantLegal(@PathVariable int id){
-        return  representantLegalService.getRepresentantLegal(id);
+    public RepresentantLegal getRepresentantLegal(@PathVariable int id) {
+        return representantLegalService.getRepresentantLegal(id);
     }
 
     @GetMapping("/representantsLegaux/{ensRefId}")
@@ -25,12 +25,12 @@ public class RepresentantLegalRestAPI {
     }
 
     @PutMapping("/representantLegal")
-    public RepresentantLegal updateRepresentantLegal(@RequestBody RepresentantLegal representantLegal){
+    public RepresentantLegal updateRepresentantLegal(@RequestBody RepresentantLegal representantLegal) {
         return representantLegalService.updateRepresentantLegal(representantLegal);
     }
 
     @DeleteMapping("/representantLegal/{id}")
-    public void deleteRepresentantLegal(@PathVariable int id){
+    public void deleteRepresentantLegal(@PathVariable int id) {
         representantLegalService.deleteRepresentantLegal(id);
     }
 }

@@ -7,8 +7,10 @@ import java.util.List;
 public interface AESHService {
 
     AESH addAesh(AESH aesh);
-    void deleteAesh (int id);
-    AESH updateAesh (AESH aesh);
+
+    void deleteAesh(int id);
+
+    AESH updateAesh(AESH aesh);
 
     AESH getAesh(int id);
 

@@ -4,7 +4,6 @@ import com.sd.enseignantreferantservice.business.serviceInterface.RepresentantLe
 import com.sd.enseignantreferantservice.dao.RepresentantLegalRepository;
 import com.sd.enseignantreferantservice.model.RepresentantLegal;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,8 +34,8 @@ public class RepresentantLegalServiceImpl implements RepresentantLegalService {
 
     @Override
     public RepresentantLegal getRepresentantLegal(int id) {
-        Optional<RepresentantLegal> optionalRepresentantLegal=representantLegalRepository.findById(id);
-        return optionalRepresentantLegal.orElse(null) ;
+        Optional<RepresentantLegal> optionalRepresentantLegal = representantLegalRepository.findById(id);
+        return optionalRepresentantLegal.orElse(null);
     }
 
     @Override

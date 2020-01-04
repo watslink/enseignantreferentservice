@@ -7,8 +7,10 @@ import java.util.List;
 public interface CategorieService {
 
     Categorie addCategorie(Categorie categorie);
-    void deleteCategorie (int id);
-    Categorie updateCategorie (Categorie categorie);
+
+    void deleteCategorie(int id);
+
+    Categorie updateCategorie(Categorie categorie);
 
     Categorie getCategorie(int id);
 

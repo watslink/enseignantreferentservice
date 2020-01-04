@@ -24,26 +24,24 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
         httpServletResponse.addHeader("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, Content-Type," +
                 "Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
         httpServletResponse.addHeader("Access-Control-Expose-Headers", "Access-Control-Allow-Origin, Access-Control-Allow-Credentials, Authorization");
-        httpServletResponse.addHeader("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS");
-        String jwt=httpServletRequest.getHeader(SecurityConstants.HEADER_STRING);
+        httpServletResponse.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        String jwt = httpServletRequest.getHeader(SecurityConstants.HEADER_STRING);
 
-        if(httpServletRequest.getMethod().equals("OPTIONS")){
+        if (httpServletRequest.getMethod().equals("OPTIONS")) {
             httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-        }
-        else{
-            if(jwt==null || !jwt.startsWith(SecurityConstants.TOKEN_PREFIX)){
+        } else {
+            if (jwt == null || !jwt.startsWith(SecurityConstants.TOKEN_PREFIX)) {
                 filterChain.doFilter(httpServletRequest, httpServletResponse);
-            }
-            else{
-                Claims claims= Jwts.parser().setSigningKey(SecurityConstants.SECRET)
+            } else {
+                Claims claims = Jwts.parser().setSigningKey(SecurityConstants.SECRET)
                         .parseClaimsJws(jwt.replace(SecurityConstants.TOKEN_PREFIX, ""))
                         .getBody();
-                String userIdentifiant=claims.getSubject();
+                String userIdentifiant = claims.getSubject();
 
                 Set<GrantedAuthority> authorities = new HashSet<>();
                 authorities.add(new SimpleGrantedAuthority("User"));
 
-                UsernamePasswordAuthenticationToken authenticationToken=
+                UsernamePasswordAuthenticationToken authenticationToken =
                         new UsernamePasswordAuthenticationToken(userIdentifiant, null, authorities);
 
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);

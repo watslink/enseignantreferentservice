@@ -1,7 +1,10 @@
 package com.sd.enseignantreferantservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.Generated;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,7 +17,8 @@ import java.util.Set;
 @Entity
 public class AESH implements Serializable {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int aeshId;
 
     private String nom;
@@ -26,11 +30,11 @@ public class AESH implements Serializable {
     private String telephone;
 
     @ManyToOne
-    @JoinColumn(name="PIAL_id")
+    @JoinColumn(name = "PIAL_id")
     private PIAL pial;
 
     @ManyToOne
-    @JoinColumn(name="enseignant_referent_id")
+    @JoinColumn(name = "enseignant_referent_id")
     private EnseignantReferent enseignantReferent;
 
     @JsonIgnore

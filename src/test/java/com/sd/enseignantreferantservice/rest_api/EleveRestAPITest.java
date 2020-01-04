@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -36,8 +35,18 @@ public class EleveRestAPITest {
     @Autowired
     private EleveService eleveService;
 
+    public static String asJsonString(final Object obj) {
+        try {
+            final ObjectMapper mapper = new ObjectMapper();
+            final String jsonContent = mapper.writeValueAsString(obj);
+            return jsonContent;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Test
-    public void getEleve() throws Exception  {
+    public void getEleve() throws Exception {
         mvc.perform(get("/eleve/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -45,7 +54,7 @@ public class EleveRestAPITest {
     }
 
     @Test
-    public void getListEleve() throws Exception  {
+    public void getListEleve() throws Exception {
         mvc.perform(get("/eleves/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -53,7 +62,7 @@ public class EleveRestAPITest {
     }
 
     @Test
-    public void getListEleveInscrits() throws Exception  {
+    public void getListEleveInscrits() throws Exception {
         mvc.perform(get("/eleves/inscrits/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -61,7 +70,7 @@ public class EleveRestAPITest {
     }
 
     @Test
-    public void getListEleveNonInscrits() throws Exception  {
+    public void getListEleveNonInscrits() throws Exception {
         mvc.perform(get("/eleves/noninscrits/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -69,7 +78,7 @@ public class EleveRestAPITest {
     }
 
     @Test
-    public void getListEleveVus() throws Exception  {
+    public void getListEleveVus() throws Exception {
         mvc.perform(get("/eleves/vus/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -77,7 +86,7 @@ public class EleveRestAPITest {
     }
 
     @Test
-    public void getListEleveNonVus() throws Exception  {
+    public void getListEleveNonVus() throws Exception {
         mvc.perform(get("/eleves/nonvus/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -85,7 +94,7 @@ public class EleveRestAPITest {
     }
 
     @Test
-    public void getListEleve10NextRDV() throws Exception  {
+    public void getListEleve10NextRDV() throws Exception {
         mvc.perform(get("/eleves/nextRDV/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -95,9 +104,9 @@ public class EleveRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void validateInscription() throws Exception  {
-        Eleve eleve= eleveService.getEleve(20);
-        mvc.perform(post("/elevevalidate" )
+    public void validateInscription() throws Exception {
+        Eleve eleve = eleveService.getEleve(20);
+        mvc.perform(post("/elevevalidate")
                 .content(asJsonString(eleve))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -108,15 +117,15 @@ public class EleveRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void addEleve() throws Exception  {
+    public void addEleve() throws Exception {
         Eleve eleve = new Eleve();
         eleve.setNom("nom");
         eleve.setPrenom("prenom");
-        eleve.setDateNaissance(new Date(2010-10-10));
+        eleve.setDateNaissance(new Date(2010 - 10 - 10));
         EnseignantReferent enseignantReferent = new EnseignantReferent();
         enseignantReferent.setEnseignantReferentId(1);
         eleve.setEnseignantReferent(enseignantReferent);
-        mvc.perform(post("/eleve" )
+        mvc.perform(post("/eleve")
                 .content(asJsonString(eleve))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -127,16 +136,16 @@ public class EleveRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void updateEleve() throws Exception  {
+    public void updateEleve() throws Exception {
         Eleve eleve = new Eleve();
         eleve.setNom("nom");
         eleve.setPrenom("prenom");
-        eleve.setDateNaissance(new Date(2010-10-10));
+        eleve.setDateNaissance(new Date(2010 - 10 - 10));
         EnseignantReferent enseignantReferent = new EnseignantReferent();
         enseignantReferent.setEnseignantReferentId(1);
         eleve.setEnseignantReferent(enseignantReferent);
         eleve.setEleveId(5);
-        mvc.perform(put("/eleve" )
+        mvc.perform(put("/eleve")
                 .content(asJsonString(eleve))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -151,7 +160,7 @@ public class EleveRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void deleteEleve() throws Exception  {
+    public void deleteEleve() throws Exception {
         mvc.perform(delete("/eleve/6")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -159,15 +168,5 @@ public class EleveRestAPITest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").doesNotExist());
-    }
-
-    public static String asJsonString(final Object obj) {
-        try {
-            final ObjectMapper mapper = new ObjectMapper();
-            final String jsonContent = mapper.writeValueAsString(obj);
-            return jsonContent;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }

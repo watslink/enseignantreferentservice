@@ -1,6 +1,5 @@
 package com.sd.enseignantreferantservice.business.serviceImpl;
 
-import com.sd.enseignantreferantservice.model.Document;
 import com.sd.enseignantreferantservice.model.DocumentInscriptionRequis;
 import com.sd.enseignantreferantservice.model.EnseignantReferent;
 import org.junit.Test;
@@ -11,7 +10,8 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -25,7 +25,7 @@ public class DocumentInscriptionRequisServiceImplTest {
     @Transactional
     @Rollback
     public void addDocumentInscriptionRequis() {
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         DocumentInscriptionRequis documentInscriptionRequis = new DocumentInscriptionRequis();
         documentInscriptionRequis.setEnseignantReferent(ensRef);
@@ -61,7 +61,7 @@ public class DocumentInscriptionRequisServiceImplTest {
 
     @Test
     public void getDocumentInscriptionRequisWithIdNotExist() {
-        assertNull( documentInscriptionRequisService.getDocumentInscriptionRequis(75));
+        assertNull(documentInscriptionRequisService.getDocumentInscriptionRequis(75));
     }
 
     @Test

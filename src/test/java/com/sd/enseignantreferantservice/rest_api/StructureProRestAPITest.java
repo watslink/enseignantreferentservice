@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sd.enseignantreferantservice.model.Adresse;
 import com.sd.enseignantreferantservice.model.EnseignantReferent;
 import com.sd.enseignantreferantservice.model.StructurePro;
-import com.sd.enseignantreferantservice.model.PIAL;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -32,8 +30,18 @@ public class StructureProRestAPITest {
     @Autowired
     private MockMvc mvc;
 
+    public static String asJsonString(final Object obj) {
+        try {
+            final ObjectMapper mapper = new ObjectMapper();
+            final String jsonContent = mapper.writeValueAsString(obj);
+            return jsonContent;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Test
-    public void getStructurePro() throws Exception  {
+    public void getStructurePro() throws Exception {
         mvc.perform(get("/structurePro/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -41,7 +49,7 @@ public class StructureProRestAPITest {
     }
 
     @Test
-    public void getListStructurePro() throws Exception  {
+    public void getListStructurePro() throws Exception {
         mvc.perform(get("/structurePros/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -51,9 +59,9 @@ public class StructureProRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void addStructurePro() throws Exception  {
+    public void addStructurePro() throws Exception {
         StructurePro structurePro = new StructurePro();
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         structurePro.setEnseignantReferent(ensRef);
         structurePro.setMail("mail@mail.com");
@@ -66,7 +74,7 @@ public class StructureProRestAPITest {
         structurePro.setAdresse(adresse);
         structurePro.setNom("nom");
         structurePro.setSpecialite("spe");
-        mvc.perform(post("/structurePro" )
+        mvc.perform(post("/structurePro")
                 .content(asJsonString(structurePro))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -77,9 +85,9 @@ public class StructureProRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void updateStructurePro() throws Exception  {
+    public void updateStructurePro() throws Exception {
         StructurePro structurePro = new StructurePro();
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         structurePro.setEnseignantReferent(ensRef);
         structurePro.setMail("mail@mail.com");
@@ -93,7 +101,7 @@ public class StructureProRestAPITest {
         structurePro.setNom("nom");
         structurePro.setSpecialite("spe");
         structurePro.setStructureProId(1);
-        mvc.perform(put("/structurePro" )
+        mvc.perform(put("/structurePro")
                 .content(asJsonString(structurePro))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -108,7 +116,7 @@ public class StructureProRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void deleteStructurePro() throws Exception  {
+    public void deleteStructurePro() throws Exception {
         mvc.perform(delete("/structurePro/2")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -116,15 +124,5 @@ public class StructureProRestAPITest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").doesNotExist());
-    }
-
-    public static String asJsonString(final Object obj) {
-        try {
-            final ObjectMapper mapper = new ObjectMapper();
-            final String jsonContent = mapper.writeValueAsString(obj);
-            return jsonContent;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }

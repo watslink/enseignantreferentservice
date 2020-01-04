@@ -16,5 +16,5 @@ public interface EleveRepository extends JpaRepository<Eleve, Integer> {
 
     List<Eleve> findByDossierAccepteAndVuAndEnseignantReferent_EnseignantReferentIdOrderByNom(boolean accept, boolean bool, int ensRefId);
 
-    List<Eleve> findTop10ByEnseignantReferent_EnseignantReferentIdAndDateReunionAfterOrderByDateReunion(int ensRefId , Date date);
+    List<Eleve> findTop10ByEnseignantReferent_EnseignantReferentIdAndDateReunionAfterOrderByDateReunion(int ensRefId, Date date);
 }

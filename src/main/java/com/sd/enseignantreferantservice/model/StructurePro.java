@@ -1,11 +1,13 @@
 package com.sd.enseignantreferantservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.Generated;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,7 +17,8 @@ import java.util.Set;
 @Entity
 public class StructurePro implements Serializable {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int structureProId;
 
     private String nom;
@@ -32,7 +35,7 @@ public class StructurePro implements Serializable {
     private Set<EleveStructurePro> listEleveStructurePro;
 
     @ManyToOne
-    @JoinColumn(name="enseignant_referent_id")
+    @JoinColumn(name = "enseignant_referent_id")
     private EnseignantReferent enseignantReferent;
 
     @Override

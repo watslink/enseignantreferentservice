@@ -5,10 +5,7 @@ import com.sd.enseignantreferantservice.dao.EleveStructureProRepository;
 import com.sd.enseignantreferantservice.dao.StructureProRepository;
 import com.sd.enseignantreferantservice.model.EleveStructurePro;
 import com.sd.enseignantreferantservice.model.StructurePro;
-import org.apache.commons.logging.Log;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,13 +30,13 @@ public class StructureProServiceImpl implements StructureProService {
     @Override
     public void deleteStructurePro(int id) {
         List<EleveStructurePro> eleveStructurePros = eleveStructureProRepository.findAll();
-        for (EleveStructurePro eleveSP: eleveStructurePros) {
-            if(eleveSP.getStructurePro().getStructureProId() == id){
+        for (EleveStructurePro eleveSP : eleveStructurePros) {
+            if (eleveSP.getStructurePro().getStructureProId() == id) {
                 eleveStructureProRepository.delete(eleveSP);
-        }
+            }
 
         }
-            structureProRepository.deleteById(id);
+        structureProRepository.deleteById(id);
     }
 
     @Override
@@ -49,8 +46,8 @@ public class StructureProServiceImpl implements StructureProService {
 
     @Override
     public StructurePro getStructurePro(int id) {
-        Optional<StructurePro> optionalStructurePro=structureProRepository.findById(id);
-        return optionalStructurePro.orElse(null) ;
+        Optional<StructurePro> optionalStructurePro = structureProRepository.findById(id);
+        return optionalStructurePro.orElse(null);
     }
 
     @Override

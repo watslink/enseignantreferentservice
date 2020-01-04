@@ -29,8 +29,18 @@ public class MaterielPedagoAdapteRestAPITest {
     @Autowired
     private MockMvc mvc;
 
+    public static String asJsonString(final Object obj) {
+        try {
+            final ObjectMapper mapper = new ObjectMapper();
+            final String jsonContent = mapper.writeValueAsString(obj);
+            return jsonContent;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Test
-    public void getMaterielPedagoAdapte() throws Exception  {
+    public void getMaterielPedagoAdapte() throws Exception {
         mvc.perform(get("/materielPedagoAdapte/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -38,7 +48,7 @@ public class MaterielPedagoAdapteRestAPITest {
     }
 
     @Test
-    public void getListMaterielPedagoAdapte() throws Exception  {
+    public void getListMaterielPedagoAdapte() throws Exception {
         mvc.perform(get("/materielPedagoAdaptes/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -48,13 +58,13 @@ public class MaterielPedagoAdapteRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void addMaterielPedagoAdapte() throws Exception  {
+    public void addMaterielPedagoAdapte() throws Exception {
         MaterielPedagoAdapte materielPedagoAdapte = new MaterielPedagoAdapte();
         materielPedagoAdapte.setNom("nom");
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         materielPedagoAdapte.setEnseignantReferent(ensRef);
-        mvc.perform(post("/materielPedagoAdapte" )
+        mvc.perform(post("/materielPedagoAdapte")
                 .content(asJsonString(materielPedagoAdapte))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -65,14 +75,14 @@ public class MaterielPedagoAdapteRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void updateMaterielPedagoAdapte() throws Exception  {
+    public void updateMaterielPedagoAdapte() throws Exception {
         MaterielPedagoAdapte materielPedagoAdapte = new MaterielPedagoAdapte();
         materielPedagoAdapte.setNom("nom");
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         materielPedagoAdapte.setEnseignantReferent(ensRef);
         materielPedagoAdapte.setMaterielPedagoAdapteId(1);
-        mvc.perform(put("/materielPedagoAdapte" )
+        mvc.perform(put("/materielPedagoAdapte")
                 .content(asJsonString(materielPedagoAdapte))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -87,7 +97,7 @@ public class MaterielPedagoAdapteRestAPITest {
     @Test
     @Rollback
     @Transactional
-    public void deleteMaterielPedagoAdapte() throws Exception  {
+    public void deleteMaterielPedagoAdapte() throws Exception {
         mvc.perform(delete("/materielPedagoAdapte/2")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -95,15 +105,5 @@ public class MaterielPedagoAdapteRestAPITest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").doesNotExist());
-    }
-
-    public static String asJsonString(final Object obj) {
-        try {
-            final ObjectMapper mapper = new ObjectMapper();
-            final String jsonContent = mapper.writeValueAsString(obj);
-            return jsonContent;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }

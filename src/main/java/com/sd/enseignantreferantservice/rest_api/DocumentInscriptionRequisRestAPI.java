@@ -15,8 +15,8 @@ public class DocumentInscriptionRequisRestAPI {
     private DocumentInscriptionRequisService documentInscriptionRequisService;
 
     @GetMapping("/documentInscriptionRequis/{id}")
-    public DocumentInscriptionRequis getDocumentInscriptionRequis(@PathVariable int id){
-        return  documentInscriptionRequisService.getDocumentInscriptionRequis(id);
+    public DocumentInscriptionRequis getDocumentInscriptionRequis(@PathVariable int id) {
+        return documentInscriptionRequisService.getDocumentInscriptionRequis(id);
     }
 
     @GetMapping("/documentInscriptionRequiss/{ensRefId}")
@@ -26,17 +26,17 @@ public class DocumentInscriptionRequisRestAPI {
 
 
     @PostMapping("/documentInscriptionRequis")
-    public DocumentInscriptionRequis addDocumentInscriptionRequis(@RequestBody DocumentInscriptionRequis documentInscriptionRequis){
+    public DocumentInscriptionRequis addDocumentInscriptionRequis(@RequestBody DocumentInscriptionRequis documentInscriptionRequis) {
         return documentInscriptionRequisService.addDocumentInscriptionRequis(documentInscriptionRequis);
     }
 
     @PutMapping("/documentInscriptionRequis")
-    public DocumentInscriptionRequis updateDocumentInscriptionRequis(@RequestBody DocumentInscriptionRequis documentInscriptionRequis){
+    public DocumentInscriptionRequis updateDocumentInscriptionRequis(@RequestBody DocumentInscriptionRequis documentInscriptionRequis) {
         return documentInscriptionRequisService.updateDocumentInscriptionRequis(documentInscriptionRequis);
     }
 
     @DeleteMapping("/documentInscriptionRequis/{id}")
-    public void deleteDocumentInscriptionRequis(@PathVariable int id){
+    public void deleteDocumentInscriptionRequis(@PathVariable int id) {
         documentInscriptionRequisService.deleteDocumentInscriptionRequis(id);
     }
 }

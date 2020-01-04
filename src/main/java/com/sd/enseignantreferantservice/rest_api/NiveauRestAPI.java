@@ -16,8 +16,8 @@ public class NiveauRestAPI {
     private NiveauService niveauService;
 
     @GetMapping("/niveau/{id}")
-    public Niveau getNiveau(@PathVariable int id){
-        return  niveauService.getNiveau(id);
+    public Niveau getNiveau(@PathVariable int id) {
+        return niveauService.getNiveau(id);
     }
 
     @GetMapping("/niveaux/{ensRefId}")
@@ -27,17 +27,17 @@ public class NiveauRestAPI {
 
 
     @PostMapping("/niveau")
-    public Niveau addNiveau(@RequestBody Niveau niveau){
+    public Niveau addNiveau(@RequestBody Niveau niveau) {
         return niveauService.addNiveau(niveau);
     }
 
     @PutMapping("/niveau")
-    public Niveau updateNiveau(@RequestBody Niveau niveau){
+    public Niveau updateNiveau(@RequestBody Niveau niveau) {
         return niveauService.updateNiveau(niveau);
     }
 
     @DeleteMapping("/niveau/{id}")
-    public void deleteNiveau(@PathVariable int id){
+    public void deleteNiveau(@PathVariable int id) {
         niveauService.deleteNiveau(id);
     }
 }

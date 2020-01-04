@@ -16,7 +16,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -29,6 +28,16 @@ public class DocumentInscriptionRequisRestAPITest {
 
     @Autowired
     private MockMvc mvc;
+
+    public static String asJsonString(final Object obj) {
+        try {
+            final ObjectMapper mapper = new ObjectMapper();
+            final String jsonContent = mapper.writeValueAsString(obj);
+            return jsonContent;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Test
     public void getDocumentInscriptionRequis() throws Exception {
@@ -50,12 +59,12 @@ public class DocumentInscriptionRequisRestAPITest {
     @Rollback
     @Transactional
     public void addDocumentInscriptionRequis() throws Exception {
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         DocumentInscriptionRequis documentInscriptionRequis = new DocumentInscriptionRequis();
         documentInscriptionRequis.setEnseignantReferent(ensRef);
         documentInscriptionRequis.setNom("document");
-        mvc.perform(post("/documentInscriptionRequis" )
+        mvc.perform(post("/documentInscriptionRequis")
                 .content(asJsonString(documentInscriptionRequis))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -67,13 +76,13 @@ public class DocumentInscriptionRequisRestAPITest {
     @Rollback
     @Transactional
     public void updateDocumentInscriptionRequis() throws Exception {
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         DocumentInscriptionRequis documentInscriptionRequis = new DocumentInscriptionRequis();
         documentInscriptionRequis.setEnseignantReferent(ensRef);
         documentInscriptionRequis.setNom("document");
         documentInscriptionRequis.setDocumentInscriptionRequisId(1);
-        mvc.perform(put("/documentInscriptionRequis" )
+        mvc.perform(put("/documentInscriptionRequis")
                 .content(asJsonString(documentInscriptionRequis))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -97,15 +106,5 @@ public class DocumentInscriptionRequisRestAPITest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").doesNotExist());
 
-    }
-
-    public static String asJsonString(final Object obj) {
-        try {
-            final ObjectMapper mapper = new ObjectMapper();
-            final String jsonContent = mapper.writeValueAsString(obj);
-            return jsonContent;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }

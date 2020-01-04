@@ -12,7 +12,8 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -26,10 +27,10 @@ public class RepresentantLegalServiceImplTest {
     @Rollback
     public void addRepresentantLegal() {
         RepresentantLegal representantLegal = new RepresentantLegal();
-        Eleve eleve=new Eleve();
+        Eleve eleve = new Eleve();
         eleve.setEleveId(1);
         representantLegal.setEleve(eleve);
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         representantLegal.setEnseignantReferent(ensRef);
         representantLegal.setMail("mail@mail.com");
@@ -42,11 +43,11 @@ public class RepresentantLegalServiceImplTest {
         representantLegal.setAdresse(adresse);
         representantLegal.setIdentite("identite");
         RepresentantLegal representantLegal1Added = representantLegalService.addRepresentantLegal(representantLegal);
-        assertEquals("identite" , representantLegal1Added.getIdentite());
-        assertEquals("mail@mail.com" , representantLegal1Added.getMail());
-        assertEquals("06.06.06.06.06" , representantLegal1Added.getTelephone());
-        assertEquals(adresse , representantLegal1Added.getAdresse());
-        assertEquals(ensRef , representantLegal1Added.getEnseignantReferent());
+        assertEquals("identite", representantLegal1Added.getIdentite());
+        assertEquals("mail@mail.com", representantLegal1Added.getMail());
+        assertEquals("06.06.06.06.06", representantLegal1Added.getTelephone());
+        assertEquals(adresse, representantLegal1Added.getAdresse());
+        assertEquals(ensRef, representantLegal1Added.getEnseignantReferent());
     }
 
     @Test

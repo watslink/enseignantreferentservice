@@ -17,13 +17,13 @@ public class EnseignantReferentRestAPI {
     private EnseignantReferentService enseignantReferentService;
 
     @GetMapping("/enseignantReferent/{id}")
-    public EnseignantReferent getEnseignantReferent(@PathVariable int id){
-        return  enseignantReferentService.getEnseignantReferentById(id);
+    public EnseignantReferent getEnseignantReferent(@PathVariable int id) {
+        return enseignantReferentService.getEnseignantReferentById(id);
     }
 
     @GetMapping("/enseignantReferentByMail/{mail}")
-    public EnseignantReferent getEnseignantReferentByMail(@PathVariable String mail){
-        return  enseignantReferentService.getByMail(mail);
+    public EnseignantReferent getEnseignantReferentByMail(@PathVariable String mail) {
+        return enseignantReferentService.getByMail(mail);
     }
 
     @GetMapping("/enseignantReferents")
@@ -33,26 +33,26 @@ public class EnseignantReferentRestAPI {
 
 
     @PostMapping("/inscription")
-    public ResponseEntity<Void> addEnseignantReferent(@RequestBody EnseignantReferent enseignantReferent){
-        if (enseignantReferentService.getByMail(enseignantReferent.getMail())!=null) {
+    public ResponseEntity<Void> addEnseignantReferent(@RequestBody EnseignantReferent enseignantReferent) {
+        if (enseignantReferentService.getByMail(enseignantReferent.getMail()) != null) {
             return new ResponseEntity<Void>(HttpStatus.CONFLICT);
         }
         enseignantReferentService.addEnseignantReferent(enseignantReferent);
-        return new ResponseEntity<Void>( HttpStatus.CREATED);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
     @PutMapping("/enseignantReferentMail")
-    public EnseignantReferent updateMailEnseignantReferent(@RequestParam ("id") int id, @RequestParam ("newMail") String newMail){
+    public EnseignantReferent updateMailEnseignantReferent(@RequestParam("id") int id, @RequestParam("newMail") String newMail) {
         return enseignantReferentService.updateMailOfEnseignantReferent(id, newMail);
     }
 
     @PutMapping("/enseignantReferentPassword")
-    public Boolean updatePasswordEnseignantReferent(@RequestParam ("id") int id, @RequestParam ("oldPass") String oldPass, @RequestParam ("newPass") String newPass){
+    public Boolean updatePasswordEnseignantReferent(@RequestParam("id") int id, @RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass) {
         return enseignantReferentService.updatePasswordOfEnseignantReferent(id, oldPass, newPass);
     }
 
     @DeleteMapping("/enseignantReferent/{id}")
-    public void deleteEnseignantReferent(@PathVariable int id){
+    public void deleteEnseignantReferent(@PathVariable int id) {
         enseignantReferentService.deleteEnseignantReferent(id);
     }
 

@@ -5,7 +5,6 @@ import com.sd.enseignantreferantservice.dao.CategorieRepository;
 import com.sd.enseignantreferantservice.model.Categorie;
 import com.sd.enseignantreferantservice.model.Document;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +26,7 @@ public class CategorieServiceImpl implements CategorieService {
     @Override
     public void deleteCategorie(int id) {
         Categorie cat = categorieRepository.getOne(id);
-        for(Document doc : cat.getListDocument()){
+        for (Document doc : cat.getListDocument()) {
             doc.setCategorie(null);
         }
         categorieRepository.deleteById(id);
@@ -40,8 +39,8 @@ public class CategorieServiceImpl implements CategorieService {
 
     @Override
     public Categorie getCategorie(int id) {
-        Optional<Categorie> optionalCategorie=categorieRepository.findById(id);
-        return optionalCategorie.orElse(null) ;
+        Optional<Categorie> optionalCategorie = categorieRepository.findById(id);
+        return optionalCategorie.orElse(null);
     }
 
     @Override

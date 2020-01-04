@@ -1,6 +1,9 @@
 package com.sd.enseignantreferantservice.model;
 
-import lombok.*;
+import lombok.Generated;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +19,7 @@ import java.util.Objects;
 public class Adresse implements Serializable {
 
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int adresseId;
 
     private int numero;

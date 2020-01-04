@@ -15,8 +15,8 @@ public class EtablissementRestAPI {
     private EtablissementService etablissementService;
 
     @GetMapping("/etablissement/{id}")
-    public Etablissement getEtablissement(@PathVariable int id){
-        return  etablissementService.getEtablissement(id);
+    public Etablissement getEtablissement(@PathVariable int id) {
+        return etablissementService.getEtablissement(id);
     }
 
     @GetMapping("/etablissements/{ensRefId}")
@@ -26,17 +26,17 @@ public class EtablissementRestAPI {
 
 
     @PostMapping("/etablissement")
-    public Etablissement addEtablissement(@RequestBody Etablissement etablissement){
+    public Etablissement addEtablissement(@RequestBody Etablissement etablissement) {
         return etablissementService.addEtablissement(etablissement);
     }
 
     @PutMapping("/etablissement")
-    public Etablissement updateEtablissement(@RequestBody Etablissement etablissement){
+    public Etablissement updateEtablissement(@RequestBody Etablissement etablissement) {
         return etablissementService.updateEtablissement(etablissement);
     }
 
     @DeleteMapping("/etablissement/{id}")
-    public void deleteEtablissement(@PathVariable int id){
+    public void deleteEtablissement(@PathVariable int id) {
         etablissementService.deleteEtablissement(id);
     }
 }

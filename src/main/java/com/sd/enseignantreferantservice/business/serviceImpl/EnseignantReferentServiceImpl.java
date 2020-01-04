@@ -49,7 +49,7 @@ public class EnseignantReferentServiceImpl implements EnseignantReferentService 
             enseignantReferent.setMotDePasse(encoder.encode(newPass));
             enseignantReferentRepository.save(enseignantReferent);
             return true;
-        } else  {
+        } else {
             return false;
         }
     }
@@ -61,8 +61,8 @@ public class EnseignantReferentServiceImpl implements EnseignantReferentService 
 
     @Override
     public EnseignantReferent getEnseignantReferentById(int id) {
-        Optional<EnseignantReferent> optionalEnseignantReferent=enseignantReferentRepository.findById(id);
-        return optionalEnseignantReferent.orElse(null) ;
+        Optional<EnseignantReferent> optionalEnseignantReferent = enseignantReferentRepository.findById(id);
+        return optionalEnseignantReferent.orElse(null);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class EnseignantReferentServiceImpl implements EnseignantReferentService 
     @Override
     public void reinitializeAllRDV(int id) {
         EnseignantReferent enseignantReferent = enseignantReferentRepository.getOne(id);
-        for (Eleve eleve: enseignantReferent.getListEleves()) {
+        for (Eleve eleve : enseignantReferent.getListEleves()) {
             eleve.setDateReunion(null);
             eleve.setVu(false);
         }

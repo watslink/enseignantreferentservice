@@ -1,6 +1,9 @@
 package com.sd.enseignantreferantservice.business.serviceImpl;
 
-import com.sd.enseignantreferantservice.model.*;
+import com.sd.enseignantreferantservice.model.Adresse;
+import com.sd.enseignantreferantservice.model.EnseignantReferent;
+import com.sd.enseignantreferantservice.model.Etablissement;
+import com.sd.enseignantreferantservice.model.PIAL;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +12,8 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -23,10 +27,10 @@ public class EtablissementServiceImplTest {
     @Rollback
     public void addEtablissement() {
         Etablissement etablissement = new Etablissement();
-        PIAL pial=new PIAL();
+        PIAL pial = new PIAL();
         pial.setPialId(1);
         etablissement.setPial(pial);
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         etablissement.setEnseignantReferent(ensRef);
         etablissement.setMail("mail@mail.com");
@@ -40,11 +44,11 @@ public class EtablissementServiceImplTest {
         etablissement.setNom("nom");
         etablissement.setRne("1234567R");
         Etablissement etablissementAdded = etablissementService.addEtablissement(etablissement);
-        assertEquals("nom" , etablissementAdded.getNom());
-        assertEquals("mail@mail.com" , etablissementAdded.getMail());
-        assertEquals("06.06.06.06.06" , etablissementAdded.getTelephone());
-        assertEquals(adresse , etablissementAdded.getAdresse());
-        assertEquals(ensRef , etablissementAdded.getEnseignantReferent());
+        assertEquals("nom", etablissementAdded.getNom());
+        assertEquals("mail@mail.com", etablissementAdded.getMail());
+        assertEquals("06.06.06.06.06", etablissementAdded.getTelephone());
+        assertEquals(adresse, etablissementAdded.getAdresse());
+        assertEquals(ensRef, etablissementAdded.getEnseignantReferent());
         assertEquals(pial, etablissementAdded.getPial());
         assertEquals("1234567R", etablissementAdded.getRne());
     }

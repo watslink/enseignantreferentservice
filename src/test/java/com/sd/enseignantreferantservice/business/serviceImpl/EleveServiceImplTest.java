@@ -9,11 +9,8 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -31,11 +28,11 @@ public class EleveServiceImplTest {
         Eleve eleveAdded = eleveService.addEleve(initialiseSimpleEleve());
         assertEquals("nom", eleveAdded.getNom());
         assertEquals("prenom", eleveAdded.getPrenom());
-        assertEquals(new Date(2010-10-10), eleveAdded.getDateNaissance());
+        assertEquals(new Date(2010 - 10 - 10), eleveAdded.getDateNaissance());
         assertFalse(eleveAdded.isDossierAccepte());
         assertFalse(eleveAdded.isVu());
         assertEquals(2, eleveAdded.getListEleveDocumentsInscriptionRequis().size());
-        for (EleveDocumentInscriptionRequis eleveDocumentInscriptionRequis: eleveAdded.getListEleveDocumentsInscriptionRequis()){
+        for (EleveDocumentInscriptionRequis eleveDocumentInscriptionRequis : eleveAdded.getListEleveDocumentsInscriptionRequis()) {
             assertNull(eleveDocumentInscriptionRequis.getExtension());
             assertFalse(eleveDocumentInscriptionRequis.isOk());
             assertEquals("nom", eleveDocumentInscriptionRequis.getEleve().getNom());
@@ -52,32 +49,32 @@ public class EleveServiceImplTest {
         assertEquals(1, eleveAdded.getNiveau().getNiveauId());
         assertEquals(2, eleveAdded.getEtablissement().getEtablissementId());
         assertEquals(3, eleveAdded.getAesh().getAeshId());
-        assertEquals(new Date(2020-10-10), eleveAdded.getDateNotificationAesh());
+        assertEquals(new Date(2020 - 10 - 10), eleveAdded.getDateNotificationAesh());
     }
 
-    private Eleve initialiseSimpleEleve(){
+    private Eleve initialiseSimpleEleve() {
         Eleve eleve = new Eleve();
         eleve.setNom("nom");
         eleve.setPrenom("prenom");
-        eleve.setDateNaissance(new Date(2010-10-10));
+        eleve.setDateNaissance(new Date(2010 - 10 - 10));
         EnseignantReferent enseignantReferent = new EnseignantReferent();
         enseignantReferent.setEnseignantReferentId(1);
         eleve.setEnseignantReferent(enseignantReferent);
         return eleve;
     }
 
-    private Eleve initialiseCompleteEleve(){
+    private Eleve initialiseCompleteEleve() {
         Eleve eleve = initialiseSimpleEleve();
         Niveau niveau = new Niveau();
         niveau.setNiveauId(1);
         eleve.setNiveau(niveau);
-        Etablissement etablissement= new Etablissement();
+        Etablissement etablissement = new Etablissement();
         etablissement.setEtablissementId(2);
         eleve.setEtablissement(etablissement);
         AESH aesh = new AESH();
         aesh.setAeshId(3);
         eleve.setAesh(aesh);
-        eleve.setDateNotificationAesh(new Date(2020-10-10));
+        eleve.setDateNotificationAesh(new Date(2020 - 10 - 10));
         return eleve;
     }
 
@@ -87,7 +84,7 @@ public class EleveServiceImplTest {
     public void addEleveWithRepresentsantLegaux() {
         Eleve eleve = initialiseCompleteEleve();
         RepresentantLegal representantLegal = new RepresentantLegal();
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         representantLegal.setEnseignantReferent(ensRef);
         representantLegal.setMail("mail@mail.com");
@@ -102,7 +99,7 @@ public class EleveServiceImplTest {
         eleve.setListRepresentantsLegaux(new HashSet<RepresentantLegal>());
         eleve.getListRepresentantsLegaux().add(representantLegal);
         Eleve eleveAdded = eleveService.addEleve(eleve);
-        for(RepresentantLegal representantLegalinList: eleveAdded.getListRepresentantsLegaux()){
+        for (RepresentantLegal representantLegalinList : eleveAdded.getListRepresentantsLegaux()) {
             assertEquals(representantLegal.getIdentite(), representantLegalinList.getIdentite());
         }
     }
@@ -117,13 +114,13 @@ public class EleveServiceImplTest {
         eleve.setListEleveStructurePros(new HashSet<EleveStructurePro>());
         EleveStructurePro eleveStructurePro = new EleveStructurePro();
         eleveStructurePro.setStructurePro(structurePro);
-        eleveStructurePro.setDateNotification(new Date(2020-10-10));
+        eleveStructurePro.setDateNotification(new Date(2020 - 10 - 10));
         eleve.getListEleveStructurePros().add(eleveStructurePro);
         Eleve eleveAdded = eleveService.addEleve(eleve);
-        for(EleveStructurePro eleveStructureProinList : eleveAdded.getListEleveStructurePros()){
+        for (EleveStructurePro eleveStructureProinList : eleveAdded.getListEleveStructurePros()) {
             assertEquals(eleveStructurePro.getStructurePro().getStructureProId(), eleveStructureProinList.getStructurePro().getStructureProId());
             assertEquals("nom", eleveStructureProinList.getEleve().getNom());
-            assertEquals(new Date(2020-10-10), eleveStructureProinList.getDateNotification());
+            assertEquals(new Date(2020 - 10 - 10), eleveStructureProinList.getDateNotification());
             assertEquals(eleveAdded.getEleveId(), eleveStructureProinList.getPk().getEleve().intValue());
             assertEquals(structurePro.getStructureProId(), eleveStructureProinList.getPk().getStructurePro().intValue());
         }
@@ -139,7 +136,7 @@ public class EleveServiceImplTest {
         eleve.setListMaterielsPedagoAdaptes(new HashSet<MaterielPedagoAdapte>());
         eleve.getListMaterielsPedagoAdaptes().add(materielPedagoAdapte);
         Eleve eleveAdded = eleveService.addEleve(eleve);
-        for(MaterielPedagoAdapte materielPedagoAdapteInList : eleveAdded.getListMaterielsPedagoAdaptes()){
+        for (MaterielPedagoAdapte materielPedagoAdapteInList : eleveAdded.getListMaterielsPedagoAdaptes()) {
             assertEquals(materielPedagoAdapte.getMaterielPedagoAdapteId(), materielPedagoAdapteInList.getMaterielPedagoAdapteId());
         }
     }
@@ -173,7 +170,7 @@ public class EleveServiceImplTest {
         eleve.setListDocuments(new HashSet<Document>());
         eleve.getListDocuments().add(document);
         Eleve eleveUpdated = eleveService.updateEleve(eleve);
-        for(Document documentInList : eleveUpdated.getListDocuments()){
+        for (Document documentInList : eleveUpdated.getListDocuments()) {
             assertEquals(document.getNom(), documentInList.getNom());
         }
     }
@@ -183,9 +180,9 @@ public class EleveServiceImplTest {
     @Rollback
     public void updateEleveWithDateReunion() {
         Eleve eleve = eleveService.getEleve(5);
-        eleve.setDateReunion(new Date(2020-12-12));
+        eleve.setDateReunion(new Date(2020 - 12 - 12));
         Eleve eleveUpdated = eleveService.updateEleve(eleve);
-        assertEquals(new Date(2020-12-12), eleveUpdated.getDateReunion());
+        assertEquals(new Date(2020 - 12 - 12), eleveUpdated.getDateReunion());
     }
 
     @Test
@@ -231,7 +228,7 @@ public class EleveServiceImplTest {
 
     @Test
     public void getTop10EleveOrderByReunion() {
-        for (Eleve eleve: eleveService.getTop10EleveOrderByReunion(1)) {
+        for (Eleve eleve : eleveService.getTop10EleveOrderByReunion(1)) {
             assertNotNull(eleve.getDateReunion());
         }
     }

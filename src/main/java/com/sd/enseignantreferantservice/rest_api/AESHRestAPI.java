@@ -15,8 +15,8 @@ public class AESHRestAPI {
     private AESHService aeshService;
 
     @GetMapping("/aesh/{id}")
-    public AESH getAESH(@PathVariable int id){
-        return  aeshService.getAesh(id);
+    public AESH getAESH(@PathVariable int id) {
+        return aeshService.getAesh(id);
     }
 
     @GetMapping("/aeshs/{ensRefId}")
@@ -25,17 +25,17 @@ public class AESHRestAPI {
     }
 
     @PostMapping("/aesh")
-    public AESH addAESH(@RequestBody AESH aesh){
+    public AESH addAESH(@RequestBody AESH aesh) {
         return aeshService.addAesh(aesh);
     }
 
     @PutMapping("/aesh")
-    public AESH updateAESH(@RequestBody AESH aesh){
+    public AESH updateAESH(@RequestBody AESH aesh) {
         return aeshService.updateAesh(aesh);
     }
 
     @DeleteMapping("/aesh/{id}")
-    public void deleteAESH(@PathVariable int id){
+    public void deleteAESH(@PathVariable int id) {
         aeshService.deleteAesh(id);
     }
 }

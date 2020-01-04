@@ -4,12 +4,10 @@ import com.sd.enseignantreferantservice.business.serviceInterface.DocumentInscri
 import com.sd.enseignantreferantservice.dao.DocumentInscriptionRequisRepository;
 import com.sd.enseignantreferantservice.dao.EleveDocumentInscriptionRequisRepository;
 import com.sd.enseignantreferantservice.dao.EleveRepository;
-import com.sd.enseignantreferantservice.model.Document;
 import com.sd.enseignantreferantservice.model.DocumentInscriptionRequis;
 import com.sd.enseignantreferantservice.model.Eleve;
 import com.sd.enseignantreferantservice.model.EleveDocumentInscriptionRequis;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,17 +29,17 @@ public class DocumentInscriptionRequisServiceImpl implements DocumentInscription
 
     @Override
     public DocumentInscriptionRequis addDocumentInscriptionRequis(DocumentInscriptionRequis documentInscriptionRequis) {
-        DocumentInscriptionRequis documentInscriptionRequisEnr=documentInscriptionRequisRepository.save(documentInscriptionRequis);
+        DocumentInscriptionRequis documentInscriptionRequisEnr = documentInscriptionRequisRepository.save(documentInscriptionRequis);
 
-        List<Eleve> elevesNonInscrits=eleveRepository
+        List<Eleve> elevesNonInscrits = eleveRepository
                 .findByDossierAccepteAndEnseignantReferent_EnseignantReferentIdOrderByNom(false,
                         documentInscriptionRequis.getEnseignantReferent().getEnseignantReferentId());
 
-        EleveDocumentInscriptionRequis edir =new EleveDocumentInscriptionRequis();
+        EleveDocumentInscriptionRequis edir = new EleveDocumentInscriptionRequis();
         edir.setDocumentInscriptionRequis(documentInscriptionRequis);
         edir.setOk(false);
 
-        for (Eleve eleve:elevesNonInscrits) {
+        for (Eleve eleve : elevesNonInscrits) {
             edir.setEleve(eleve);
             edir.setPk(new EleveDocumentInscriptionRequis.PK(documentInscriptionRequisEnr.getDocumentInscriptionRequisId(), eleve.getEleveId()));
             edirRepo.save(edir);
@@ -52,8 +50,8 @@ public class DocumentInscriptionRequisServiceImpl implements DocumentInscription
 
     @Override
     public void deleteDocumentInscriptionRequis(int id) {
-        for(EleveDocumentInscriptionRequis edir: edirRepo.findAll()){
-            if(edir.getDocumentInscriptionRequis().getDocumentInscriptionRequisId() == id){
+        for (EleveDocumentInscriptionRequis edir : edirRepo.findAll()) {
+            if (edir.getDocumentInscriptionRequis().getDocumentInscriptionRequisId() == id) {
                 edirRepo.delete(edir);
             }
         }
@@ -67,8 +65,8 @@ public class DocumentInscriptionRequisServiceImpl implements DocumentInscription
 
     @Override
     public DocumentInscriptionRequis getDocumentInscriptionRequis(int id) {
-        Optional<DocumentInscriptionRequis> optionalDocumentInscriptionRequis=documentInscriptionRequisRepository.findById(id);
-        return optionalDocumentInscriptionRequis.orElse(null) ;
+        Optional<DocumentInscriptionRequis> optionalDocumentInscriptionRequis = documentInscriptionRequisRepository.findById(id);
+        return optionalDocumentInscriptionRequis.orElse(null);
     }
 
     @Override

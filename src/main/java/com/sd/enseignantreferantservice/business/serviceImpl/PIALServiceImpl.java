@@ -6,7 +6,6 @@ import com.sd.enseignantreferantservice.model.AESH;
 import com.sd.enseignantreferantservice.model.Etablissement;
 import com.sd.enseignantreferantservice.model.PIAL;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,11 +26,11 @@ public class PIALServiceImpl implements PIALService {
 
     @Override
     public void deletePial(int id) {
-        PIAL pial=pialRepository.getOne(id);
-        for ( AESH aesh: pial.getListAESH()){
+        PIAL pial = pialRepository.getOne(id);
+        for (AESH aesh : pial.getListAESH()) {
             aesh.setPial(null);
         }
-        for ( Etablissement et: pial.getListEtablissement()){
+        for (Etablissement et : pial.getListEtablissement()) {
             et.setPial(null);
         }
         pialRepository.deleteById(id);
@@ -44,8 +43,8 @@ public class PIALServiceImpl implements PIALService {
 
     @Override
     public PIAL getPial(int id) {
-        Optional<PIAL> optionalPial=pialRepository.findById(id);
-        return optionalPial.orElse(null) ;
+        Optional<PIAL> optionalPial = pialRepository.findById(id);
+        return optionalPial.orElse(null);
     }
 
     @Override

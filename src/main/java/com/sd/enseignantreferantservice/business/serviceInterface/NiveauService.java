@@ -8,8 +8,10 @@ import java.util.List;
 public interface NiveauService {
 
     Niveau addNiveau(Niveau niveau);
-    void deleteNiveau (int id);
-    Niveau updateNiveau (Niveau niveau);
+
+    void deleteNiveau(int id);
+
+    Niveau updateNiveau(Niveau niveau);
 
     Niveau getNiveau(int id);
 

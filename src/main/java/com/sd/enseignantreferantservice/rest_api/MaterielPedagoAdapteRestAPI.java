@@ -15,8 +15,8 @@ public class MaterielPedagoAdapteRestAPI {
     private MaterielPedagoAdapteService materielPedagoAdapteService;
 
     @GetMapping("/materielPedagoAdapte/{id}")
-    public MaterielPedagoAdapte getMaterielPedagoAdapte(@PathVariable int id){
-        return  materielPedagoAdapteService.getMaterielPedagoAdapte(id);
+    public MaterielPedagoAdapte getMaterielPedagoAdapte(@PathVariable int id) {
+        return materielPedagoAdapteService.getMaterielPedagoAdapte(id);
     }
 
     @GetMapping("/materielPedagoAdaptes/{ensRefId}")
@@ -26,17 +26,17 @@ public class MaterielPedagoAdapteRestAPI {
 
 
     @PostMapping("/materielPedagoAdapte")
-    public MaterielPedagoAdapte addMaterielPedagoAdapte(@RequestBody MaterielPedagoAdapte materielPedagoAdapte){
+    public MaterielPedagoAdapte addMaterielPedagoAdapte(@RequestBody MaterielPedagoAdapte materielPedagoAdapte) {
         return materielPedagoAdapteService.addMaterielPedagoAdapte(materielPedagoAdapte);
     }
 
     @PutMapping("/materielPedagoAdapte")
-    public MaterielPedagoAdapte updateMaterielPedagoAdapte(@RequestBody MaterielPedagoAdapte materielPedagoAdapte){
+    public MaterielPedagoAdapte updateMaterielPedagoAdapte(@RequestBody MaterielPedagoAdapte materielPedagoAdapte) {
         return materielPedagoAdapteService.updateMaterielPedagoAdapte(materielPedagoAdapte);
     }
 
     @DeleteMapping("/materielPedagoAdapte/{id}")
-    public void deleteMaterielPedagoAdapte(@PathVariable int id){
+    public void deleteMaterielPedagoAdapte(@PathVariable int id) {
         materielPedagoAdapteService.deleteMaterielPedagoAdapte(id);
     }
 }

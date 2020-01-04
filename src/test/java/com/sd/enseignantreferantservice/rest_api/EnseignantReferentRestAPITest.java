@@ -2,15 +2,12 @@ package com.sd.enseignantreferantservice.rest_api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sd.enseignantreferantservice.model.EnseignantReferent;
-import com.sd.enseignantreferantservice.security.SecurityConfiguration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -18,7 +15,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -34,6 +30,17 @@ public class EnseignantReferentRestAPITest {
 
     @Autowired
     private EnseignantReferentRestAPI enseignantReferentRestAPI;
+
+    public static String asJsonString(final Object obj) {
+        try {
+            final ObjectMapper mapper = new ObjectMapper();
+            final String jsonContent = mapper.writeValueAsString(obj);
+            return jsonContent;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Test
     public void getEnseignantReferent() throws Exception {
         mvc.perform(get("/enseignantReferent/1")
@@ -80,7 +87,7 @@ public class EnseignantReferentRestAPITest {
     @Transactional
     public void updateMailEnseignantReferent() throws Exception {
 
-        mvc.perform(put("/enseignantReferentMail" )
+        mvc.perform(put("/enseignantReferentMail")
                 .param("id", "1")
                 .param("newMail", "mail@mail.com")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -97,7 +104,7 @@ public class EnseignantReferentRestAPITest {
     @Rollback
     @Transactional
     public void updatePasswordEnseignantReferent() throws Exception {
-        mvc.perform(put("/enseignantReferentPassword" )
+        mvc.perform(put("/enseignantReferentPassword")
                 .param("id", "1")
                 .param("oldPass", "motdepasse")
                 .param("newPass", "newmotdepasse")
@@ -111,7 +118,7 @@ public class EnseignantReferentRestAPITest {
     @Rollback
     @Transactional
     public void updatePasswordEnseignantReferentWithWrongOldPass() throws Exception {
-        mvc.perform(put("/enseignantReferentPassword" )
+        mvc.perform(put("/enseignantReferentPassword")
                 .param("id", "1")
                 .param("oldPass", "passe")
                 .param("newPass", "newmotdepasse")
@@ -141,15 +148,5 @@ public class EnseignantReferentRestAPITest {
         mvc.perform(get("/enseignantReferentReinitRDV/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-    }
-
-    public static String asJsonString(final Object obj) {
-        try {
-            final ObjectMapper mapper = new ObjectMapper();
-            final String jsonContent = mapper.writeValueAsString(obj);
-            return jsonContent;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }

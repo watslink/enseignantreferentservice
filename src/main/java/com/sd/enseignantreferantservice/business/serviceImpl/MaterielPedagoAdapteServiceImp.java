@@ -4,7 +4,6 @@ import com.sd.enseignantreferantservice.business.serviceInterface.MaterielPedago
 import com.sd.enseignantreferantservice.dao.MaterielPedagoAdapteRepository;
 import com.sd.enseignantreferantservice.model.MaterielPedagoAdapte;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,8 +34,8 @@ public class MaterielPedagoAdapteServiceImp implements MaterielPedagoAdapteServi
 
     @Override
     public MaterielPedagoAdapte getMaterielPedagoAdapte(int id) {
-        Optional<MaterielPedagoAdapte> optionalMaterielPedagoAdapte=materielPedagoAdapteRepository.findById(id);
-        return optionalMaterielPedagoAdapte.orElse(null) ;
+        Optional<MaterielPedagoAdapte> optionalMaterielPedagoAdapte = materielPedagoAdapteRepository.findById(id);
+        return optionalMaterielPedagoAdapte.orElse(null);
     }
 
     @Override

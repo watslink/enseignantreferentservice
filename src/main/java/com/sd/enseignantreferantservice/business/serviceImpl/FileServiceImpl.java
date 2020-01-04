@@ -11,19 +11,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Observable;
 
 @Service
 public class FileServiceImpl implements FileService {
 
-    private static final String FILE_DIRECTORY = System.getProperty("catalina.base")+"/files";
+    private static final String FILE_DIRECTORY = System.getProperty("catalina.base") + "/files";
 
     public Path storeFile(MultipartFile file, String eleveDirectory, String nomFichier) throws IOException {
 
-        Path filePath = Paths.get(FILE_DIRECTORY + "/" + eleveDirectory + "/" + nomFichier +"."+ FilenameUtils.getExtension(file.getOriginalFilename()));
+        Path filePath = Paths.get(FILE_DIRECTORY + "/" + eleveDirectory + "/" + nomFichier + "." + FilenameUtils.getExtension(file.getOriginalFilename()));
 
-        File directory = new File(FILE_DIRECTORY + "/" + eleveDirectory + "/" );
-        if (! directory.exists()){
+        File directory = new File(FILE_DIRECTORY + "/" + eleveDirectory + "/");
+        if (!directory.exists()) {
             directory.mkdirs();
         }
 
@@ -31,16 +30,16 @@ public class FileServiceImpl implements FileService {
         return filePath.toRealPath();
     }
 
-    public File getFile(String eleveDirectory, String nomFichier) throws IOException{
-        File file= new File(FILE_DIRECTORY + "/" + eleveDirectory + "/" + nomFichier);
-        return  file;
+    public File getFile(String eleveDirectory, String nomFichier) throws IOException {
+        File file = new File(FILE_DIRECTORY + "/" + eleveDirectory + "/" + nomFichier);
+        return file;
     }
 
     @Override
     public boolean deleteFile(String eleveDirectory, String nomFichier) throws IOException {
-        File file= new File(FILE_DIRECTORY + "/" + eleveDirectory + "/" + nomFichier);
-        if(file.exists()){
-           return file.delete();
+        File file = new File(FILE_DIRECTORY + "/" + eleveDirectory + "/" + nomFichier);
+        if (file.exists()) {
+            return file.delete();
         }
         return false;
     }

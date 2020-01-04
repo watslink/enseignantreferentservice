@@ -15,8 +15,8 @@ public class CategorieRestAPI {
     private CategorieService categorieService;
 
     @GetMapping("/categorie/{id}")
-    public Categorie getCategorie(@PathVariable int id){
-        return  categorieService.getCategorie(id);
+    public Categorie getCategorie(@PathVariable int id) {
+        return categorieService.getCategorie(id);
     }
 
     @GetMapping("/categories/{ensRefId}")
@@ -26,17 +26,17 @@ public class CategorieRestAPI {
 
 
     @PostMapping("/categorie")
-    public Categorie addCategorie(@RequestBody Categorie categorie){
+    public Categorie addCategorie(@RequestBody Categorie categorie) {
         return categorieService.addCategorie(categorie);
     }
 
     @PutMapping("/categorie")
-    public Categorie updateCategorie(@RequestBody Categorie categorie){
+    public Categorie updateCategorie(@RequestBody Categorie categorie) {
         return categorieService.updateCategorie(categorie);
     }
 
     @DeleteMapping("/categorie/{id}")
-    public void deleteCategorie(@PathVariable int id){
+    public void deleteCategorie(@PathVariable int id) {
         categorieService.deleteCategorie(id);
     }
 }

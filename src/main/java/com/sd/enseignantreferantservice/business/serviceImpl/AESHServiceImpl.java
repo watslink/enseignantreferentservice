@@ -5,7 +5,6 @@ import com.sd.enseignantreferantservice.dao.AESHRepository;
 import com.sd.enseignantreferantservice.model.AESH;
 import com.sd.enseignantreferantservice.model.Eleve;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +26,7 @@ public class AESHServiceImpl implements AESHService {
     @Override
     public void deleteAesh(int id) {
         AESH aesh = aeshRepository.getOne(id);
-        for (Eleve eleve: aesh.getListEleve()){
+        for (Eleve eleve : aesh.getListEleve()) {
             eleve.setAesh(null);
         }
         aeshRepository.deleteById(id);
@@ -40,8 +39,8 @@ public class AESHServiceImpl implements AESHService {
 
     @Override
     public AESH getAesh(int id) {
-        Optional<AESH> optionalAESH=aeshRepository.findById(id);
-        return optionalAESH.orElse(null) ;
+        Optional<AESH> optionalAESH = aeshRepository.findById(id);
+        return optionalAESH.orElse(null);
     }
 
     @Override

@@ -10,7 +10,8 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -25,7 +26,7 @@ public class CategorieServiceImplTest {
     public void addCategorie() {
         Categorie categorie = new Categorie();
         categorie.setNom("nom");
-        EnseignantReferent ensRef= new EnseignantReferent();
+        EnseignantReferent ensRef = new EnseignantReferent();
         ensRef.setEnseignantReferentId(1);
         categorie.setEnseignantReferent(ensRef);
         Categorie categorieAdded = categorieService.addCategorie(categorie);

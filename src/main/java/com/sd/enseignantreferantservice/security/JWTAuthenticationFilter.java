@@ -27,11 +27,11 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        EnseignantReferent ensRef=null;
+        EnseignantReferent ensRef = null;
         try {
-            ensRef=new ObjectMapper().readValue(request.getInputStream(), EnseignantReferent.class);
+            ensRef = new ObjectMapper().readValue(request.getInputStream(), EnseignantReferent.class);
         } catch (Exception e) {
-           throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
 
         return authenticationManager.authenticate(
@@ -40,14 +40,14 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        MyUserDetails springUser=(MyUserDetails)authResult.getPrincipal();
-        String jwt= Jwts.builder()
+        MyUserDetails springUser = (MyUserDetails) authResult.getPrincipal();
+        String jwt = Jwts.builder()
                 .setSubject(springUser.getUsername())
-                .setExpiration(new Date(System.currentTimeMillis()+SecurityConstants.EXPIRATION_TIME))
+                .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS256, SecurityConstants.SECRET)
                 .claim("roles", springUser.getAuthorities())
                 .compact();
-        response.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX+jwt);
+        response.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + jwt);
 
     }
 }

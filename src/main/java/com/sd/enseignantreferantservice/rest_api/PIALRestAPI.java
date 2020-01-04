@@ -15,8 +15,8 @@ public class PIALRestAPI {
     private PIALService pialService;
 
     @GetMapping("/pial/{id}")
-    public PIAL getPIAL(@PathVariable int id){
-        return  pialService.getPial(id);
+    public PIAL getPIAL(@PathVariable int id) {
+        return pialService.getPial(id);
     }
 
     @GetMapping("/pials/{ensRefId}")
@@ -26,17 +26,17 @@ public class PIALRestAPI {
 
 
     @PostMapping("/pial")
-    public PIAL addPIAL(@RequestBody PIAL pial){
+    public PIAL addPIAL(@RequestBody PIAL pial) {
         return pialService.addPial(pial);
     }
 
     @PutMapping("/pial")
-    public PIAL updatePIAL(@RequestBody PIAL pial){
+    public PIAL updatePIAL(@RequestBody PIAL pial) {
         return pialService.updatePial(pial);
     }
 
     @DeleteMapping("/pial/{id}")
-    public void deletePIAL(@PathVariable int id){
+    public void deletePIAL(@PathVariable int id) {
         pialService.deletePial(id);
     }
 }
