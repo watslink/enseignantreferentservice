@@ -84,15 +84,21 @@ public class EleveServiceImpl implements EleveService {
 
     @Override
     public Eleve updateEleve(Eleve eleve) {
-        for(RepresentantLegal representantLegal: eleve.getListRepresentantsLegaux()){
-            representantLegal.setEleve(eleve);
+        if(eleve.getListRepresentantsLegaux()!=null) {
+            for (RepresentantLegal representantLegal : eleve.getListRepresentantsLegaux()) {
+                representantLegal.setEleve(eleve);
+            }
         }
-        for(EleveStructurePro eleveStructurePro: eleve.getListEleveStructurePros()){
-            eleveStructurePro.setEleve(eleve);
-            eleveStructurePro.setPk(new EleveStructurePro.PK(eleveStructurePro.getStructurePro().getStructureProId(), eleve.getEleveId()));
+        if(eleve.getListEleveStructurePros()!=null) {
+            for (EleveStructurePro eleveStructurePro : eleve.getListEleveStructurePros()) {
+                eleveStructurePro.setEleve(eleve);
+                eleveStructurePro.setPk(new EleveStructurePro.PK(eleveStructurePro.getStructurePro().getStructureProId(), eleve.getEleveId()));
+            }
         }
-        for(Document document: eleve.getListDocuments()){
-            document.setEleve(eleve);
+        if(eleve.getListDocuments()!=null) {
+            for (Document document : eleve.getListDocuments()) {
+                document.setEleve(eleve);
+            }
         }
         eleve = eleveRepository.save(eleve);
         return eleve;
