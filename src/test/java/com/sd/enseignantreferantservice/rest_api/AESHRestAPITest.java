@@ -1,7 +1,6 @@
 package com.sd.enseignantreferantservice.rest_api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sd.enseignantreferantservice.business.serviceInterface.AESHService;
 import com.sd.enseignantreferantservice.model.AESH;
 import com.sd.enseignantreferantservice.model.EnseignantReferent;
 import com.sd.enseignantreferantservice.model.PIAL;
@@ -26,7 +25,6 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.hamcrest.Matchers.*;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -47,7 +45,6 @@ public class AESHRestAPITest {
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.nom").value("Tessier"));
         }
-
 
 
     @Test
