@@ -35,6 +35,11 @@ public class EleveServiceImplTest {
         assertFalse(eleveAdded.isDossierAccepte());
         assertFalse(eleveAdded.isVu());
         assertEquals(2, eleveAdded.getListEleveDocumentsInscriptionRequis().size());
+        for (EleveDocumentInscriptionRequis eleveDocumentInscriptionRequis: eleveAdded.getListEleveDocumentsInscriptionRequis()){
+            assertNull(eleveDocumentInscriptionRequis.getExtension());
+            assertFalse(eleveDocumentInscriptionRequis.isOk());
+            assertEquals("nom", eleveDocumentInscriptionRequis.getEleve().getNom());
+        }
     }
 
     @Test
