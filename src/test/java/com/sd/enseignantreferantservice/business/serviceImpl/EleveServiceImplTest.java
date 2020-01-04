@@ -39,6 +39,8 @@ public class EleveServiceImplTest {
             assertNull(eleveDocumentInscriptionRequis.getExtension());
             assertFalse(eleveDocumentInscriptionRequis.isOk());
             assertEquals("nom", eleveDocumentInscriptionRequis.getEleve().getNom());
+            assertNotNull(eleveDocumentInscriptionRequis.getPk().getDocumentInscriptionRequis());
+            assertEquals(eleveAdded.getEleveId(), eleveDocumentInscriptionRequis.getPk().getEleve().intValue());
         }
     }
 
@@ -115,10 +117,15 @@ public class EleveServiceImplTest {
         eleve.setListEleveStructurePros(new HashSet<EleveStructurePro>());
         EleveStructurePro eleveStructurePro = new EleveStructurePro();
         eleveStructurePro.setStructurePro(structurePro);
+        eleveStructurePro.setDateNotification(new Date(2020-10-10));
         eleve.getListEleveStructurePros().add(eleveStructurePro);
         Eleve eleveAdded = eleveService.addEleve(eleve);
         for(EleveStructurePro eleveStructureProinList : eleveAdded.getListEleveStructurePros()){
             assertEquals(eleveStructurePro.getStructurePro().getStructureProId(), eleveStructureProinList.getStructurePro().getStructureProId());
+            assertEquals("nom", eleveStructureProinList.getEleve().getNom());
+            assertEquals(new Date(2020-10-10), eleveStructureProinList.getDateNotification());
+            assertEquals(eleveAdded.getEleveId(), eleveStructureProinList.getPk().getEleve().intValue());
+            assertEquals(structurePro.getStructureProId(), eleveStructureProinList.getPk().getStructurePro().intValue());
         }
     }
 
