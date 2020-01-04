@@ -234,4 +234,15 @@ public class EleveServiceImplTest {
         assertEquals(0, eleveValidated.getListEleveDocumentsInscriptionRequis().size());
         assertEquals(2, eleve.getListDocuments().size());
     }
+
+    @Test
+    @Transactional
+    @Rollback
+    public void validateInscriptionOnEleveWithRepresentantsLegauxAndStructuresPros() {
+        Eleve eleve = eleveService.getEleve(20);
+        Eleve eleveValidated = eleveService.validateInscription(eleve);
+        assertTrue(eleveValidated.isDossierAccepte());
+        assertEquals(0, eleveValidated.getListEleveDocumentsInscriptionRequis().size());
+        assertEquals(2, eleve.getListDocuments().size());
+    }
 }

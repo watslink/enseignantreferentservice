@@ -157,9 +157,9 @@ VALUES
 (' Centre Mael Durand', 'centremaeldurand@fakeemail.com', '02.19.49.60.48', 13, 1, 10),
 (' Centre Titouan Pineau', 'centretitouanpineau@fakeemail.com', '01.09.45.95.82', 12, 1, 11),
 (' Centre Lutécia Sauvage', 'centreluteciasauvage@fakeemail.com', '04.71.49.84.37', 11, 1, 12),
-(' Centre Cloé Olivier', 'centrecloeolivier@fakeemail.com', '04.04.84.67.84', 10, 1, 13),
+(' Centre Cloé Olivier', 'centrecloeolivier@fakeemail.com', '04.04.84.67.84', 10, 1, 20),
 (' Centre Noah Jean', 'centrenoahjean@fakeemail.com', '04.52.13.36.59', 9, 1, 13),
-(' Centre Nolan Leveque', 'centrenolanleveque@fakeemail.com', '04.53.32.51.61', 8, 1, 14),
+(' Centre Nolan Leveque', 'centrenolanleveque@fakeemail.com', '04.53.32.51.61', 8, 1, 20),
 (' Centre Dorian Renault', 'centredorianrenault@fakeemail.com', '00.13.30.52.03', 7, 1, 1),
 (' Centre Anaïs Lafon', 'centreanaislafon@fakeemail.com', '06.46.79.71.69', 6, 1, 2);
 
@@ -178,8 +178,9 @@ VALUES
 (1, 3),
 (1, 4),
 (2, 2),
-(3, 5);
-
+(3, 5),
+(20, 4),
+(20, 5);
 
 INSERT INTO materiel_pedago_adapte (nom, enseignant_referent_id)
 VALUES
@@ -194,7 +195,8 @@ VALUES
 (1, 4),
 (2, 1),
 (2, 3),
-(3, 1);
+(3, 1),
+(20, 1);
 
 INSERT INTO categorie (nom, enseignant_referent_id)
 VALUES
@@ -225,7 +227,7 @@ VALUES
 (1, 19, true, 'pdf'),
 (2, 19, true, 'pdf'),
 (1, 20, true, 'pdf'),
-(2, 20, false, null),
+(2, 20, true, 'doc'),
 (1, 18, false, null),
 (2, 18, false, null);
 
