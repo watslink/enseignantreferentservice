@@ -24,11 +24,6 @@ public class RepresentantLegalRestAPI {
         return representantLegalService.getAllRepresentantLegal(ensRefId);
     }
 
-    @PostMapping("/representantLegal")
-    public RepresentantLegal addRepresentantLegal(@RequestBody RepresentantLegal representantLegal){
-        return representantLegalService.addRepresentantLegal(representantLegal);
-    }
-
     @PutMapping("/representantLegal")
     public RepresentantLegal updateRepresentantLegal(@RequestBody RepresentantLegal representantLegal){
         return representantLegalService.updateRepresentantLegal(representantLegal);
